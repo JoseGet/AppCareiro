@@ -11,4 +11,6 @@
     <color name="light_green">#9CB217</color>
     <color name="dark_green">#1D4510</color>
     <color name="dark_gray">#363538</color>
+    <color name="light_gray">#F0F3f0</color>
+    <color name="search_bar_border_color">#D5D7D4</color>
 </resources>

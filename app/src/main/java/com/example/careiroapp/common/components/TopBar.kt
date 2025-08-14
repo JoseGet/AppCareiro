@@ -28,7 +28,7 @@ fun TopBar(
         modifier = Modifier
             .fillMaxWidth()
             .height(72.dp)
-            .background(color = colorResource(R.color.light_background)),
+            .background(color = colorResource(R.color.light_gray)),
         Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -40,7 +40,8 @@ fun TopBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.menu),
-                contentDescription = "Menu"
+                contentDescription = "Menu",
+                tint = colorResource(R.color.dark_green)
             )
         }
         Image(
@@ -58,7 +59,8 @@ fun TopBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.bag),
-                contentDescription = "Sacola"
+                contentDescription = "Sacola",
+                tint = colorResource(R.color.dark_green)
             )
         }
     }
