@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components
+package com.example.careiroapp.common.components.header
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
