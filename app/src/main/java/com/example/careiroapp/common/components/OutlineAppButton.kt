@@ -29,7 +29,7 @@ fun OutlineAppButton(
     text: String,
     modifier: Modifier,
     onClick: () -> Unit,
-    icon: Painter,
+    icon: Painter?,
 ) {
     OutlinedButton(
         onClick = onClick,
@@ -53,11 +53,13 @@ fun OutlineAppButton(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.width(8.dp))
-            Icon(
-                painter = icon,
-                contentDescription = ""
-            )
+            Spacer(Modifier.width(if (icon == null) 0.dp else 8.dp))
+            if (icon != null) {
+                Icon(
+                    painter = icon,
+                    contentDescription = ""
+                )
+            }
         }
     }
 }
