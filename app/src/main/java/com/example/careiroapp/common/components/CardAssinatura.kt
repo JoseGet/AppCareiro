@@ -89,7 +89,7 @@ fun CardAssinatura(
                     Arrangement.Center
                 ) {
                     OutlineAppButton(
-                        text = stringResource(R.string.verMais),
+                        text = stringResource(R.string.ver_mais),
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 70.dp),
