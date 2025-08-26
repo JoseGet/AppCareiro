@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,7 +52,7 @@ fun CardProduto(
     ) {
         Column(
             modifier = Modifier
-                .background(color = colorResource(R.color.light_gray))
+                .background(color = colorResource(R.color.light_background))
         ) {
             Image(
                 modifier = Modifier
@@ -85,7 +84,8 @@ fun CardProduto(
                         fontWeight = if (!isPromocao) FontWeight.Bold else FontWeight.Normal,
                         color = colorResource(R.color.dark_green),
                         textDecoration = if (isPromocao) TextDecoration.LineThrough else TextDecoration.None,
-                        fontStyle = if (isPromocao) FontStyle.Italic else FontStyle.Normal
+                        fontStyle = if (isPromocao) FontStyle.Italic else FontStyle.Normal,
+                        fontSize = if (isPromocao) 14.sp else 16.sp
                     )
                 )
                 Spacer(modifier = Modifier.width(8.dp))
@@ -95,6 +95,7 @@ fun CardProduto(
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = colorResource(R.color.dark_green),
+                            fontSize = 16.sp
                         ),
                     )
                 }
