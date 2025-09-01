@@ -6,5 +6,11 @@
     <string name="adicionar">Adicionar</string>
     <string name="ver_mais">Ver mais</string>
     <string name="cadastrar_associacao">Cadastrar associação</string>
+    <string name="agriconnect">Agriconnet</string>
+    <string name="produtos_e_associacoes_destaque">Produtos e associações em destaque</string>
+    <string name="conheca_nossas_feiras_titulo">Conheça nossas feiras</string>
+    <string name="conheca_nossas_feiras_descricao">Compre aqui e retire os alimentos fresquinhos nas feiras</string>
+    <string name="categoria_produtos_titulo">Categoria de produtos</string>
+    <string name="categoria_produtos_descricao">Veja tudo que está disponível para você</string>
 
 </resources>
