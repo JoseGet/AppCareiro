@@ -2,6 +2,9 @@ package com.example.careiroapp.home.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -25,14 +29,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import com.example.careiroapp.common.components.CardAssinatura
+import com.example.careiroapp.common.components.CardCategorias
 import com.example.careiroapp.common.components.CardFeira
 import com.example.careiroapp.common.components.CardProduto
 import com.example.careiroapp.common.components.header.AppHeader
 import com.example.careiroapp.home.ui.components.Header
+import com.example.careiroapp.home.ui.components.TutorialRow
 
 @Composable
 fun HomeView() {
     val scrollState = rememberScrollState();
+    val categoriesRowScrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
@@ -122,6 +130,60 @@ fun HomeView() {
                 titulo = stringResource(R.string.categoria_produtos_titulo),
                 subtitulo = stringResource(R.string.categoria_produtos_descricao)
             )
+            Spacer(Modifier.height(24.dp))
+            Row(
+                modifier = Modifier
+                    .horizontalScroll(state = categoriesRowScrollState),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.assinaturas_titulo),
+                subtitulo = stringResource(R.string.assinaturas_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                CardAssinatura(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.macas),
+                    nomeAssinatura = "Assinatura",
+                    precoAssinatura = 10.0f,
+                    haveButton = false
+                )
+                CardAssinatura(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.macas),
+                    nomeAssinatura = "Assinatura",
+                    precoAssinatura = 10.0f,
+                    haveButton = false
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.como_funciona_titulo),
+                subtitulo = stringResource(R.string.como_funciona_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            TutorialRow()
             Spacer(Modifier.height(24.dp))
         }
 

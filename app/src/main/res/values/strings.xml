@@ -12,5 +12,10 @@
     <string name="conheca_nossas_feiras_descricao">Compre aqui e retire os alimentos fresquinhos nas feiras</string>
     <string name="categoria_produtos_titulo">Categoria de produtos</string>
     <string name="categoria_produtos_descricao">Veja tudo que está disponível para você</string>
+    <string name="assinaturas_titulo">Assinaturas</string>
+    <string name="assinaturas_descricao">Os melhores produtos sempre na sua casa</string>,
+    <string name="como_funciona_titulo">Como funciona o Agriconnect</string>,
+    <string name="como_funciona_descricao">Saiba quem faz parte</string>
+    <string name="default_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium neque magna.</string>
 
 </resources>
