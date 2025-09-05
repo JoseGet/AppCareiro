@@ -9,9 +9,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,6 +39,7 @@ import com.example.careiroapp.R
 
 @Composable
 fun CardProduto(
+    modifier: Modifier,
     image: Painter,
     nomeProduto: String,
     precoProduto: Float,
@@ -45,10 +52,14 @@ fun CardProduto(
     val modifiedPrecoPromocao = String.format("%.2f", precoPromocao).replace('.', ',');
 
     Card(
-        modifier = Modifier
-            .width(263.dp)
-            .wrapContentHeight()
+        modifier = modifier
+            .wrapContentSize()
             .background(color = Color.Transparent),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        ),
+        shape = RoundedCornerShape(25.dp),
+        onClick = {}
     ) {
         Column(
             modifier = Modifier
@@ -56,8 +67,7 @@ fun CardProduto(
         ) {
             Image(
                 modifier = Modifier
-                    .width(283.dp)
-                    .height(263.dp),
+                    .height(173.dp),
                 painter = image,
                 contentScale = ContentScale.Crop,
                 contentDescription = ""
@@ -68,8 +78,8 @@ fun CardProduto(
                 modifier = Modifier
                     .padding(
                         start = 16.dp,
-                        bottom = if (haveButton) 0.dp else 16.dp
                     ),
+                color = Color.Black,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -100,19 +110,19 @@ fun CardProduto(
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(if (haveButton) 16.dp else 0.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             if (haveButton) {
                 Row(
                     modifier = Modifier
-                        .wrapContentHeight()
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
+                        .wrapContentWidth()
+                        .padding(bottom = 16.dp)
+                        .align(alignment = Alignment.CenterHorizontally),
                     Arrangement.Center
                 ) {
                     OutlineAppButton(
                         text = stringResource(R.string.adicionar),
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .wrapContentWidth()
                             .padding(horizontal = 16.dp),
                         onClick = {},
                         icon = painterResource(R.drawable.bag)
@@ -128,6 +138,8 @@ fun CardProduto(
 private fun CardProdutoPreview() {
     Column {
         CardProduto(
+            modifier = Modifier
+                .weight(1f),
             image = painterResource(R.drawable.banana2),
             nomeProduto = "Banana",
             precoProduto = 10.00f,
@@ -137,12 +149,14 @@ private fun CardProdutoPreview() {
         )
         Spacer(modifier = Modifier.height(10.dp))
         CardProduto(
+            modifier = Modifier
+                .weight(1f),
             image = painterResource(R.drawable.banana2),
             nomeProduto = "Banana",
             precoProduto = 10.00f,
             isPromocao = false,
             precoPromocao = 7.00,
-            haveButton = true,
+            haveButton = false,
         )
     }
 }

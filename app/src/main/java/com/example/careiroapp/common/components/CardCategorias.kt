@@ -1,16 +1,14 @@
 package com.example.careiroapp.common.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -39,12 +37,13 @@ fun CardCategorias(
 ) {
     Card(
         modifier = Modifier
-            .height(200.dp)
-            .width(263.dp),
+            .height(103.dp)
+            .width(135.dp),
         shape = RoundedCornerShape(25.dp),
         colors = CardDefaults.cardColors(
             containerColor = colorResource(R.color.dark_green)
         ),
+        elevation = CardDefaults.cardElevation(8.dp),
         onClick = {},
     ) {
         Box(
