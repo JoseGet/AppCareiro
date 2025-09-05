@@ -50,7 +50,7 @@ fun AppButton(
             Spacer(Modifier.width(if (icon == null) 0.dp else 8.dp))
             if (icon != null) {
                 Icon(
-                    painter = painterResource(R.drawable.bag),
+                    painter = icon,
                     contentDescription = ""
                 )
             }

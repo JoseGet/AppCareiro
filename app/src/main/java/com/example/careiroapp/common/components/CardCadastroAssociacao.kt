@@ -55,6 +55,7 @@ fun CardCadastroAssociacao() {
                     color = colorResource(R.color.dark_green),
                     fontSize = 18.sp,
                     fontFamily = montserratBoldFontFamily,
+                    textAlign = TextAlign.Center
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
