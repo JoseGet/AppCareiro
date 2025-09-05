@@ -46,178 +46,148 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeView() {
 
-    val scrollState = rememberScrollState();
     val categoriesRowScrollState = rememberScrollState()
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            AppDrawer()
-        },
-        gesturesEnabled = true
+    Column(
+
     ) {
-        Column(
+        Image(
             modifier = Modifier
-                .verticalScroll(scrollState)
-                .fillMaxSize()
-                .background(color = Color.White)
+                .height(176.dp)
+                .fillMaxWidth(),
+            painter = painterResource(R.drawable.banner),
+            contentDescription = ""
+        )
+        Spacer(Modifier.height(24.dp))
+        Column (
+            modifier = Modifier
+                .padding(horizontal = 17.dp)
         ) {
-            AppHeader(
-                leftIconAction = {
-                    scope.launch {
-                        drawerState.open()
-                    }
-                }
-            )
-            Image(
-                modifier = Modifier
-                    .height(176.dp)
-                    .fillMaxWidth(),
-                painter = painterResource(R.drawable.banner),
-                contentDescription = ""
+            Text(
+                stringResource(R.string.produtos_e_associacoes_destaque),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = colorResource(R.color.dark_green),
+                ),
             )
             Spacer(Modifier.height(24.dp))
-            Column (
+            Row (
                 modifier = Modifier
-                    .padding(horizontal = 17.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text(
-                    stringResource(R.string.produtos_e_associacoes_destaque),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = colorResource(R.color.dark_green),
-                    ),
-                )
-                Spacer(Modifier.height(24.dp))
-                Row (
+                CardProduto(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    CardProduto(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.abobora),
-                        nomeProduto = "Abobora",
-                        precoProduto = 10.0f,
-                        isPromocao = true,
-                        precoPromocao = 8.00,
-                        haveButton = false
-                    )
-                    CardProduto(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.limao),
-                        nomeProduto = "Limao",
-                        precoProduto = 10.0f,
-                        isPromocao = true,
-                        precoPromocao = 8.00,
-                        haveButton = false
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
-                Header(
-                    titulo = stringResource(R.string.conheca_nossas_feiras_titulo),
-                    subtitulo = stringResource(R.string.conheca_nossas_feiras_descricao)
+                        .weight(1f),
+                    image = painterResource(R.drawable.abobora),
+                    nomeProduto = "Abobora",
+                    precoProduto = 10.0f,
+                    isPromocao = true,
+                    precoPromocao = 8.00,
+                    haveButton = false
                 )
-                Spacer(Modifier.height(24.dp))
-                Row (
+                CardProduto(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    CardFeira(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.doge),
-                        localText = "Careiro, Amazonas",
-                        dataText = "20/09/25",
-                        titleText = "Feira da Matriz",
-                        buttonText = stringResource(R.string.ver_mais)
-                    )
-                    CardFeira(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.doge),
-                        localText = "Careiro, Amazonas",
-                        dataText = "20/09/25",
-                        titleText = "Feira da Banana",
-                        buttonText = stringResource(R.string.ver_mais)
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
-                Header(
-                    titulo = stringResource(R.string.categoria_produtos_titulo),
-                    subtitulo = stringResource(R.string.categoria_produtos_descricao)
+                        .weight(1f),
+                    image = painterResource(R.drawable.limao),
+                    nomeProduto = "Limao",
+                    precoProduto = 10.0f,
+                    isPromocao = true,
+                    precoPromocao = 8.00,
+                    haveButton = false
                 )
-                Spacer(Modifier.height(24.dp))
-                Row(
-                    modifier = Modifier
-                        .horizontalScroll(state = categoriesRowScrollState),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    CardCategorias(
-                        image = null,
-                        title = "Legumes"
-                    )
-                    CardCategorias(
-                        image = null,
-                        title = "Legumes"
-                    )
-                    CardCategorias(
-                        image = null,
-                        title = "Legumes"
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
-                Header(
-                    titulo = stringResource(R.string.assinaturas_titulo),
-                    subtitulo = stringResource(R.string.assinaturas_descricao)
-                )
-                Spacer(Modifier.height(24.dp))
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    CardAssinatura(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.macas),
-                        nomeAssinatura = "Assinatura",
-                        precoAssinatura = 10.0f,
-                        haveButton = false
-                    )
-                    CardAssinatura(
-                        modifier = Modifier
-                            .weight(1f),
-                        image = painterResource(R.drawable.macas),
-                        nomeAssinatura = "Assinatura",
-                        precoAssinatura = 10.0f,
-                        haveButton = false
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
-                Header(
-                    titulo = stringResource(R.string.como_funciona_titulo),
-                    subtitulo = stringResource(R.string.como_funciona_descricao)
-                )
-                Spacer(Modifier.height(24.dp))
-                TutorialRow()
-                Spacer(Modifier.height(24.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    CardCadastroAssociacao()
-                }
-                Spacer(Modifier.height(20.dp))
             }
-            AppFooter()
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.conheca_nossas_feiras_titulo),
+                subtitulo = stringResource(R.string.conheca_nossas_feiras_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                CardFeira(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.doge),
+                    localText = "Careiro, Amazonas",
+                    dataText = "20/09/25",
+                    titleText = "Feira da Matriz",
+                    buttonText = stringResource(R.string.ver_mais)
+                )
+                CardFeira(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.doge),
+                    localText = "Careiro, Amazonas",
+                    dataText = "20/09/25",
+                    titleText = "Feira da Banana",
+                    buttonText = stringResource(R.string.ver_mais)
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.categoria_produtos_titulo),
+                subtitulo = stringResource(R.string.categoria_produtos_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            Row(
+                modifier = Modifier
+                    .horizontalScroll(state = categoriesRowScrollState),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+                CardCategorias(
+                    image = null,
+                    title = "Legumes"
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.assinaturas_titulo),
+                subtitulo = stringResource(R.string.assinaturas_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                CardAssinatura(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.macas),
+                    nomeAssinatura = "Assinatura",
+                    precoAssinatura = 10.0f,
+                    haveButton = false
+                )
+                CardAssinatura(
+                    modifier = Modifier
+                        .weight(1f),
+                    image = painterResource(R.drawable.macas),
+                    nomeAssinatura = "Assinatura",
+                    precoAssinatura = 10.0f,
+                    haveButton = false
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+            Header(
+                titulo = stringResource(R.string.como_funciona_titulo),
+                subtitulo = stringResource(R.string.como_funciona_descricao)
+            )
+            Spacer(Modifier.height(24.dp))
+            TutorialRow()
+            Spacer(Modifier.height(24.dp))
         }
     }
 }
