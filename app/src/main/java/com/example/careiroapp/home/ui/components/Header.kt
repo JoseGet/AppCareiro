@@ -7,10 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import com.example.careiroapp.common.montserratBoldFontFamily
+import com.example.careiroapp.common.montserratFontFamily
 
 @Composable
 fun Header(
@@ -21,8 +22,8 @@ fun Header(
         titulo,
         style = TextStyle(
             fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
             color = colorResource(R.color.dark_green),
+            fontFamily = montserratBoldFontFamily
         ),
     )
     Spacer(Modifier.height(8.dp))
@@ -31,6 +32,7 @@ fun Header(
         style = TextStyle(
             fontSize = 14.sp,
             color = colorResource(R.color.black),
+            fontFamily = montserratFontFamily
         ),
     )
 }

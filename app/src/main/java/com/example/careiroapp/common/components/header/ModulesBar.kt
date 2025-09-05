@@ -31,6 +31,18 @@ fun ModulesBar() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
+            text = stringResource(R.string.home),
+            style = TextStyle(
+                fontSize = 16.sp,
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            ),
+            modifier = Modifier.clickable(
+                enabled = true,
+                onClick = {}
+            )
+        )
+        Text(
             text = stringResource(R.string.produtos),
             style = TextStyle(
                 fontSize = 16.sp,

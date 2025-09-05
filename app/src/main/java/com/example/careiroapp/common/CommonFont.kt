@@ -8,3 +8,7 @@ import com.example.careiroapp.R
 val montserratFontFamily = FontFamily(
     Font(R.font.montserrat_regular, FontWeight.Normal)
 )
+
+val montserratBoldFontFamily = FontFamily(
+    Font(R.font.montserrat_bold)
+)

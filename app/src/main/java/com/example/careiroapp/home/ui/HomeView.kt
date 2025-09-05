@@ -18,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -30,9 +31,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.CardAssinatura
+import com.example.careiroapp.common.components.CardCadastroAssociacao
 import com.example.careiroapp.common.components.CardCategorias
 import com.example.careiroapp.common.components.CardFeira
 import com.example.careiroapp.common.components.CardProduto
+import com.example.careiroapp.common.components.footer.AppFooter
 import com.example.careiroapp.common.components.header.AppHeader
 import com.example.careiroapp.home.ui.components.Header
 import com.example.careiroapp.home.ui.components.TutorialRow
@@ -185,13 +188,21 @@ fun HomeView() {
             Spacer(Modifier.height(24.dp))
             TutorialRow()
             Spacer(Modifier.height(24.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                CardCadastroAssociacao()
+            }
+            Spacer(Modifier.height(20.dp))
         }
-
+        AppFooter()
     }
 }
 
 @Composable
-@Preview
+@Preview(showSystemUi = true)
 private fun HomeViewPreview() {
     HomeView()
 }

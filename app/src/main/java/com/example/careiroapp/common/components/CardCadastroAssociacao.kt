@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import com.example.careiroapp.common.montserratBoldFontFamily
+import com.example.careiroapp.common.montserratFontFamily
 
 @Composable
 fun CardCadastroAssociacao() {
@@ -50,9 +52,9 @@ fun CardCadastroAssociacao() {
             Text(
                 text = "Faça parte do Agriconnect",
                 style = TextStyle(
-                    fontWeight = FontWeight.Bold,
                     color = colorResource(R.color.dark_green),
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    fontFamily = montserratBoldFontFamily,
                 )
             )
             Spacer(modifier = Modifier.height(24.dp))
@@ -63,14 +65,16 @@ fun CardCadastroAssociacao() {
                 style = TextStyle(
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
+                    fontFamily = montserratFontFamily
                 ),
             )
             Spacer(modifier = Modifier.height(24.dp))
-            OutlineAppButton(
+            AppButton(
                 modifier = Modifier,
                 text = "Cadastrar associação",
                 onClick = {},
                 icon = painterResource(R.drawable.user_add),
+                containerColor = colorResource(R.color.dark_green)
             )
         }
     }
