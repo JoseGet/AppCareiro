@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components
+package com.example.careiroapp.common.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,13 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -27,27 +25,33 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import com.example.careiroapp.common.components.OutlineAppButton
 
 @Composable
-fun CardAssinatura(
+fun CardProduto(
     modifier: Modifier,
     image: Painter,
-    nomeAssinatura: String,
-    precoAssinatura: Float,
+    nomeProduto: String,
+    precoProduto: Float,
+    isPromocao: Boolean,
+    precoPromocao: Double,
     haveButton: Boolean
 ) {
 
-    //val modifiedPrecoProduto = String.format("%.2f", precoProduto).replace('.', ',');
-    //val modifiedPrecoPromocao = String.format("%.2f", precoPromocao).replace('.', ',');
+    val modifiedPrecoProduto = String.format("%.2f", precoProduto).replace('.', ',');
+    val modifiedPrecoPromocao = String.format("%.2f", precoPromocao).replace('.', ',');
 
     Card(
         modifier = modifier
-            .wrapContentSize(),
+            .wrapContentSize()
+            .background(color = Color.Transparent),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 8.dp
         ),
@@ -60,48 +64,65 @@ fun CardAssinatura(
         ) {
             Image(
                 modifier = Modifier
-                    .height(180.dp),
+                    .height(173.dp),
                 painter = image,
                 contentScale = ContentScale.Crop,
                 contentDescription = ""
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                nomeAssinatura,
+                nomeProduto,
                 modifier = Modifier
                     .padding(
                         start = 16.dp,
                     ),
+                color = Color.Black,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
+                fontWeight = FontWeight.Bold
             )
-            Text(
-                String.format("R$ %.2f", precoAssinatura).replace('.', ','),
+            Row(
                 modifier = Modifier
-                    .padding(
-                        start = 16.dp,
-                    ),
-                style = TextStyle(
-                    fontWeight = FontWeight.Bold,
-                    color = colorResource(R.color.dark_green),
-                    fontSize = 16.sp
+                    .padding(start = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "R$ $modifiedPrecoProduto",
+                    style = TextStyle(
+                        fontWeight = if (!isPromocao) FontWeight.Bold else FontWeight.Normal,
+                        color = colorResource(R.color.dark_green),
+                        textDecoration = if (isPromocao) TextDecoration.LineThrough else TextDecoration.None,
+                        fontStyle = if (isPromocao) FontStyle.Italic else FontStyle.Normal,
+                        fontSize = if (isPromocao) 14.sp else 16.sp
+                    )
                 )
-            )
+                Spacer(modifier = Modifier.width(8.dp))
+                if (isPromocao) {
+                    Text(
+                        "R$ $modifiedPrecoPromocao",
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold,
+                            color = colorResource(R.color.dark_green),
+                            fontSize = 16.sp
+                        ),
+                    )
+                }
+            }
             Spacer(modifier = Modifier.height(16.dp))
             if (haveButton) {
                 Row(
                     modifier = Modifier
+                        .wrapContentWidth()
                         .padding(bottom = 16.dp)
                         .align(alignment = Alignment.CenterHorizontally),
                     Arrangement.Center
                 ) {
                     OutlineAppButton(
-                        text = stringResource(R.string.ver_mais),
+                        text = stringResource(R.string.adicionar),
                         modifier = Modifier
+                            .wrapContentWidth()
                             .padding(horizontal = 16.dp),
                         onClick = {},
-                        icon = null
+                        icon = painterResource(R.drawable.bag)
                     )
                 }
             }
@@ -111,22 +132,28 @@ fun CardAssinatura(
 
 @Composable
 @Preview
-private fun CardAssinaturaPreview() {
+private fun CardProdutoPreview() {
     Column {
-        CardAssinatura(
-            modifier = Modifier,
-            image = painterResource(R.drawable.macas),
-            nomeAssinatura = "Assinatura das Macas",
-            precoAssinatura = 10.00f,
-            haveButton = false,
+        CardProduto(
+            modifier = Modifier
+                .weight(1f),
+            image = painterResource(R.drawable.banana2),
+            nomeProduto = "Banana",
+            precoProduto = 10.00f,
+            isPromocao = true,
+            precoPromocao = 7.00,
+            haveButton = true,
         )
         Spacer(modifier = Modifier.height(10.dp))
-        CardAssinatura(
-            modifier = Modifier,
-            image = painterResource(R.drawable.macas),
-            nomeAssinatura = "Assinatura das Macas",
-            precoAssinatura = 10.00f,
-            haveButton = true,
+        CardProduto(
+            modifier = Modifier
+                .weight(1f),
+            image = painterResource(R.drawable.banana2),
+            nomeProduto = "Banana",
+            precoProduto = 10.00f,
+            isPromocao = false,
+            precoPromocao = 7.00,
+            haveButton = false,
         )
     }
 }

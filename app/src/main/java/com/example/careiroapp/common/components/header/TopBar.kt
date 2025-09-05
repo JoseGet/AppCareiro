@@ -28,8 +28,8 @@ import com.example.careiroapp.R
 
 @Composable
 fun TopBar(
+    leftIconOnClick: () -> Unit
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -42,7 +42,7 @@ fun TopBar(
             modifier = Modifier
                 .padding(start = 24.dp)
                 .size(24.dp),
-            onClick = {}
+            onClick = leftIconOnClick
         ) {
             Icon(
                 painter = painterResource(R.drawable.menu),
@@ -81,12 +81,13 @@ fun TopBar(
             )
         }
     }
-
 }
 
 @Preview
 @Composable
 fun TopBarPreview(
 ) {
-    TopBar();
+    TopBar(
+        leftIconOnClick = {}
+    );
 }
