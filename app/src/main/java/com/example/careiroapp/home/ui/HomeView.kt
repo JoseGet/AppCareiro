@@ -2,8 +2,6 @@ package com.example.careiroapp.home.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,12 +11,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -30,27 +31,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
-import com.example.careiroapp.common.components.CardAssinatura
-import com.example.careiroapp.common.components.CardCadastroAssociacao
-import com.example.careiroapp.common.components.CardCategorias
-import com.example.careiroapp.common.components.CardFeira
-import com.example.careiroapp.common.components.CardProduto
+import com.example.careiroapp.common.components.cards.CardAssinatura
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
+import com.example.careiroapp.common.components.cards.CardCategorias
+import com.example.careiroapp.common.components.cards.CardFeira
+import com.example.careiroapp.common.components.cards.CardProduto
+import com.example.careiroapp.common.components.drawer.AppDrawer
 import com.example.careiroapp.common.components.footer.AppFooter
 import com.example.careiroapp.common.components.header.AppHeader
 import com.example.careiroapp.home.ui.components.Header
 import com.example.careiroapp.home.ui.components.TutorialRow
+import kotlinx.coroutines.launch
 
 @Composable
 fun HomeView() {
-    val scrollState = rememberScrollState();
+
     val categoriesRowScrollState = rememberScrollState()
+
     Column(
-        modifier = Modifier
-            .verticalScroll(scrollState)
-            .fillMaxSize()
-            .background(color = Color.White)
+
     ) {
-        AppHeader()
         Image(
             modifier = Modifier
                 .height(176.dp)
@@ -188,16 +188,7 @@ fun HomeView() {
             Spacer(Modifier.height(24.dp))
             TutorialRow()
             Spacer(Modifier.height(24.dp))
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                CardCadastroAssociacao()
-            }
-            Spacer(Modifier.height(20.dp))
         }
-        AppFooter()
     }
 }
 

@@ -14,14 +14,18 @@ import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 
 @Composable
-fun AppHeader() {
+fun AppHeader(
+    leftIconAction: () -> Unit
+) {
     Column (
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
             .background(color = colorResource(R.color.light_gray))
     ) {
-        TopBar()
+        TopBar(
+            leftIconOnClick = leftIconAction
+        )
         AppSearchBar()
         Spacer(Modifier.height(16.dp))
         ModulesBar()
@@ -31,5 +35,7 @@ fun AppHeader() {
 @Composable
 @Preview
 fun AppHeaderPreview() {
-    AppHeader();
+    AppHeader(
+        leftIconAction = {}
+    );
 }
