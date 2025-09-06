@@ -21,7 +21,10 @@ import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 
 @Composable
-fun ModulesBar() {
+fun ModulesBar(
+    homeButtonAction: () -> Unit,
+    productsButtonAction: () -> Unit
+) {
     Row (
         modifier = Modifier
             .height(48.dp)
@@ -39,7 +42,7 @@ fun ModulesBar() {
             ),
             modifier = Modifier.clickable(
                 enabled = true,
-                onClick = {}
+                onClick = homeButtonAction
             )
         )
         Text(
@@ -51,7 +54,7 @@ fun ModulesBar() {
             ),
             modifier = Modifier.clickable(
                 enabled = true,
-                onClick = {}
+                onClick = productsButtonAction
             )
         )
         Text(
@@ -84,5 +87,8 @@ fun ModulesBar() {
 @Preview
 @Composable
 fun ModulesBarPreview() {
-    ModulesBar()
+    ModulesBar(
+        homeButtonAction = {},
+        productsButtonAction = {}
+    )
 }

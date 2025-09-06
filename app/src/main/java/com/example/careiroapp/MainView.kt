@@ -20,11 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.common.components.drawer.AppDrawer
 import com.example.careiroapp.common.components.footer.AppFooter
 import com.example.careiroapp.common.components.header.AppHeader
 import com.example.careiroapp.home.ui.HomeView
+import com.example.careiroapp.navigation.AppNavHost
 import kotlinx.coroutines.launch
 
 @Composable
@@ -34,6 +38,8 @@ fun MainView(
     val scrollState = rememberScrollState();
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
+    val navController = rememberNavController()
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -53,9 +59,12 @@ fun MainView(
                     scope.launch {
                         drawerState.open()
                     }
-                }
+                },
+                navController
             )
-            HomeView()
+            AppNavHost(
+                navController = navController
+            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

@@ -30,6 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.cards.CardAssinatura
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
@@ -44,7 +46,9 @@ import com.example.careiroapp.home.ui.components.TutorialRow
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeView() {
+fun HomeView(
+    navController: NavController
+) {
 
     val categoriesRowScrollState = rememberScrollState()
 
@@ -195,5 +199,7 @@ fun HomeView() {
 @Composable
 @Preview(showSystemUi = true)
 private fun HomeViewPreview() {
-    HomeView()
+    HomeView(
+        navController = rememberNavController()
+    )
 }
