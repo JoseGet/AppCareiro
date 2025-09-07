@@ -5,10 +5,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import com.example.careiroapp.R
 
-val montserratFontFamily = FontFamily(
-    Font(R.font.montserrat_regular, FontWeight.Normal)
+val montserratRegularFontFamily = FontFamily(
+    Font(R.font.montserrat_regular)
 )
 
 val montserratBoldFontFamily = FontFamily(
     Font(R.font.montserrat_bold)
+)
+
+val montserratMediumFontFamily = FontFamily(
+    Font(R.font.montserrat_medium)
 )

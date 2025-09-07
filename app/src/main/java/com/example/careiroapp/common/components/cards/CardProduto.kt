@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.OutlineAppButton
+import com.example.careiroapp.common.montserratMediumFontFamily
 
 @Composable
 fun CardProduto(
@@ -76,9 +77,11 @@ fun CardProduto(
                     .padding(
                         start = 16.dp,
                     ),
-                color = Color.Black,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                style = TextStyle(
+                    color = colorResource(R.color.dark_gray),
+                    fontSize = 14.sp,
+                    fontFamily = montserratMediumFontFamily,
+                )
             )
             Row(
                 modifier = Modifier

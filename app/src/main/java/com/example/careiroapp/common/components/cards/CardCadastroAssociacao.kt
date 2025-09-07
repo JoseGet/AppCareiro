@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.AppButton
 import com.example.careiroapp.common.montserratBoldFontFamily
-import com.example.careiroapp.common.montserratFontFamily
+import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun CardCadastroAssociacao() {
@@ -61,7 +61,7 @@ fun CardCadastroAssociacao() {
                 style = TextStyle(
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
-                    fontFamily = montserratFontFamily
+                    fontFamily = montserratRegularFontFamily
                 ),
             )
             Spacer(modifier = Modifier.height(24.dp))

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.montserratBoldFontFamily
-import com.example.careiroapp.common.montserratFontFamily
+import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun ModulesColumnFooter(
@@ -38,7 +37,7 @@ fun ModulesColumnFooter(
         Text(
             subtitulo_1,
             style = TextStyle(
-                fontFamily = montserratFontFamily,
+                fontFamily = montserratRegularFontFamily,
                 fontSize = 14.sp
             ),
         )
@@ -46,7 +45,7 @@ fun ModulesColumnFooter(
         Text(
             subtitulo_2,
             style = TextStyle(
-                fontFamily = montserratFontFamily,
+                fontFamily = montserratRegularFontFamily,
                 fontSize = 14.sp
             ),
         )
@@ -54,7 +53,7 @@ fun ModulesColumnFooter(
         Text(
             subtitulo_3,
             style = TextStyle(
-                fontFamily = montserratFontFamily,
+                fontFamily = montserratRegularFontFamily,
                 fontSize = 14.sp
             ),
         )
