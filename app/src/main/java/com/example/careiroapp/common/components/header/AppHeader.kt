@@ -33,12 +33,7 @@ fun AppHeader(
         AppSearchBar()
         Spacer(Modifier.height(16.dp))
         ModulesBar(
-            homeButtonAction = {
-                navController.navigate(NavigationItem.Home.route)
-            },
-            productsButtonAction = {
-                navController.navigate(NavigationItem.Produtos.route)
-            }
+            navController = navController,
         )
     }
 }

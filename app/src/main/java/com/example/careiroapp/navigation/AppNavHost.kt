@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.careiroapp.associacoes.ui.AssociacoesView
+import com.example.careiroapp.feiras.ui.FeirasView
 import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
 
@@ -29,15 +31,31 @@ fun AppNavHost(
         ) {
             ProductsView()
         }
+
+        composable(
+            NavigationItem.Feiras.route
+        ) {
+            FeirasView()
+        }
+
+        composable(
+            NavigationItem.Associacoes.route
+        ) {
+            AssociacoesView()
+        }
     }
 }
 
 enum class Screen {
     HOME,
     PRODUTOS,
+    FEIRAS,
+    ASSOCIACOES
 }
 
 sealed class NavigationItem(val route: String) {
     object Home: NavigationItem(Screen.HOME.name)
     object Produtos: NavigationItem(Screen.PRODUTOS.name)
+    object Feiras: NavigationItem(Screen.FEIRAS.name)
+    object Associacoes: NavigationItem(Screen.ASSOCIACOES.name)
 }
