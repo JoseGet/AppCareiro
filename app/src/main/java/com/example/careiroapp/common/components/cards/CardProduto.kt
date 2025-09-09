@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
-import com.example.careiroapp.common.components.OutlineAppButton
+import com.example.careiroapp.common.components.buttons.OutlineAppButton
 import com.example.careiroapp.common.montserratMediumFontFamily
 
 @Composable
@@ -42,7 +42,7 @@ fun CardProduto(
     nomeProduto: String,
     precoProduto: Float,
     isPromocao: Boolean,
-    precoPromocao: Double,
+    precoPromocao: Double?,
     haveButton: Boolean
 ) {
 

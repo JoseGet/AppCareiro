@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
-import com.example.careiroapp.common.components.AppButton
+import com.example.careiroapp.common.components.buttons.AppButton
 import com.example.careiroapp.common.montserratBoldFontFamily
 import com.example.careiroapp.common.montserratRegularFontFamily
 

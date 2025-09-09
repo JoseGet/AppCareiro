@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components
+package com.example.careiroapp.common.components.buttons
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
