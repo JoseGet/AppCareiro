@@ -19,7 +19,8 @@ import com.example.careiroapp.navigation.NavigationItem
 @Composable
 fun AppHeader(
     leftIconAction: () -> Unit,
-    navController: NavController
+    appNavController: NavController,
+    tabBarNavController: NavController
 ) {
     Column (
         modifier = Modifier
@@ -28,12 +29,13 @@ fun AppHeader(
             .background(color = colorResource(R.color.light_gray))
     ) {
         TopBar(
-            leftIconOnClick = leftIconAction
+            leftIconOnClick = leftIconAction,
+            rightIconAction = { appNavController.navigate("teste") }
         )
         AppSearchBar()
         Spacer(Modifier.height(16.dp))
         ModulesBar(
-            navController = navController,
+            navController = tabBarNavController,
         )
     }
 }
@@ -43,6 +45,7 @@ fun AppHeader(
 fun AppHeaderPreview() {
     AppHeader(
         leftIconAction = {},
-        navController = rememberNavController()
+        appNavController = rememberNavController(),
+        tabBarNavController = rememberNavController()
     );
 }

@@ -37,7 +37,7 @@ fun OutlineAppButton(
         shape = RoundedCornerShape(
             16.dp
         ),
-        contentPadding = PaddingValues(horizontal = 24.dp),
+        contentPadding = PaddingValues(horizontal = 12.dp),
         colors = ButtonColors(
             contentColor = colorResource(R.color.light_green),
             containerColor = Color.White,

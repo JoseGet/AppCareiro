@@ -36,13 +36,6 @@ fun FilterRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             OutlineAppButton(
-                text = "",
-                modifier = Modifier
-                    .wrapContentSize(),
-                onClick = {},
-                icon = painterResource(R.drawable.filter)
-            )
-            OutlineAppButton(
                 text = "Legumes",
                 modifier = Modifier,
                 onClick = {},
