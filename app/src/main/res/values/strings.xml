@@ -39,4 +39,7 @@
     <string name="legumes">Legumes</string>
     <string name="frutas">Frutas</string>
 
+    <string name="produtos_em_destaque">Produtos em destaque</string>
+    <string name="confira_nossos_produtos">Confira nossos produtos</string>
+
 </resources>

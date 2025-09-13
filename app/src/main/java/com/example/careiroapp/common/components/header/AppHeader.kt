@@ -11,11 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
+import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun AppHeader(
-    leftIconAction: () -> Unit
+    leftIconAction: () -> Unit,
+    appNavController: NavController,
+    tabBarNavController: NavController
 ) {
     Column (
         modifier = Modifier
@@ -24,11 +29,14 @@ fun AppHeader(
             .background(color = colorResource(R.color.light_gray))
     ) {
         TopBar(
-            leftIconOnClick = leftIconAction
+            leftIconOnClick = leftIconAction,
+            rightIconAction = { appNavController.navigate("teste") }
         )
         AppSearchBar()
         Spacer(Modifier.height(16.dp))
-        ModulesBar()
+        ModulesBar(
+            navController = tabBarNavController,
+        )
     }
 }
 
@@ -36,6 +44,8 @@ fun AppHeader(
 @Preview
 fun AppHeaderPreview() {
     AppHeader(
-        leftIconAction = {}
+        leftIconAction = {},
+        appNavController = rememberNavController(),
+        tabBarNavController = rememberNavController()
     );
 }

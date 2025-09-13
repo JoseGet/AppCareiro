@@ -1,4 +1,4 @@
-package com.example.careiroapp.home.ui.components
+package com.example.careiroapp.common.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -11,12 +11,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.montserratBoldFontFamily
-import com.example.careiroapp.common.montserratFontFamily
+import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
-fun Header(
+fun ModulesHeader(
     titulo: String,
-    subtitulo: String
+    subtitulo: String?
 ) {
     Text(
         titulo,
@@ -26,13 +26,15 @@ fun Header(
             fontFamily = montserratBoldFontFamily
         ),
     )
-    Spacer(Modifier.height(8.dp))
-    Text(
-        subtitulo,
-        style = TextStyle(
-            fontSize = 14.sp,
-            color = colorResource(R.color.black),
-            fontFamily = montserratFontFamily
-        ),
-    )
+    Spacer(Modifier.height(if (subtitulo == null) 24.dp else 8.dp))
+    if (subtitulo != null) {
+        Text(
+            subtitulo,
+            style = TextStyle(
+                fontSize = 14.sp,
+                color = colorResource(R.color.black),
+                fontFamily = montserratRegularFontFamily
+            ),
+        )
+    }
 }

@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.home.ui.HomeView
+import com.example.careiroapp.navigation.AppNavHost
 import com.example.careiroapp.ui.theme.CareiroAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,16 +17,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CareiroAppTheme {
-                MainView()
+                AppNavHost(
+                    navController = rememberNavController()
+                )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CareiroAppTheme {
-        HomeView()
     }
 }

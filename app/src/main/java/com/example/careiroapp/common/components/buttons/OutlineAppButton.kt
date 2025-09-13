@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components
+package com.example.careiroapp.common.components.buttons
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -18,10 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import com.example.careiroapp.common.montserratBoldFontFamily
 
 @Composable
 fun OutlineAppButton(
@@ -35,7 +37,7 @@ fun OutlineAppButton(
         shape = RoundedCornerShape(
             16.dp
         ),
-        contentPadding = PaddingValues(horizontal = 24.dp),
+        contentPadding = PaddingValues(horizontal = 12.dp),
         colors = ButtonColors(
             contentColor = colorResource(R.color.light_green),
             containerColor = Color.White,
@@ -51,8 +53,14 @@ fun OutlineAppButton(
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.width(if (icon == null) 0.dp else 8.dp))
+            Text(
+                text,
+                style = TextStyle(
+                    fontFamily = montserratBoldFontFamily,
+                    fontSize = 14.sp
+                )
+            )
+            Spacer(Modifier.width(if (icon == null || text == "") 0.dp else 8.dp))
             if (icon != null) {
                 Icon(
                     painter = icon,
