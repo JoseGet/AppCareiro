@@ -9,6 +9,8 @@
     <string name="associacoes">Associações</string>
     <string name="assinaturas">Assinaturas</string>
     <string name="sobre_nos">Sobre nós</string>
+    <string name="descricao">Descrição</string>
+    <string name="voltar">Voltar</string>
     <string name="sair">Sair</string>
 
     <string name="adicionar">Adicionar</string>
@@ -29,6 +31,7 @@
     <string name="acesse_nossas_redes">Acesse nossas redes!</string>
 
     <string name="default_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium neque magna.</string>
+    <string name="default_big_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium neque magna. Mauris blandit laoreet ligula, eu luctus neque finibus eget. Maecenas vel est ac risus viverra sagittis vitae vitae nulla. Vivamus et interdum ex. Fusce porttitor odio ut ornare consequat. Etiam tempus elementum urna non vulputate. Sed ullamcorper sapien ultricies accumsan scelerisque. Donec placerat tellus id pharetra tempus.</string>
 
     <string name="o_agriconnect">O Agriconnect</string>
     <string name="o_que_e">O que é</string>
@@ -41,5 +44,7 @@
 
     <string name="produtos_em_destaque">Produtos em destaque</string>
     <string name="confira_nossos_produtos">Confira nossos produtos</string>
+
+    <string name="adicionar_a_sacola">Adicionar à sacola</string>
 
 </resources>

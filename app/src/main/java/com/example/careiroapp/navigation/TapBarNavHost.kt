@@ -8,6 +8,7 @@ import com.example.careiroapp.associacoes.ui.AssociacoesView
 import com.example.careiroapp.feiras.ui.FeirasView
 import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
+import com.example.careiroapp.products.ui.SingleProductView
 
 @Composable
 fun TapBarNavHost(
@@ -30,7 +31,9 @@ fun TapBarNavHost(
         composable(
             NavigationItem.Produtos.route
         ) {
-            ProductsView()
+            ProductsView(
+                navController
+            )
         }
 
         composable(
@@ -43,6 +46,14 @@ fun TapBarNavHost(
             NavigationItem.Associacoes.route
         ) {
             AssociacoesView()
+        }
+
+        composable(
+            NavigationItem.ProdutoUnico.route
+        ) {
+            SingleProductView(
+                navController
+            )
         }
     }
 
