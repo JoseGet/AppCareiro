@@ -1,4 +1,4 @@
-package com.example.careiroapp.associacoes.ui.components
+package com.example.careiroapp.feiras.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,12 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.common.components.cards.CardDefault
 import com.example.careiroapp.mocks.MockedLists
-import com.example.careiroapp.models.AssociacaoModel
-import com.example.careiroapp.models.ProductModel
+import com.example.careiroapp.models.FeiraModel
 
 @Composable
-fun AssociacoesGrid(
-    list: List<AssociacaoModel>,
+fun FeirasGrid(
+    list: List<FeiraModel>,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
@@ -32,7 +31,7 @@ fun AssociacoesGrid(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
                 image = painterResource(item.image),
-                titleText = item.nomeAssociacao
+                titleText = item.nomeFeira
             )
         }
     }
@@ -40,9 +39,9 @@ fun AssociacoesGrid(
 
 @Composable
 @Preview(showBackground = true)
-private fun AssociacoesGridModel() {
-    AssociacoesGrid(
+private fun FeirasGridPreview() {
+    FeirasGrid(
         modifier = Modifier,
-        list = MockedLists.associacoesCardList
+        list = MockedLists.feirasCardList
     )
 }

@@ -1,6 +1,8 @@
 package com.example.careiroapp.mocks
 
 import com.example.careiroapp.R
+import com.example.careiroapp.models.AssociacaoModel
+import com.example.careiroapp.models.FeiraModel
 import com.example.careiroapp.models.ProductModel
 
 object MockedLists {
@@ -78,5 +80,42 @@ object MockedLists {
         )
     )
 
+    val associacoesCardList = listOf<AssociacaoModel>(
+        AssociacaoModel(
+            image = R.drawable.agricultores,
+            nomeAssociacao = "Associação dos Agricultores"
+        ),
+        AssociacaoModel(
+            image = R.drawable.agricultores,
+            nomeAssociacao = "Cooperativa de Pescadores"
+        ),
+        AssociacaoModel(
+            image = R.drawable.agricultores,
+            nomeAssociacao = "Associação dos Artesãos"
+        ),
+        AssociacaoModel(
+            image = R.drawable.agricultores,
+            nomeAssociacao = "Associação Comunitária"
+        )
+    )
+
+    val feirasCardList = listOf<FeiraModel>(
+        FeiraModel(
+            image = R.drawable.feira,
+            nomeFeira = "Associação dos Agricultores"
+        ),
+        FeiraModel(
+            image = R.drawable.feira,
+            nomeFeira = "Cooperativa de Pescadores"
+        ),
+        FeiraModel(
+            image = R.drawable.feira,
+            nomeFeira = "Associação dos Artesãos"
+        ),
+        FeiraModel(
+            image = R.drawable.feira,
+            nomeFeira = "Associação Comunitária"
+        )
+    )
 }
 
