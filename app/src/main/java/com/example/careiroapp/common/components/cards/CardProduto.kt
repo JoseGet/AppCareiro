@@ -43,7 +43,8 @@ fun CardProduto(
     precoProduto: Float,
     isPromocao: Boolean,
     precoPromocao: Double?,
-    haveButton: Boolean
+    haveButton: Boolean,
+    onClick: () -> Unit
 ) {
 
     val modifiedPrecoProduto = String.format("%.2f", precoProduto).replace('.', ',');
@@ -57,7 +58,7 @@ fun CardProduto(
             defaultElevation = 8.dp
         ),
         shape = RoundedCornerShape(25.dp),
-        onClick = {}
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier
@@ -146,6 +147,7 @@ private fun CardProdutoPreview() {
             isPromocao = true,
             precoPromocao = 7.00,
             haveButton = true,
+            onClick = {}
         )
         Spacer(modifier = Modifier.height(10.dp))
         CardProduto(
@@ -157,6 +159,7 @@ private fun CardProdutoPreview() {
             isPromocao = false,
             precoPromocao = 7.00,
             haveButton = false,
+            onClick = {}
         )
     }
 }

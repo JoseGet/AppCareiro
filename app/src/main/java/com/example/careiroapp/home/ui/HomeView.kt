@@ -10,32 +10,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
+import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.cards.CardAssinatura
 import com.example.careiroapp.common.components.cards.CardCategorias
 import com.example.careiroapp.common.components.cards.CardFeira
 import com.example.careiroapp.common.components.cards.CardProduto
-import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.home.ui.components.TutorialRow
+import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun HomeView(
     navController: NavController
 ) {
-
     val categoriesRowScrollState = rememberScrollState()
 
     Column(
@@ -49,7 +44,7 @@ fun HomeView(
             contentDescription = ""
         )
         Spacer(Modifier.height(24.dp))
-        Column (
+        Column(
             modifier = Modifier
                 .padding(horizontal = 17.dp)
         ) {
@@ -57,7 +52,7 @@ fun HomeView(
                 titulo = stringResource(R.string.produtos_e_associacoes_destaque),
                 subtitulo = null
             )
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -70,7 +65,10 @@ fun HomeView(
                     precoProduto = 10.0f,
                     isPromocao = true,
                     precoPromocao = 8.00,
-                    haveButton = false
+                    haveButton = false,
+                    onClick = {
+                        navController.navigate(NavigationItem.ProdutoUnico.route)
+                    }
                 )
                 CardProduto(
                     modifier = Modifier
@@ -80,7 +78,10 @@ fun HomeView(
                     precoProduto = 10.0f,
                     isPromocao = true,
                     precoPromocao = 8.00,
-                    haveButton = false
+                    haveButton = false,
+                    onClick = {
+                        navController.navigate(NavigationItem.ProdutoUnico.route)
+                    }
                 )
             }
             Spacer(Modifier.height(24.dp))
@@ -89,7 +90,7 @@ fun HomeView(
                 subtitulo = stringResource(R.string.conheca_nossas_feiras_descricao)
             )
             Spacer(Modifier.height(24.dp))
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -143,7 +144,7 @@ fun HomeView(
                 subtitulo = stringResource(R.string.assinaturas_descricao)
             )
             Spacer(Modifier.height(24.dp))
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
