@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,10 +40,11 @@ fun CardDefault(
             defaultElevation = 8.dp
         ),
         shape = RoundedCornerShape(25.dp),
+        onClick = {}
     ) {
         Column(
             modifier = Modifier
-                .background(color = colorResource(R.color.light_gray)),
+                .background(color = colorResource(R.color.light_background)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -59,7 +61,8 @@ fun CardDefault(
                     .padding(bottom = 24.dp),
                 fontSize = 16.sp,
                 fontFamily = montserratBoldFontFamily,
-                color = colorResource(R.color.dark_gray)
+                color = colorResource(R.color.dark_gray),
+                textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -72,6 +75,6 @@ private fun CardDefaultPreview() {
     CardDefault(
         modifier = Modifier,
         image = painterResource(R.drawable.doge),
-        titleText = "Associacao"
+        titleText = "Associacao dos Agricultores"
     )
 }
