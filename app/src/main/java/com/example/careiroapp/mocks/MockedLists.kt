@@ -3,7 +3,7 @@ package com.example.careiroapp.mocks
 import com.example.careiroapp.R
 import com.example.careiroapp.models.AssociacaoModel
 import com.example.careiroapp.models.FeiraModel
-import com.example.careiroapp.models.ProductModel
+import com.example.careiroapp.products.data.models.ProductModel
 
 object MockedLists {
 

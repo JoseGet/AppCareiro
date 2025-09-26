@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.cards.CardProduto
 import com.example.careiroapp.mocks.MockedLists
-import com.example.careiroapp.models.ProductModel
+import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.navigation.NavigationItem
 
 @Composable

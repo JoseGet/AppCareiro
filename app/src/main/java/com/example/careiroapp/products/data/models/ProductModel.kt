@@ -1,4 +1,4 @@
-package com.example.careiroapp.models
+package com.example.careiroapp.products.data.models
 
 data class ProductModel(
     val image: Int,
