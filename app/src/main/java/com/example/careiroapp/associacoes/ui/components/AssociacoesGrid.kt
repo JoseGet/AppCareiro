@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careiroapp.common.components.cards.CardDefault
 import com.example.careiroapp.mocks.MockedLists
 import com.example.careiroapp.models.AssociacaoModel
-import com.example.careiroapp.models.ProductModel
+import com.example.careiroapp.products.data.models.ProductModel
 
 @Composable
 fun AssociacoesGrid(

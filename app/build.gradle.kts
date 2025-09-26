@@ -64,4 +64,13 @@ dependencies {
     //Navegacao
     implementation(libs.androidx.navigation.compose)
 
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Logging
+    implementation(libs.logging.interceptor)
+    implementation(libs.okhttp)
+
+
 }
