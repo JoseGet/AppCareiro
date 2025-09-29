@@ -18,10 +18,11 @@ import com.example.careiroapp.common.components.cards.CardProduto
 import com.example.careiroapp.mocks.MockedLists
 import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.navigation.NavigationItem
+import com.example.careiroapp.products.data.models.ProductCardModel
 
 @Composable
 fun ProductsGrid(
-    list: List<ProductModel>,
+    list: List<ProductCardModel>,
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
@@ -36,8 +37,8 @@ fun ProductsGrid(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
                 image = painterResource(R.drawable.abobora),
-                nomeProduto = item.nomeProduto,
-                precoProduto = item.precoProduto,
+                nomeProduto = item.nome,
+                precoProduto = item.preco,
                 isPromocao = item.isPromocao,
                 precoPromocao = item.precoPromocao,
                 haveButton = true,
@@ -54,7 +55,7 @@ fun ProductsGrid(
 private fun AppGridPreview() {
     ProductsGrid(
         modifier = Modifier,
-        list = MockedLists.productsCardList,
+        list = emptyList(),
         navController = rememberNavController()
     )
 }

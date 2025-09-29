@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -19,6 +21,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
@@ -28,11 +31,16 @@ import com.example.careiroapp.mocks.MockedLists
 import com.example.careiroapp.products.ui.components.FeaturedProducts
 import com.example.careiroapp.products.ui.components.FilterRow
 import com.example.careiroapp.products.ui.components.ProductsGrid
+import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
 
 @Composable
 fun ProductsView(
     navController: NavController
 ) {
+
+    val productViewModel: ProductsViewModel = viewModel()
+    val productViewUiState by productViewModel.productUiState.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,7 +80,7 @@ fun ProductsView(
             }
             Spacer(Modifier.height(24.dp))
             ProductsGrid(
-                list = MockedLists.productsCardList,
+                list = productViewUiState.productsCardList,
                 navController = navController
             )
         }
