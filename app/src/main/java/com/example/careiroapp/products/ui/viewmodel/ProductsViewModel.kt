@@ -31,7 +31,7 @@ class ProductsViewModel(
                 }
 
                 val productsList = getAllProductsUseCase.invoke()
-                val cardProductsList = productsList.map { produto ->
+                val cardProductsList = productsList?.map { produto ->
                     ProductCardModel(
                         id = produto.id,
                         image = produto.image,
@@ -45,7 +45,7 @@ class ProductsViewModel(
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = cardProductsList
+                        productsCardList = cardProductsList ?: emptyList()
                     )
                 }
             } catch (e: Exception) {
