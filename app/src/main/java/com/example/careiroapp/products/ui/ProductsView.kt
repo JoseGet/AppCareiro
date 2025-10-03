@@ -1,5 +1,6 @@
 package com.example.careiroapp.products.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,13 +22,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.montserratBoldFontFamily
-import com.example.careiroapp.mocks.MockedLists
 import com.example.careiroapp.products.ui.components.FeaturedProducts
 import com.example.careiroapp.products.ui.components.FilterRow
 import com.example.careiroapp.products.ui.components.ProductsGrid
@@ -38,7 +38,7 @@ fun ProductsView(
     navController: NavController
 ) {
 
-    val productViewModel: ProductsViewModel = viewModel()
+    val productViewModel: ProductsViewModel = hiltViewModel()
     val productViewUiState by productViewModel.productUiState.collectAsState()
 
     Column(

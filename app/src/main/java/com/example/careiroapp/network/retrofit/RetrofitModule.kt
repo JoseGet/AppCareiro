@@ -1,14 +1,21 @@
 package com.example.careiroapp.network.retrofit
 
 import com.example.careiroapp.network.api.ApiService
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    private const val BASE_URL = "http://localhost:3000/"
+    private const val BASE_URL = "http://10.0.2.2:3000/"
 
     private val logging = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -26,6 +33,12 @@ object RetrofitModule {
 
     val apiInterface by lazy {
         retrofit.create(ApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun apiSetupProvider(): ApiService {
+        return apiInterface
     }
 
 }

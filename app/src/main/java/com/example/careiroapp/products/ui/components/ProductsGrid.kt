@@ -36,7 +36,7 @@ fun ProductsGrid(
             CardProduto(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
-                image = painterResource(R.drawable.abobora),
+                image = item.image,
                 nomeProduto = item.nome,
                 precoProduto = item.preco,
                 isPromocao = item.isPromocao,

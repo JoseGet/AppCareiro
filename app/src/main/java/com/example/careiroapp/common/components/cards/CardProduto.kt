@@ -1,6 +1,5 @@
 package com.example.careiroapp.common.components.cards
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,8 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,6 +30,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.buttons.OutlineAppButton
 import com.example.careiroapp.common.montserratMediumFontFamily
@@ -38,7 +40,7 @@ import com.example.careiroapp.common.montserratMediumFontFamily
 @Composable
 fun CardProduto(
     modifier: Modifier,
-    image: Painter,
+    image: String,
     nomeProduto: String,
     precoProduto: Float,
     isPromocao: Boolean,
@@ -64,12 +66,15 @@ fun CardProduto(
             modifier = Modifier
                 .background(color = colorResource(R.color.light_background))
         ) {
-            Image(
+            AsyncImage(
                 modifier = Modifier
                     .height(173.dp),
-                painter = image,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(image)
+                    .crossfade(true)
+                    .build(),
                 contentScale = ContentScale.Crop,
-                contentDescription = ""
+                contentDescription = null
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
@@ -141,7 +146,7 @@ private fun CardProdutoPreview() {
         CardProduto(
             modifier = Modifier
                 .weight(1f),
-            image = painterResource(R.drawable.banana2),
+            image = "",
             nomeProduto = "Banana",
             precoProduto = 10.00f,
             isPromocao = true,
@@ -153,7 +158,7 @@ private fun CardProdutoPreview() {
         CardProduto(
             modifier = Modifier
                 .weight(1f),
-            image = painterResource(R.drawable.banana2),
+            image = "",
             nomeProduto = "Banana",
             precoProduto = 10.00f,
             isPromocao = false,
