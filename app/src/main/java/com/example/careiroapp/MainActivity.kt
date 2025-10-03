@@ -10,7 +10,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.navigation.AppNavHost
 import com.example.careiroapp.ui.theme.CareiroAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

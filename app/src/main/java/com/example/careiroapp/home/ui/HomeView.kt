@@ -60,7 +60,7 @@ fun HomeView(
                 CardProduto(
                     modifier = Modifier
                         .weight(1f),
-                    image = painterResource(R.drawable.abobora),
+                    image = "",
                     nomeProduto = "Abobora",
                     precoProduto = 10.0f,
                     isPromocao = true,
@@ -73,7 +73,7 @@ fun HomeView(
                 CardProduto(
                     modifier = Modifier
                         .weight(1f),
-                    image = painterResource(R.drawable.limao),
+                    image = "",
                     nomeProduto = "Limao",
                     precoProduto = 10.0f,
                     isPromocao = true,
