@@ -1,6 +1,6 @@
 package com.example.careiroapp.network.retrofit
 
-import com.example.careiroapp.network.api.ApiService
+import com.example.careiroapp.network.api.ProdutoApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,14 +31,9 @@ object RetrofitModule {
         .client(okHttpClient)
         .build()
 
-    val apiInterface by lazy {
-        retrofit.create(ApiService::class.java)
-    }
-
     @Provides
     @Singleton
-    fun apiSetupProvider(): ApiService {
-        return apiInterface
+    fun apiSetupProvider(): ProdutoApiService {
+        return retrofit.create(ProdutoApiService::class.java)
     }
-
 }

@@ -41,7 +41,7 @@ fun FeaturedProducts(
                 precoPromocao = 8.00,
                 haveButton = false,
                 onClick = {
-                    navController.navigate(NavigationItem.ProdutoUnico.route)
+
                 }
             )
             CardProduto(
@@ -54,7 +54,7 @@ fun FeaturedProducts(
                 precoPromocao = 8.00,
                 haveButton = false,
                 onClick = {
-                    navController.navigate(NavigationItem.ProdutoUnico.route)
+
                 }
             )
         }

@@ -2,6 +2,7 @@ package com.example.careiroapp.products.data.repositories
 
 import com.example.careiroapp.products.data.datasource.ProductsDataSource
 import com.example.careiroapp.products.data.models.ProductModel
+import java.util.UUID
 import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(
@@ -10,4 +11,9 @@ class ProductsRepository @Inject constructor(
     suspend fun getProducts(): List<ProductModel>? {
         return dataSource.getProducts()
     }
+
+    suspend fun getProductById(id: UUID): ProductModel? {
+        return dataSource.getProdutoById(id)
+    }
+
 }

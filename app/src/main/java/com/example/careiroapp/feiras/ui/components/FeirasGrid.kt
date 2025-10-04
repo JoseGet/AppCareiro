@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.common.components.cards.CardDefault
-import com.example.careiroapp.mocks.MockedLists
+import com.example.careiroapp.mocks.Mocks
 import com.example.careiroapp.models.FeiraModel
 
 @Composable
@@ -42,6 +42,6 @@ fun FeirasGrid(
 private fun FeirasGridPreview() {
     FeirasGrid(
         modifier = Modifier,
-        list = MockedLists.feirasCardList
+        list = Mocks.feirasCardList
     )
 }

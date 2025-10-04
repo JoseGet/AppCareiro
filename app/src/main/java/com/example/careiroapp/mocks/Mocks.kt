@@ -4,8 +4,9 @@ import com.example.careiroapp.R
 import com.example.careiroapp.models.AssociacaoModel
 import com.example.careiroapp.models.FeiraModel
 import com.example.careiroapp.products.data.models.ProductModel
+import java.util.UUID
 
-object MockedLists {
+object Mocks {
 
 //    val productsCardList: List<ProductModel> = listOf(
 //        ProductModel(
@@ -117,6 +118,17 @@ object MockedLists {
             image = R.drawable.feira,
             nomeFeira = "Associação Comunitária"
         )
+    )
+
+    val singleProduct = ProductModel(
+        id = UUID.randomUUID(),
+        nomeProduto = "Shampoo Revitalizante",
+        descricao = "Shampoo indicado para cabelos secos, promove hidratação intensa.",
+        image = "https://picsum.photos/200/300?random=1",
+        disponivel = true,
+        precoProduto = 29.90f,
+        isPromocao = true,
+        precoPromocao = 19.90
     )
 }
 

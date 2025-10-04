@@ -8,23 +8,17 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.example.careiroapp.R
 import com.example.careiroapp.common.components.cards.CardProduto
-import com.example.careiroapp.mocks.MockedLists
-import com.example.careiroapp.products.data.models.ProductModel
-import com.example.careiroapp.navigation.NavigationItem
 import com.example.careiroapp.products.data.models.ProductCardModel
+import java.util.UUID
 
 @Composable
 fun ProductsGrid(
     list: List<ProductCardModel>,
     modifier: Modifier = Modifier,
-    navController: NavController
+    onItemClicker: (UUID) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -43,7 +37,7 @@ fun ProductsGrid(
                 precoPromocao = item.precoPromocao,
                 haveButton = true,
                 onClick = {
-                    navController.navigate(NavigationItem.ProdutoUnico.route)
+                    onItemClicker(item.id)
                 },
             )
         }
@@ -56,6 +50,6 @@ private fun AppGridPreview() {
     ProductsGrid(
         modifier = Modifier,
         list = emptyList(),
-        navController = rememberNavController()
+        onItemClicker = {}
     )
 }

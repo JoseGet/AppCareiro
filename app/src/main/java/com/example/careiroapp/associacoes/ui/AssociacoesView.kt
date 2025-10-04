@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 import com.example.careiroapp.associacoes.ui.components.AssociacoesGrid
 import com.example.careiroapp.common.components.ModulesHeader
-import com.example.careiroapp.mocks.MockedLists
+import com.example.careiroapp.mocks.Mocks
 
 @Composable
 fun AssociacoesView() {
@@ -32,7 +32,7 @@ fun AssociacoesView() {
                 .height(500.dp)
         ) {
             AssociacoesGrid(
-                list = MockedLists.associacoesCardList
+                list = Mocks.associacoesCardList
             )
         }
     }
