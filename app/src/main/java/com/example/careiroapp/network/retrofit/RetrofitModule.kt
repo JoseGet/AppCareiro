@@ -1,5 +1,6 @@
 package com.example.careiroapp.network.retrofit
 
+import com.example.careiroapp.BuildConfig
 import com.example.careiroapp.network.api.ProdutoApiService
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    private const val BASE_URL = "http://10.0.2.2:3000/"
+    private const val BASE_URL = BuildConfig.BASE_URL
 
     private val logging = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)
