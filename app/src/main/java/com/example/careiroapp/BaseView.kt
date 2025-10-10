@@ -30,13 +30,19 @@ import com.example.careiroapp.navigation.TapBarNavHost
 import kotlinx.coroutines.launch
 
 @Composable
-fun MainView(
+fun BaseView(
     navController: NavController
 ) {
     val scrollState = rememberScrollState();
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val tabBarNavController = rememberNavController()
+
+    val resetScroll: () -> Unit = {
+        scope.launch {
+            scrollState.scrollTo(0)
+        }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -61,7 +67,9 @@ fun MainView(
                 tabBarNavController = tabBarNavController
             )
             TapBarNavHost(
-                navController = tabBarNavController
+                navController = tabBarNavController,
+                resetScrollFunction = resetScroll
+
             )
             Row(
                 modifier = Modifier
@@ -82,7 +90,7 @@ fun MainView(
 private fun MainViewPreview(
 
 ) {
-    MainView(
+    BaseView(
         navController = rememberNavController()
     )
 }

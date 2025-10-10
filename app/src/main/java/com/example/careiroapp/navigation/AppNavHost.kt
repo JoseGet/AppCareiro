@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.careiroapp.MainView
+import com.example.careiroapp.BaseView
 
 @Composable
 fun AppNavHost(
@@ -20,7 +20,7 @@ fun AppNavHost(
         composable(
             NavigationItem.Main.route
         ) {
-            MainView(navController)
+            BaseView(navController)
         }
 
         composable(

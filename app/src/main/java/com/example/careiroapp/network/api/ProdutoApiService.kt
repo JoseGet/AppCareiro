@@ -19,9 +19,9 @@ interface ProdutoApiService {
         @Path("id") id: UUID
     ): Response<ProductModel>
 
-    @GET("")
-    suspend fun getProductsByCategory() {
-
-    }
+    @GET("produto/categoria/{nome_categoria}")
+    suspend fun getProductsByCategory(
+        @Path("nome_categoria") nomeCategoria: String
+    ): Response<List<ProductModel>>
 
 }

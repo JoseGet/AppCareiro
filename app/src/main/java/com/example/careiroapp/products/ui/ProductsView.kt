@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -36,10 +37,17 @@ import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
 @Composable
 fun ProductsView(
     navController: NavController,
-    productViewModel: ProductsViewModel
+    productViewModel: ProductsViewModel,
+    resetScrollFunction: () -> Unit
 ) {
 
     val productViewUiState by productViewModel.productUiState.collectAsState()
+
+    LaunchedEffect(productViewUiState.hasFilterActivate) {
+        if (!productViewUiState.hasFilterActivate) {
+            productViewModel.getAllCardProducts()
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -55,7 +63,11 @@ fun ProductsView(
             subtitulo = null
         )
         FilterRow(
-            productsCounter = 8
+            productsCounter = productViewUiState.productsCardList.size,
+            onFilterCLick = { nomeCategoria ->
+                productViewModel.getProductsByCategoria(nomeCategoria)
+            },
+            onFilterActivate = productViewModel::verifyActivatedFilter
         )
         Spacer(Modifier.height(24.dp))
         Column(
@@ -84,6 +96,7 @@ fun ProductsView(
                 onItemClicker = { id ->
                     productViewModel.getProductById(id)
                     navController.navigate(NavigationItem.ProdutoUnico.route)
+                    resetScrollFunction()
                 }
             )
         }

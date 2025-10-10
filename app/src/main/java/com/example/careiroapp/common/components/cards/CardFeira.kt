@@ -121,7 +121,7 @@ fun CardFeira(
                     modifier = Modifier
                         .padding(horizontal = 16.dp),
                     onClick = {},
-                    icon = null
+                    icon = null,
                 )
             }
         }

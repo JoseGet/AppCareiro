@@ -33,9 +33,7 @@ fun HomeView(
 ) {
     val categoriesRowScrollState = rememberScrollState()
 
-    Column(
-
-    ) {
+    Column() {
         Image(
             modifier = Modifier
                 .height(176.dp)

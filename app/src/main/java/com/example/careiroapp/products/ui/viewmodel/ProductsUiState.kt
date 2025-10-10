@@ -6,5 +6,6 @@ import com.example.careiroapp.products.data.models.ProductModel
 data class ProductsUiState(
     val isLoading: Boolean = false,
     val productsCardList: List<ProductCardModel> = emptyList(),
-    val selectedProduct: ProductModel? = null
+    val selectedProduct: ProductModel? = null,
+    val hasFilterActivate: Boolean = false
 )

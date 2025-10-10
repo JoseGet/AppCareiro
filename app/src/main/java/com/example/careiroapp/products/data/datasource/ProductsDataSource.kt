@@ -1,5 +1,6 @@
 package com.example.careiroapp.products.data.datasource
 
+import android.util.Log
 import com.example.careiroapp.network.api.ProdutoApiService
 import com.example.careiroapp.products.data.models.ProductModel
 import java.util.UUID
@@ -15,6 +16,11 @@ class ProductsDataSource @Inject constructor(
 
     suspend fun getProdutoById(id: UUID): ProductModel? {
         val response = produtoApiService.getProductById(id).body()
+        return response
+    }
+
+    suspend fun getProductsByCategoria(nomeCategoria: String): List<ProductModel>? {
+        val response = produtoApiService.getProductsByCategory(nomeCategoria).body()
         return response
     }
 }

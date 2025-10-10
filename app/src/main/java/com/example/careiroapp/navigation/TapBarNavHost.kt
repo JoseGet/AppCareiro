@@ -15,7 +15,8 @@ import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
 @Composable
 fun TapBarNavHost(
     navController: NavHostController,
-    startDestination: String = NavigationItem.Home.route
+    startDestination: String = NavigationItem.Home.route,
+    resetScrollFunction: () -> Unit
 ) {
 
     NavHost(
@@ -36,7 +37,8 @@ fun TapBarNavHost(
             val viewModel: ProductsViewModel = hiltViewModel(backStackEntry)
             ProductsView(
                 navController,
-                productViewModel = viewModel
+                productViewModel = viewModel,
+                resetScrollFunction = resetScrollFunction
             )
         }
 

@@ -16,4 +16,8 @@ class ProductsRepository @Inject constructor(
         return dataSource.getProdutoById(id)
     }
 
+    suspend fun getProducts(nomeCategoria: String): List<ProductModel>? {
+        return dataSource.getProductsByCategoria(nomeCategoria)
+    }
+
 }
