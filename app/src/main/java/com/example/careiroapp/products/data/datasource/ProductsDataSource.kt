@@ -9,8 +9,8 @@ import javax.inject.Inject
 class ProductsDataSource @Inject constructor(
     val produtoApiService: ProdutoApiService
 ) {
-    suspend fun getProducts(): List<ProductModel>? {
-        val response = produtoApiService.getCardProducts().body()
+    suspend fun getProducts(offset: Int, limit: Int): MutableList<ProductModel>? {
+        val response = produtoApiService.getCardProducts(offset, limit).body()
         return response
     }
 

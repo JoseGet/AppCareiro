@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetAllProductsUseCase @Inject constructor(
     private val productsRepository: ProductsRepository
 ) {
-    suspend operator fun invoke() : List<ProductModel>? {
-        return productsRepository.getProducts();
+    suspend operator fun invoke(offset: Int, limit: Int) : MutableList<ProductModel>? {
+        return productsRepository.getProducts(offset, limit);
     }
 }

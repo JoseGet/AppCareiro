@@ -10,9 +10,9 @@ import java.util.UUID
 interface ProdutoApiService {
     @GET("produto/")
     suspend fun getCardProducts(
-        @Query("offset") offset: Int = 10,
+        @Query("offset") offset: Int = 0,
         @Query("limit") limit: Int = 20
-    ): Response<List<ProductModel>>
+    ): Response<MutableList<ProductModel>>
 
     @GET("produto/{id}")
     suspend fun getProductById(

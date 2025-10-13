@@ -26,7 +26,12 @@ class ProductsViewModel @Inject constructor(
 
     private val _productUiState = MutableStateFlow(ProductsUiState())
     var productUiState: StateFlow<ProductsUiState> = _productUiState.asStateFlow()
-    fun getAllCardProducts() {
+
+    private var offset: Int = 0
+    private val limit: Int = 20
+
+
+    fun getProducts() {
         viewModelScope.launch {
             try {
                 _productUiState.update {
@@ -35,7 +40,8 @@ class ProductsViewModel @Inject constructor(
                     )
                 }
 
-                val productsList = getAllProductsUseCase.invoke()
+                val currentList = productUiState.value.productsCardList
+                val productsList = getAllProductsUseCase.invoke(offset, limit)
                 val cardProductsList = productsList?.map { produto ->
                     ProductCardModel(
                         id = produto.id,
@@ -45,12 +51,14 @@ class ProductsViewModel @Inject constructor(
                         isPromocao = produto.isPromocao,
                         precoPromocao = produto.precoPromocao
                     )
-                }
+                }?.toMutableList()
+
+                val newList = currentList + (cardProductsList ?: emptyList())
 
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = cardProductsList ?: emptyList()
+                        productsCardList = newList
                     )
                 }
             } catch (e: Exception) {
@@ -102,12 +110,12 @@ class ProductsViewModel @Inject constructor(
                         isPromocao = produto.isPromocao,
                         precoPromocao = produto.precoPromocao
                     )
-                }
+                }?.toMutableList()
 
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = cardProductsList ?: emptyList()
+                        productsCardList = cardProductsList ?: mutableListOf()
                     )
                 }
 
@@ -133,6 +141,45 @@ class ProductsViewModel @Inject constructor(
                         hasFilterActivate = false
                     )
                 }
+            }
+        }
+    }
+
+    fun clearSingleProductSelected() {
+        viewModelScope.launch {
+            _productUiState.update {
+                it.copy(
+                    selectedProduct = null
+                )
+            }
+        }
+    }
+
+    fun updateFilterActivate(filterName: String) {
+        viewModelScope.launch {
+            _productUiState.update {
+                it.copy(
+                    filterNameActivate = filterName
+                )
+            }
+        }
+    }
+
+    fun loadMoreProducts(function: () -> Unit) {
+        offset = offset + limit
+        function()
+    }
+
+    fun resetOffset() {
+        offset = 0
+    }
+
+    fun cleanProductsList() {
+        viewModelScope.launch {
+            _productUiState.update {
+                it.copy(
+                    productsCardList = listOf()
+                )
             }
         }
     }

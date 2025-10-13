@@ -8,8 +8,8 @@ import javax.inject.Inject
 class ProductsRepository @Inject constructor(
     private val dataSource: ProductsDataSource
 ) {
-    suspend fun getProducts(): List<ProductModel>? {
-        return dataSource.getProducts()
+    suspend fun getProducts(offset: Int, limit: Int): MutableList<ProductModel>? {
+        return dataSource.getProducts(offset, limit)
     }
 
     suspend fun getProductById(id: UUID): ProductModel? {
