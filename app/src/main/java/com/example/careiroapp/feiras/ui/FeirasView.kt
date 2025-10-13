@@ -11,10 +11,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
-import com.example.careiroapp.associacoes.ui.components.AssociacoesGrid
 import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.feiras.ui.components.FeirasGrid
-import com.example.careiroapp.mocks.MockedLists
+import com.example.careiroapp.mocks.Mocks
 
 @Composable
 fun FeirasView() {
@@ -33,7 +32,7 @@ fun FeirasView() {
                 .height(500.dp)
         ) {
             FeirasGrid(
-                list = MockedLists.feirasCardList
+                list = Mocks.feirasCardList
             )
         }
     }

@@ -16,7 +16,7 @@ import com.example.careiroapp.common.montserratBoldFontFamily
 @Composable
 fun ProductTitle(
     productName: String,
-    productPrice: Double
+    productPrice: Float
 ) {
     Column() {
         Text(
@@ -39,6 +39,6 @@ fun ProductTitle(
 private fun ProductTitlePreview() {
     ProductTitle(
         "Abobora",
-        8.50
+        8.50f
     )
 }

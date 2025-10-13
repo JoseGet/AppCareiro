@@ -33,9 +33,7 @@ fun HomeView(
 ) {
     val categoriesRowScrollState = rememberScrollState()
 
-    Column(
-
-    ) {
+    Column() {
         Image(
             modifier = Modifier
                 .height(176.dp)
@@ -67,7 +65,7 @@ fun HomeView(
                     precoPromocao = 8.00,
                     haveButton = false,
                     onClick = {
-                        navController.navigate(NavigationItem.ProdutoUnico.route)
+
                     }
                 )
                 CardProduto(
@@ -80,7 +78,7 @@ fun HomeView(
                     precoPromocao = 8.00,
                     haveButton = false,
                     onClick = {
-                        navController.navigate(NavigationItem.ProdutoUnico.route)
+
                     }
                 )
             }

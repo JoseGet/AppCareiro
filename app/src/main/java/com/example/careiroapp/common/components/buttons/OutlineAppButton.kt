@@ -31,6 +31,7 @@ fun OutlineAppButton(
     modifier: Modifier,
     onClick: () -> Unit,
     icon: Painter?,
+    isActivate: Boolean = false
 ) {
     OutlinedButton(
         onClick = onClick,
@@ -39,8 +40,8 @@ fun OutlineAppButton(
         ),
         contentPadding = PaddingValues(horizontal = 12.dp),
         colors = ButtonColors(
-            contentColor = colorResource(R.color.light_green),
-            containerColor = Color.White,
+            contentColor = if(isActivate) Color.White else colorResource(R.color.light_green),
+            containerColor = if(isActivate) colorResource(R.color.light_green) else Color.White,
             disabledContentColor = Color.Red,
             disabledContainerColor = Color.Red
         ),
@@ -79,5 +80,6 @@ private fun OutlineAppButtonPreview() {
         modifier = Modifier.background(Color.White),
         onClick = {},
         icon = painterResource(R.drawable.bag),
+        isActivate = false
     )
 }

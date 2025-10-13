@@ -12,9 +12,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.common.components.cards.CardDefault
-import com.example.careiroapp.mocks.MockedLists
+import com.example.careiroapp.mocks.Mocks
 import com.example.careiroapp.models.AssociacaoModel
-import com.example.careiroapp.products.data.models.ProductModel
 
 @Composable
 fun AssociacoesGrid(
@@ -43,6 +42,6 @@ fun AssociacoesGrid(
 private fun AssociacoesGridModel() {
     AssociacoesGrid(
         modifier = Modifier,
-        list = MockedLists.associacoesCardList
+        list = Mocks.associacoesCardList
     )
 }

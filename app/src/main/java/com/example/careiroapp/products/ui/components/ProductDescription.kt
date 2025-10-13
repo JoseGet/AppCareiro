@@ -1,5 +1,6 @@
 package com.example.careiroapp.products.ui.components
 
+import android.content.ClipDescription
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,9 @@ import com.example.careiroapp.common.montserratBoldFontFamily
 import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
-fun ProductDescription() {
+fun ProductDescription(
+    productDescription: String
+) {
     Column {
         Text(
             stringResource(R.string.descricao),
@@ -26,7 +29,7 @@ fun ProductDescription() {
         )
         Spacer(Modifier.height(8.dp))
         Text(
-            stringResource(R.string.default_big_text),
+            productDescription,
             fontSize = 14.sp,
             fontFamily = montserratRegularFontFamily,
             color = colorResource(R.color.dark_gray)
@@ -37,5 +40,7 @@ fun ProductDescription() {
 @Composable
 @Preview(showBackground = true)
 private fun ProductDescriptionPreview() {
-    ProductDescription()
+    ProductDescription(
+        productDescription = stringResource(R.string.default_big_text)
+    )
 }

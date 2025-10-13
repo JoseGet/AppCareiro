@@ -1,3 +1,5 @@
+import com.android.build.api.variant.BuildConfigField
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,6 +7,7 @@ plugins {
     id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
     id ("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
 }
 
 android {
@@ -28,7 +31,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://projetocareirobackend.onrender.com\"")
         }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/\"")
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -39,6 +48,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -87,4 +97,7 @@ dependencies {
     implementation (libs.hilt.android)
     kapt (libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Serializable
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 }
