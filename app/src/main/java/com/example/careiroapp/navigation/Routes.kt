@@ -6,7 +6,8 @@ enum class Screen {
     PRODUTOS,
     FEIRAS,
     ASSOCIACOES,
-    PRODUTO_UNICO
+    PRODUTO_UNICO,
+    SACOLA
 }
 
 sealed class NavigationItem(val route: String) {
@@ -16,4 +17,6 @@ sealed class NavigationItem(val route: String) {
     object Feiras : NavigationItem(Screen.FEIRAS.name)
     object Associacoes : NavigationItem(Screen.ASSOCIACOES.name)
     object ProdutoUnico : NavigationItem(Screen.PRODUTO_UNICO.name)
+
+    object Sacola: NavigationItem(route = Screen.SACOLA.name)
 }
