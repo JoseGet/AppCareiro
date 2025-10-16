@@ -52,9 +52,9 @@ fun ProductsView(
         }
     }
 
-    LaunchedEffect(productViewUiState.hasFilterActivate) {
-        if (!productViewUiState.hasFilterActivate) {
-            productViewModel.getProducts()
+    LaunchedEffect(productViewUiState.filterNameActivate) {
+        if (productViewUiState.filterNameActivate == null) {
+            productViewModel.getProducts(isNecessaryLoadMore = false)
         }
     }
 
@@ -77,10 +77,10 @@ fun ProductsView(
                 productViewModel.getProductsByCategoria(nomeCategoria)
                 productViewModel.updateFilterActivate(nomeCategoria)
                 resetGridListState()
-                productViewModel.resetOffset()
+                productViewModel.resetListState()
                 productViewModel.cleanProductsList()
             },
-            onFilterActivate = productViewModel::verifyActivatedFilter
+            filterActivated = productViewUiState.filterNameActivate
         )
         Spacer(Modifier.height(24.dp))
         Column(
@@ -114,9 +114,9 @@ fun ProductsView(
                 },
                 loadMore = {
                     productViewModel.loadMoreProducts {
-                        if (productViewUiState.hasFilterActivate) productViewModel.getProductsByCategoria(
+                        if (productViewUiState.filterNameActivate != null) productViewModel.getProductsByCategoria(
                             productViewUiState.filterNameActivate ?: ""
-                        ) else productViewModel.getProducts()
+                        ) else productViewModel.getProducts(isNecessaryLoadMore = true)
                     }
                 }
             )
@@ -126,5 +126,4 @@ fun ProductsView(
 
 @Composable
 @Preview
-private fun ProductsViewPreview() {
-}
+private fun ProductsViewPreview() {}

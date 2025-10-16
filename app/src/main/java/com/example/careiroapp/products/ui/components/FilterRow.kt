@@ -26,22 +26,10 @@ import com.example.careiroapp.common.components.buttons.OutlineAppButton
 @Composable
 fun FilterRow(
     productsCounter: Int?,
-    onFilterCLick: (String) -> Unit,
-    onFilterActivate: (Boolean) -> Unit
+    onFilterCLick: (String?) -> Unit,
+    filterActivated: String?
 ) {
     val scrollState: ScrollState = rememberScrollState()
-
-    var legumesButtonState by remember { mutableStateOf(false) }
-    var frutasButtonState by remember { mutableStateOf(false) }
-    var verdurasButtonState by remember { mutableStateOf(false) }
-
-    LaunchedEffect(legumesButtonState, frutasButtonState, verdurasButtonState) {
-        if (legumesButtonState || frutasButtonState || verdurasButtonState) {
-            onFilterActivate(true)
-        } else {
-            onFilterActivate(false)
-        }
-    }
 
     Column() {
         Row(
@@ -54,43 +42,40 @@ fun FilterRow(
                 text = stringResource(R.string.legumes),
                 modifier = Modifier,
                 onClick = {
-                    legumesButtonState = !legumesButtonState
-                    if(verdurasButtonState || frutasButtonState) {
-                        verdurasButtonState = false
-                        frutasButtonState = false
+                    if (filterActivated == "legumes") {
+                        onFilterCLick(null)
+                    } else {
+                        onFilterCLick("legumes")
                     }
-                    onFilterCLick("legumes")
                 },
                 icon = null,
-                isActivate = legumesButtonState
+                isActivate = filterActivated == "legumes"
             )
             OutlineAppButton(
                 text = stringResource(R.string.frutas),
                 modifier = Modifier,
                 onClick = {
-                    frutasButtonState = !frutasButtonState
-                    if(verdurasButtonState || legumesButtonState) {
-                        verdurasButtonState = false
-                        legumesButtonState = false
+                    if (filterActivated == "frutas") {
+                        onFilterCLick(null)
+                    } else {
+                        onFilterCLick("frutas")
                     }
-                    onFilterCLick("frutas")
                 },
                 icon = null,
-                isActivate = frutasButtonState
+                isActivate = filterActivated == "frutas"
             )
             OutlineAppButton(
                 text = stringResource(R.string.verduras),
                 modifier = Modifier,
                 onClick = {
-                    verdurasButtonState = !verdurasButtonState
-                    if(frutasButtonState || legumesButtonState) {
-                        frutasButtonState = false
-                        legumesButtonState = false
+                    if (filterActivated == "verduras") {
+                        onFilterCLick(null)
+                    } else {
+                        onFilterCLick("verduras")
                     }
-                    onFilterCLick("verduras")
                 },
                 icon = null,
-                isActivate = verdurasButtonState
+                isActivate = filterActivated == "verduras"
             )
         }
         Spacer(Modifier.height(if (productsCounter != null) 8.dp else 0.dp))
@@ -106,6 +91,6 @@ private fun FilterRowPreview() {
     FilterRow(
         productsCounter = 0,
         onFilterCLick = {},
-        onFilterActivate = {}
+        filterActivated = null
     )
 }
