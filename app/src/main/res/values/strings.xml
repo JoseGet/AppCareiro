@@ -46,5 +46,8 @@
     <string name="confira_nossos_produtos">Confira nossos produtos</string>
 
     <string name="adicionar_a_sacola">Adicionar à sacola</string>
+    <string name="your_bag">Sua sacola</string>
+    <string name="complete_order">Finalizar pedido</string>
+    <string name="order_summary">Resumo da compra</string>
 
 </resources>
