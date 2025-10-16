@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
-import kotlin.collections.map
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
@@ -31,7 +30,12 @@ class ProductsViewModel @Inject constructor(
     private val limit: Int = 20
 
 
-    fun getProducts() {
+    fun getProducts(isNecessaryLoadMore: Boolean) {
+
+        if (_productUiState.value.productsCardList.isNotEmpty() && !isNecessaryLoadMore) {
+            return
+        }
+
         viewModelScope.launch {
             try {
                 _productUiState.update {
@@ -42,6 +46,16 @@ class ProductsViewModel @Inject constructor(
 
                 val currentList = productUiState.value.productsCardList
                 val productsList = getAllProductsUseCase.invoke(offset, limit)
+
+                if (productsList?.isEmpty() == true) {
+                    _productUiState.update {
+                        it.copy(
+                            endOfListReached = true
+                        )
+                    }
+                    return@launch
+                }
+
                 val cardProductsList = productsList?.map { produto ->
                     ProductCardModel(
                         id = produto.id,
@@ -91,7 +105,12 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun getProductsByCategoria(nomeCategoria: String) {
+    fun getProductsByCategoria(nomeCategoria: String?) {
+
+        if (nomeCategoria == null) {
+            return
+        }
+
         viewModelScope.launch {
             try {
                 _productUiState.update {
@@ -125,26 +144,6 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun verifyActivatedFilter(isFilterActivate: Boolean) {
-        if (isFilterActivate) {
-            viewModelScope.launch {
-                _productUiState.update {
-                    it.copy(
-                        hasFilterActivate = true
-                    )
-                }
-            }
-        } else {
-            viewModelScope.launch {
-                _productUiState.update {
-                    it.copy(
-                        hasFilterActivate = false
-                    )
-                }
-            }
-        }
-    }
-
     fun clearSingleProductSelected() {
         viewModelScope.launch {
             _productUiState.update {
@@ -155,13 +154,11 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun updateFilterActivate(filterName: String) {
-        viewModelScope.launch {
-            _productUiState.update {
-                it.copy(
-                    filterNameActivate = filterName
-                )
-            }
+    fun updateFilterActivate(filterName: String?) {
+        _productUiState.update {
+            it.copy(
+                filterNameActivate = filterName
+            )
         }
     }
 
@@ -170,8 +167,13 @@ class ProductsViewModel @Inject constructor(
         function()
     }
 
-    fun resetOffset() {
+    fun resetListState() {
         offset = 0
+        _productUiState.update {
+            it.copy(
+                endOfListReached = false
+            )
+        }
     }
 
     fun cleanProductsList() {

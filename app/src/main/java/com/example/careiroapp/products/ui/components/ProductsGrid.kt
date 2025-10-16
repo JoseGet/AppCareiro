@@ -29,17 +29,18 @@ fun ProductsGrid(
     loadMore: () -> Unit
 ) {
 
+    val buffer = 5
+
     val finalOfList: Boolean by remember {
         derivedStateOf {
             val lastVisibleItem = gridListState.layoutInfo.visibleItemsInfo.lastOrNull()
-            lastVisibleItem?.index != 0 && lastVisibleItem?.index == gridListState.layoutInfo.totalItemsCount - 1
+            lastVisibleItem?.index != 0 && lastVisibleItem?.index == gridListState.layoutInfo.totalItemsCount - buffer
         }
     }
 
     LaunchedEffect(finalOfList) {
         if (finalOfList) loadMore()
     }
-
 
     LazyVerticalGrid(
         state = gridListState,
