@@ -41,7 +41,6 @@ fun ProductsView(
     navController: NavController,
     productViewModel: ProductsViewModel,
     resetScrollFunction: () -> Unit,
-    selectedCategoria: String? = null
 ) {
 
     val productViewUiState by productViewModel.productUiState.collectAsState()
@@ -55,14 +54,10 @@ fun ProductsView(
     }
 
     LaunchedEffect(productViewUiState.filterNameActivate) {
-        if (productViewUiState.filterNameActivate == null && selectedCategoria == null) {
+        if (productViewUiState.filterNameActivate == null) {
             productViewModel.getProducts(isNecessaryLoadMore = false)
-        }
-    }
-
-    LaunchedEffect(selectedCategoria) {
-        if (selectedCategoria != null && selectedCategoria != EnumCategorias.VER_TUDO.name) {
-            productViewModel.getProductsByCategoria(selectedCategoria)
+        } else {
+            productViewModel.getProductsByCategoria(productViewUiState.filterNameActivate)
         }
     }
 
@@ -82,7 +77,6 @@ fun ProductsView(
         FilterRow(
             productsCounter = productViewUiState.productsCardList.size,
             onFilterCLick = { nomeCategoria ->
-                productViewModel.getProductsByCategoria(nomeCategoria)
                 productViewModel.updateFilterActivate(nomeCategoria)
                 resetGridListState()
                 productViewModel.resetListState()

@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.cards.CardCategorias
+import com.example.careiroapp.common.enums.EnumCategorias
 import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
@@ -38,18 +39,30 @@ fun CategoriasModule(
         CardCategorias(
             title = stringResource(R.string.legumes),
             onClick = {
+                navController.navigate("${NavigationItem.Produtos.route}/{nomeCategoria}".replace(
+                    oldValue = "{nomeCategoria}",
+                    newValue = EnumCategorias.LEGUMES.name
+                ))
                 resetScrollFunction()
             }
         )
         CardCategorias(
             title = stringResource(R.string.frutas),
             onClick = {
+                navController.navigate("${NavigationItem.Produtos.route}/{nomeCategoria}".replace(
+                    oldValue = "{nomeCategoria}",
+                    newValue = EnumCategorias.FRUTAS.name
+                ))
                 resetScrollFunction()
             }
         )
         CardCategorias(
             title = stringResource(R.string.verduras),
             onClick = {
+                navController.navigate("${NavigationItem.Produtos.route}/{nomeCategoria}".replace(
+                    oldValue = "{nomeCategoria}",
+                    newValue = EnumCategorias.VERDURAS.name
+                ))
                 resetScrollFunction()
             }
         )

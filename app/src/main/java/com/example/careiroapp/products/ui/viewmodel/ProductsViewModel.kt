@@ -29,6 +29,8 @@ class ProductsViewModel @Inject constructor(
     private var offset: Int = 0
     private val limit: Int = 20
 
+    private var isInitializedByNavArg = false
+
 
     fun getProducts(isNecessaryLoadMore: Boolean) {
 
@@ -184,6 +186,13 @@ class ProductsViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    fun initializeFilter(categoryFromNav: String?) {
+        if (isInitializedByNavArg) return
+
+        updateFilterActivate(categoryFromNav)
+        isInitializedByNavArg = true
     }
 
 }

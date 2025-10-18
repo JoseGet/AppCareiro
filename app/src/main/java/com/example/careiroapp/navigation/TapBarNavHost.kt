@@ -1,7 +1,9 @@
 package com.example.careiroapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,6 +13,7 @@ import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
 import com.example.careiroapp.products.ui.SingleProductView
 import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun TapBarNavHost(
@@ -40,6 +43,23 @@ fun TapBarNavHost(
                 navController,
                 productViewModel = viewModel,
                 resetScrollFunction = resetScrollFunction
+            )
+        }
+
+        composable(
+            "${NavigationItem.Produtos.route}/{nomeCategoria}"
+        ) { backStackEntry ->
+            val viewModel: ProductsViewModel = hiltViewModel(backStackEntry)
+            val nomeCategoria: String? = backStackEntry.arguments?.getString("nomeCategoria")
+
+            LaunchedEffect(Unit) {
+                viewModel.initializeFilter(nomeCategoria)
+            }
+
+            ProductsView(
+                navController,
+                productViewModel = viewModel,
+                resetScrollFunction = resetScrollFunction,
             )
         }
 

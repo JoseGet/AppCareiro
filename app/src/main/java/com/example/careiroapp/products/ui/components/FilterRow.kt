@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.buttons.OutlineAppButton
+import com.example.careiroapp.common.enums.EnumCategorias
 
 @Composable
 fun FilterRow(
@@ -42,40 +43,40 @@ fun FilterRow(
                 text = stringResource(R.string.legumes),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == "legumes") {
+                    if (filterActivated == EnumCategorias.LEGUMES.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick("legumes")
+                        onFilterCLick(EnumCategorias.LEGUMES.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == "legumes"
+                isActivate = filterActivated == EnumCategorias.LEGUMES.name
             )
             OutlineAppButton(
                 text = stringResource(R.string.frutas),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == "frutas") {
+                    if (filterActivated == EnumCategorias.FRUTAS.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick("frutas")
+                        onFilterCLick(EnumCategorias.FRUTAS.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == "frutas"
+                isActivate = filterActivated == EnumCategorias.FRUTAS.name
             )
             OutlineAppButton(
                 text = stringResource(R.string.verduras),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == "verduras") {
+                    if (filterActivated == EnumCategorias.VERDURAS.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick("verduras")
+                        onFilterCLick(EnumCategorias.VERDURAS.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == "verduras"
+                isActivate = filterActivated == EnumCategorias.VERDURAS.name
             )
         }
         Spacer(Modifier.height(if (productsCounter != null) 8.dp else 0.dp))
