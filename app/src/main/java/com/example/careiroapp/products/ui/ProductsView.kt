@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
+import com.example.careiroapp.common.enums.EnumCategorias
 import com.example.careiroapp.common.montserratBoldFontFamily
 import com.example.careiroapp.navigation.NavigationItem
 import com.example.careiroapp.products.ui.components.FeaturedProducts
@@ -39,7 +40,8 @@ import kotlinx.coroutines.launch
 fun ProductsView(
     navController: NavController,
     productViewModel: ProductsViewModel,
-    resetScrollFunction: () -> Unit
+    resetScrollFunction: () -> Unit,
+    selectedCategoria: String? = null
 ) {
 
     val productViewUiState by productViewModel.productUiState.collectAsState()
@@ -53,8 +55,14 @@ fun ProductsView(
     }
 
     LaunchedEffect(productViewUiState.filterNameActivate) {
-        if (productViewUiState.filterNameActivate == null) {
+        if (productViewUiState.filterNameActivate == null && selectedCategoria == null) {
             productViewModel.getProducts(isNecessaryLoadMore = false)
+        }
+    }
+
+    LaunchedEffect(selectedCategoria) {
+        if (selectedCategoria != null && selectedCategoria != EnumCategorias.VER_TUDO.name) {
+            productViewModel.getProductsByCategoria(selectedCategoria)
         }
     }
 

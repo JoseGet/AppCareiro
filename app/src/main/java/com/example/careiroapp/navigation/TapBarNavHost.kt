@@ -27,7 +27,8 @@ fun TapBarNavHost(
             NavigationItem.Home.route
         ) {
             HomeView(
-                navController
+                navController,
+                resetScrollFunction = resetScrollFunction
             )
         }
 
