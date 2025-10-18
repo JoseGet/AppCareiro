@@ -1,6 +1,5 @@
 package com.example.careiroapp.products.data.datasource
 
-import android.util.Log
 import com.example.careiroapp.network.api.ProdutoApiService
 import com.example.careiroapp.products.data.models.ProductModel
 import java.util.UUID

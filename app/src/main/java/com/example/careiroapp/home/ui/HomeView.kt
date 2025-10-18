@@ -24,12 +24,14 @@ import com.example.careiroapp.common.components.cards.CardAssinatura
 import com.example.careiroapp.common.components.cards.CardCategorias
 import com.example.careiroapp.common.components.cards.CardFeira
 import com.example.careiroapp.common.components.cards.CardProduto
+import com.example.careiroapp.home.ui.components.CategoriasModule
 import com.example.careiroapp.home.ui.components.TutorialRow
 import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun HomeView(
-    navController: NavController
+    navController: NavController,
+    resetScrollFunction: () -> Unit,
 ) {
     val categoriesRowScrollState = rememberScrollState()
 
@@ -118,24 +120,10 @@ fun HomeView(
                 subtitulo = stringResource(R.string.categoria_produtos_descricao)
             )
             Spacer(Modifier.height(24.dp))
-            Row(
-                modifier = Modifier
-                    .horizontalScroll(state = categoriesRowScrollState),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                CardCategorias(
-                    image = null,
-                    title = "Legumes"
-                )
-                CardCategorias(
-                    image = null,
-                    title = "Legumes"
-                )
-                CardCategorias(
-                    image = null,
-                    title = "Legumes"
-                )
-            }
+            CategoriasModule(
+                navController = navController,
+                resetScrollFunction
+            )
             Spacer(Modifier.height(24.dp))
             ModulesHeader(
                 titulo = stringResource(R.string.assinaturas_titulo),
@@ -180,6 +168,7 @@ fun HomeView(
 @Preview(showSystemUi = true)
 private fun HomeViewPreview() {
     HomeView(
-        navController = rememberNavController()
+        navController = rememberNavController(),
+        resetScrollFunction = {}
     )
 }
