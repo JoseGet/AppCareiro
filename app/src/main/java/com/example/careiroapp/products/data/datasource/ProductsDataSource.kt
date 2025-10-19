@@ -13,6 +13,11 @@ class ProductsDataSource @Inject constructor(
         return response
     }
 
+    suspend fun getProductsCount(): Int? {
+        val response = produtoApiService.getProductsCount().body()
+        return response?.total
+    }
+
     suspend fun getProdutoById(id: UUID): ProductModel? {
         val response = produtoApiService.getProductById(id).body()
         return response

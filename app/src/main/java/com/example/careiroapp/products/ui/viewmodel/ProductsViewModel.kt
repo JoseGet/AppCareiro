@@ -4,9 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.careiroapp.products.data.models.ProductCardModel
-import com.example.careiroapp.products.domain.usecases.GetAllProductsUseCase
+import com.example.careiroapp.products.domain.usecases.GetProductsUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductByIdUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsByCategoriaUseCase
+import com.example.careiroapp.products.domain.usecases.GetProductsCountUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,9 +19,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
-    private val getAllProductsUseCase: GetAllProductsUseCase,
+    private val getProductsUseCase: GetProductsUseCase,
     private val getProductByIdUseCase: GetProductByIdUseCase,
-    private val getProductsByCategoriaUseCase: GetProductsByCategoriaUseCase
+    private val getProductsByCategoriaUseCase: GetProductsByCategoriaUseCase,
+    private val getProductsCountUseCase: GetProductsCountUseCase
 ) : ViewModel() {
 
     private val _productUiState = MutableStateFlow(ProductsUiState())
@@ -47,7 +49,9 @@ class ProductsViewModel @Inject constructor(
                 }
 
                 val currentList = productUiState.value.productsCardList
-                val productsList = getAllProductsUseCase.invoke(offset, limit)
+                val productsList = getProductsUseCase.invoke(offset, limit)
+
+                val productsCount = getProductsCount()
 
                 if (productsList?.isEmpty() == true) {
                     _productUiState.update {
@@ -74,7 +78,8 @@ class ProductsViewModel @Inject constructor(
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = newList
+                        productsCardList = newList,
+                        productsCount = productsCount
                     )
                 }
             } catch (e: Exception) {
@@ -122,6 +127,7 @@ class ProductsViewModel @Inject constructor(
                 }
 
                 val productsList = getProductsByCategoriaUseCase.invoke(nomeCategoria)
+
                 val cardProductsList = productsList?.map { produto ->
                     ProductCardModel(
                         id = produto.id,
@@ -131,12 +137,12 @@ class ProductsViewModel @Inject constructor(
                         isPromocao = produto.isPromocao,
                         precoPromocao = produto.precoPromocao
                     )
-                }?.toMutableList()
+                }
 
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = cardProductsList ?: mutableListOf()
+                        productsCardList = cardProductsList ?: mutableListOf(),
                     )
                 }
 
@@ -146,15 +152,8 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun clearSingleProductSelected() {
-        viewModelScope.launch {
-            _productUiState.update {
-                it.copy(
-                    selectedProduct = null
-                )
-            }
-        }
-    }
+    private suspend fun getProductsCount(): Int? = getProductsCountUseCase.invoke()
+
 
     fun updateFilterActivate(filterName: String?) {
         _productUiState.update {

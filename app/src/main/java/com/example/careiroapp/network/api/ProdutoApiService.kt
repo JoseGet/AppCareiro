@@ -1,5 +1,6 @@
 package com.example.careiroapp.network.api
 
+import com.example.careiroapp.products.data.models.ProductCountModel
 import com.example.careiroapp.products.data.models.ProductModel
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,6 +14,9 @@ interface ProdutoApiService {
         @Query("offset") offset: Int = 0,
         @Query("limit") limit: Int = 20
     ): Response<MutableList<ProductModel>>
+
+    @GET("produto/count")
+    suspend fun getProductsCount(): Response<ProductCountModel>
 
     @GET("produto/{id}")
     suspend fun getProductById(

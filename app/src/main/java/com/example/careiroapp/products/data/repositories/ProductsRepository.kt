@@ -12,6 +12,10 @@ class ProductsRepository @Inject constructor(
         return dataSource.getProducts(offset, limit)
     }
 
+    suspend fun getProductsCount(): Int? {
+        return dataSource.getProductsCount()
+    }
+
     suspend fun getProductById(id: UUID): ProductModel? {
         return dataSource.getProdutoById(id)
     }

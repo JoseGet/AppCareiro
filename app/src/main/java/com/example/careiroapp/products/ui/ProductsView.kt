@@ -75,7 +75,7 @@ fun ProductsView(
             subtitulo = null
         )
         FilterRow(
-            productsCounter = productViewUiState.productsCardList.size,
+            productsCounter = productViewUiState.productsCount,
             onFilterCLick = { nomeCategoria ->
                 productViewModel.updateFilterActivate(nomeCategoria)
                 resetGridListState()
