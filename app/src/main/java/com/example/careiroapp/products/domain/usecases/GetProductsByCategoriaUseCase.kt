@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetProductsByCategoriaUseCase @Inject constructor(
     val productsRepository: ProductsRepository
 ) {
-    suspend operator fun invoke(nomeCategoria: String): List<ProductModel>? {
-        return productsRepository.getProducts(nomeCategoria)
+    suspend operator fun invoke(nomeCategoria: String, offset: Int, limit: Int): List<ProductModel>? {
+        return productsRepository.getProductsByCategoria(nomeCategoria, offset, limit)
     }
 }

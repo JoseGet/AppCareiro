@@ -57,7 +57,7 @@ fun ProductsView(
         if (productViewUiState.filterNameActivate == null) {
             productViewModel.getProducts(isNecessaryLoadMore = false)
         } else {
-            productViewModel.getProductsByCategoria(productViewUiState.filterNameActivate)
+            productViewModel.getProductsByCategoria(productViewUiState.filterNameActivate, isNecessaryLoadMore = false)
         }
     }
 
@@ -75,7 +75,7 @@ fun ProductsView(
             subtitulo = null
         )
         FilterRow(
-            productsCounter = productViewUiState.productsCardList.size,
+            productsCounter = productViewUiState.productsCount,
             onFilterCLick = { nomeCategoria ->
                 productViewModel.updateFilterActivate(nomeCategoria)
                 resetGridListState()
@@ -97,7 +97,7 @@ fun ProductsView(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    "Ver tudo",
+                    text = if (productViewUiState.filterNameActivate == null) stringResource(R.string.ver_tudo) else productViewUiState.filterNameActivate.toString(),
                     style = TextStyle(
                         fontSize = 18.sp,
                         fontFamily = montserratBoldFontFamily,
@@ -117,7 +117,7 @@ fun ProductsView(
                 loadMore = {
                     productViewModel.loadMoreProducts {
                         if (productViewUiState.filterNameActivate != null) productViewModel.getProductsByCategoria(
-                            productViewUiState.filterNameActivate ?: ""
+                            productViewUiState.filterNameActivate ?: "", isNecessaryLoadMore = true
                         ) else productViewModel.getProducts(isNecessaryLoadMore = true)
                     }
                 }
