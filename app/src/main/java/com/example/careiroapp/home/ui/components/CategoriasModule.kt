@@ -51,7 +51,7 @@ fun CategoriasModule(
             onClick = {
                 navController.navigate("${NavigationItem.Produtos.route}/{nomeCategoria}".replace(
                     oldValue = "{nomeCategoria}",
-                    newValue = EnumCategorias.Legumes.name
+                    newValue = EnumCategorias.Frutas.name
                 ))
                 resetScrollFunction()
             }
@@ -61,7 +61,7 @@ fun CategoriasModule(
             onClick = {
                 navController.navigate("${NavigationItem.Produtos.route}/{nomeCategoria}".replace(
                     oldValue = "{nomeCategoria}",
-                    newValue = EnumCategorias.Legumes.name
+                    newValue = EnumCategorias.Verduras.name
                 ))
                 resetScrollFunction()
             }
