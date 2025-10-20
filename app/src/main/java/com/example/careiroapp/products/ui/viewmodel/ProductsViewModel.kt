@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.careiroapp.products.data.models.ProductCardModel
 import com.example.careiroapp.products.domain.usecases.GetProductsUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductByIdUseCase
+import com.example.careiroapp.products.domain.usecases.GetProductsByCategoriaCountUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsByCategoriaUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsCountUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,8 @@ class ProductsViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
     private val getProductByIdUseCase: GetProductByIdUseCase,
     private val getProductsByCategoriaUseCase: GetProductsByCategoriaUseCase,
-    private val getProductsCountUseCase: GetProductsCountUseCase
+    private val getProductsCountUseCase: GetProductsCountUseCase,
+    private val getProductsByCategoriaCountUseCase: GetProductsByCategoriaCountUseCase
 ) : ViewModel() {
 
     private val _productUiState = MutableStateFlow(ProductsUiState())
@@ -71,7 +73,7 @@ class ProductsViewModel @Inject constructor(
                         isPromocao = produto.isPromocao,
                         precoPromocao = produto.precoPromocao
                     )
-                }?.toMutableList()
+                }
 
                 val newList = currentList + (cardProductsList ?: emptyList())
 
@@ -112,7 +114,7 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun getProductsByCategoria(nomeCategoria: String?) {
+    fun getProductsByCategoria(nomeCategoria: String?, isNecessaryLoadMore: Boolean) {
 
         if (nomeCategoria == null) {
             return
@@ -126,7 +128,19 @@ class ProductsViewModel @Inject constructor(
                     )
                 }
 
-                val productsList = getProductsByCategoriaUseCase.invoke(nomeCategoria)
+                val currentList = productUiState.value.productsCardList
+                val productsList = getProductsByCategoriaUseCase.invoke(nomeCategoria, offset, limit)
+
+                val productsCount = getProductsByCategoriaCount(nomeCategoria)
+
+                if (productsList?.isEmpty() == true) {
+                    _productUiState.update {
+                        it.copy(
+                            endOfListReached = true
+                        )
+                    }
+                    return@launch
+                }
 
                 val cardProductsList = productsList?.map { produto ->
                     ProductCardModel(
@@ -139,10 +153,13 @@ class ProductsViewModel @Inject constructor(
                     )
                 }
 
+                val newList = currentList + (cardProductsList ?: emptyList())
+
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        productsCardList = cardProductsList ?: mutableListOf(),
+                        productsCardList = newList,
+                        productsCount = productsCount
                     )
                 }
 
@@ -154,6 +171,7 @@ class ProductsViewModel @Inject constructor(
 
     private suspend fun getProductsCount(): Int? = getProductsCountUseCase.invoke()
 
+    private suspend fun getProductsByCategoriaCount(nomeCategoria: String): Int? = getProductsByCategoriaCountUseCase.invoke(nomeCategoria)
 
     fun updateFilterActivate(filterName: String?) {
         _productUiState.update {

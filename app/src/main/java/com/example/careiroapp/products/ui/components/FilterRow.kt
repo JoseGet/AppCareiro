@@ -43,40 +43,40 @@ fun FilterRow(
                 text = stringResource(R.string.legumes),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == EnumCategorias.LEGUMES.name) {
+                    if (filterActivated == EnumCategorias.Legumes.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick(EnumCategorias.LEGUMES.name)
+                        onFilterCLick(EnumCategorias.Legumes.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == EnumCategorias.LEGUMES.name
+                isActivate = filterActivated == EnumCategorias.Legumes.name
             )
             OutlineAppButton(
                 text = stringResource(R.string.frutas),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == EnumCategorias.FRUTAS.name) {
+                    if (filterActivated == EnumCategorias.Frutas.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick(EnumCategorias.FRUTAS.name)
+                        onFilterCLick(EnumCategorias.Frutas.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == EnumCategorias.FRUTAS.name
+                isActivate = filterActivated == EnumCategorias.Frutas.name
             )
             OutlineAppButton(
                 text = stringResource(R.string.verduras),
                 modifier = Modifier,
                 onClick = {
-                    if (filterActivated == EnumCategorias.VERDURAS.name) {
+                    if (filterActivated == EnumCategorias.Verduras.name) {
                         onFilterCLick(null)
                     } else {
-                        onFilterCLick(EnumCategorias.VERDURAS.name)
+                        onFilterCLick(EnumCategorias.Verduras.name)
                     }
                 },
                 icon = null,
-                isActivate = filterActivated == EnumCategorias.VERDURAS.name
+                isActivate = filterActivated == EnumCategorias.Verduras.name
             )
         }
         Spacer(Modifier.height(if (productsCounter != null) 8.dp else 0.dp))

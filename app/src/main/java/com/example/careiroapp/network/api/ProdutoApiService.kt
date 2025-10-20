@@ -25,7 +25,13 @@ interface ProdutoApiService {
 
     @GET("produto/categoria/{nome_categoria}")
     suspend fun getProductsByCategory(
-        @Path("nome_categoria") nomeCategoria: String
+        @Path("nome_categoria") nomeCategoria: String,
+        @Query("offset") offset: Int = 0,
+        @Query("limit") limit: Int = 20
     ): Response<List<ProductModel>>
 
+    @GET("produto/count/categoria/{nome_categoria}")
+    suspend fun getProductsByCategoriaCount(
+        @Path("nome_categoria") nomeCategoria: String
+    ): Response<ProductCountModel>
 }
