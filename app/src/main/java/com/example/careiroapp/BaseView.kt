@@ -20,20 +20,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.common.components.drawer.AppDrawer
 import com.example.careiroapp.common.components.footer.AppFooter
 import com.example.careiroapp.common.components.header.AppHeader
-import com.example.careiroapp.home.ui.HomeView
+import com.example.careiroapp.navigation.TapBarNavHost
 import kotlinx.coroutines.launch
 
 @Composable
-fun MainView(
-
-){
+fun BaseView(
+    navController: NavController
+) {
     val scrollState = rememberScrollState();
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    val tabBarNavController = rememberNavController()
+
+    val resetScroll: () -> Unit = {
+        scope.launch {
+            scrollState.scrollTo(0)
+        }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -53,9 +62,15 @@ fun MainView(
                     scope.launch {
                         drawerState.open()
                     }
-                }
+                },
+                navController,
+                tabBarNavController = tabBarNavController
             )
-            HomeView()
+            TapBarNavHost(
+                navController = tabBarNavController,
+                resetScrollFunction = resetScroll
+
+            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -75,5 +90,7 @@ fun MainView(
 private fun MainViewPreview(
 
 ) {
-    MainView()
+    BaseView(
+        navController = rememberNavController()
+    )
 }

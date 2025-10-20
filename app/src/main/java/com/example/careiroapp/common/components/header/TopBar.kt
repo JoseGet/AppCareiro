@@ -28,7 +28,8 @@ import com.example.careiroapp.R
 
 @Composable
 fun TopBar(
-    leftIconOnClick: () -> Unit
+    leftIconOnClick: () -> Unit,
+    rightIconAction: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -60,7 +61,7 @@ fun TopBar(
                 painter = painterResource(R.drawable.logo)
             )
             Text(
-                stringResource(R.string.agriconnect).toString().toUpperCase(),
+                stringResource(R.string.agriconnect).toString().uppercase(),
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
@@ -72,7 +73,7 @@ fun TopBar(
             modifier = Modifier
                 .padding(end = 24.dp)
                 .size(24.dp),
-            onClick = {}
+            onClick = rightIconAction
         ) {
             Icon(
                 painter = painterResource(R.drawable.bag),
@@ -88,6 +89,7 @@ fun TopBar(
 fun TopBarPreview(
 ) {
     TopBar(
-        leftIconOnClick = {}
+        leftIconOnClick = {},
+        rightIconAction = {}
     );
 }

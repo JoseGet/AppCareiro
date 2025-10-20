@@ -1,6 +1,5 @@
 package com.example.careiroapp.common.components.cards
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,8 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,18 +30,23 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.careiroapp.R
-import com.example.careiroapp.common.components.OutlineAppButton
+import com.example.careiroapp.common.components.buttons.OutlineAppButton
+import com.example.careiroapp.common.montserratMediumFontFamily
 
 @Composable
 fun CardProduto(
     modifier: Modifier,
-    image: Painter,
+    image: String,
     nomeProduto: String,
     precoProduto: Float,
     isPromocao: Boolean,
-    precoPromocao: Double,
-    haveButton: Boolean
+    precoPromocao: Double?,
+    haveButton: Boolean,
+    onClick: () -> Unit
 ) {
 
     val modifiedPrecoProduto = String.format("%.2f", precoProduto).replace('.', ',');
@@ -56,18 +60,21 @@ fun CardProduto(
             defaultElevation = 8.dp
         ),
         shape = RoundedCornerShape(25.dp),
-        onClick = {}
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier
                 .background(color = colorResource(R.color.light_background))
         ) {
-            Image(
+            AsyncImage(
                 modifier = Modifier
                     .height(173.dp),
-                painter = image,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(image)
+                    .crossfade(true)
+                    .build(),
                 contentScale = ContentScale.Crop,
-                contentDescription = ""
+                contentDescription = null
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
@@ -76,9 +83,11 @@ fun CardProduto(
                     .padding(
                         start = 16.dp,
                     ),
-                color = Color.Black,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                style = TextStyle(
+                    color = colorResource(R.color.dark_gray),
+                    fontSize = 14.sp,
+                    fontFamily = montserratMediumFontFamily,
+                )
             )
             Row(
                 modifier = Modifier
@@ -137,23 +146,25 @@ private fun CardProdutoPreview() {
         CardProduto(
             modifier = Modifier
                 .weight(1f),
-            image = painterResource(R.drawable.banana2),
+            image = "",
             nomeProduto = "Banana",
             precoProduto = 10.00f,
             isPromocao = true,
             precoPromocao = 7.00,
             haveButton = true,
+            onClick = {}
         )
         Spacer(modifier = Modifier.height(10.dp))
         CardProduto(
             modifier = Modifier
                 .weight(1f),
-            image = painterResource(R.drawable.banana2),
+            image = "",
             nomeProduto = "Banana",
             precoProduto = 10.00f,
             isPromocao = false,
             precoPromocao = 7.00,
             haveButton = false,
+            onClick = {}
         )
     }
 }

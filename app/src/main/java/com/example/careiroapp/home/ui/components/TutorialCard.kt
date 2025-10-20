@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
-import com.example.careiroapp.common.montserratFontFamily
+import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun TutorialCard(
@@ -85,7 +85,7 @@ fun TutorialCard(
                 style = TextStyle(
                     textAlign = TextAlign.Center,
                     fontSize = 8.sp,
-                    fontFamily = montserratFontFamily,
+                    fontFamily = montserratRegularFontFamily,
                     color = Color.Black
                 )
             )
