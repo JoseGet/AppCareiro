@@ -20,7 +20,8 @@ import com.example.careiroapp.navigation.NavigationItem
 fun AppHeader(
     leftIconAction: () -> Unit,
     appNavController: NavController,
-    tabBarNavController: NavController
+    tabBarNavController: NavController,
+    resetScrollFunction: () -> Unit
 ) {
     Column (
         modifier = Modifier
@@ -36,6 +37,7 @@ fun AppHeader(
         Spacer(Modifier.height(16.dp))
         ModulesBar(
             navController = tabBarNavController,
+            resetScrollFunction
         )
     }
 }
@@ -46,6 +48,7 @@ fun AppHeaderPreview() {
     AppHeader(
         leftIconAction = {},
         appNavController = rememberNavController(),
-        tabBarNavController = rememberNavController()
+        tabBarNavController = rememberNavController(),
+        resetScrollFunction = {}
     );
 }

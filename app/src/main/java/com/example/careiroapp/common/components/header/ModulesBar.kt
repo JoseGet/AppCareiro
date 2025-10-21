@@ -28,7 +28,8 @@ import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun ModulesBar(
-    navController: NavController
+    navController: NavController,
+    resetScrollFunction: () -> Unit
 ) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -52,7 +53,10 @@ fun ModulesBar(
             modifier = Modifier.clickable(
                 enabled = currentRoute != NavigationItem.Home.route,
                 onClick = {
-                    navController.navigate(NavigationItem.Home.route)
+                    navController.navigate(NavigationItem.Home.route) {
+                        popUpTo(0)
+                        resetScrollFunction()
+                    }
                 }
             )
         )
@@ -66,7 +70,10 @@ fun ModulesBar(
             modifier = Modifier.clickable(
                 enabled = currentRoute != NavigationItem.Produtos.route,
                 onClick = {
-                    navController.navigate(NavigationItem.Produtos.route)
+                    navController.navigate(NavigationItem.Produtos.route) {
+                        popUpTo(0)
+                        resetScrollFunction()
+                    }
                 }
             )
         )
@@ -80,7 +87,10 @@ fun ModulesBar(
             modifier = Modifier.clickable(
                 enabled = currentRoute != NavigationItem.Feiras.route,
                 onClick = {
-                    navController.navigate(NavigationItem.Feiras.route)
+                    navController.navigate(NavigationItem.Feiras.route) {
+                        popUpTo(0)
+                        resetScrollFunction()
+                    }
                 }
             )
         )
@@ -94,7 +104,10 @@ fun ModulesBar(
             modifier = Modifier.clickable(
                 enabled = currentRoute != NavigationItem.Associacoes.route,
                 onClick = {
-                    navController.navigate(NavigationItem.Associacoes.route)
+                    navController.navigate(NavigationItem.Associacoes.route) {
+                        popUpTo(0)
+                        resetScrollFunction()
+                    }
                 }
             )
         )
@@ -105,6 +118,7 @@ fun ModulesBar(
 @Composable
 fun ModulesBarPreview() {
     ModulesBar(
-        navController = rememberNavController()
+        navController = rememberNavController(),
+        resetScrollFunction = {}
     )
 }
