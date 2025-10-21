@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -51,37 +52,44 @@ fun BaseView(
         },
         gesturesEnabled = true
     ) {
-        Column(
-            modifier = Modifier
-                .verticalScroll(scrollState)
-                .fillMaxSize()
-                .background(color = Color.White)
-        ) {
-            AppHeader(
-                leftIconAction = {
-                    scope.launch {
-                        drawerState.open()
+        Scaffold(
+            topBar = {
+                AppHeader(
+                    leftIconAction = {
+                        scope.launch {
+                            drawerState.open()
+                        }
+                    },
+                    navController,
+                    tabBarNavController = tabBarNavController,
+                    resetScroll
+                )
+            },
+            content = { innerPadding ->
+                Column(
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .verticalScroll(scrollState)
+                        .fillMaxSize()
+                        .background(color = Color.White)
+                ) {
+                    TapBarNavHost(
+                        navController = tabBarNavController,
+                        resetScrollFunction = resetScroll
+                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        CardCadastroAssociacao()
                     }
-                },
-                navController,
-                tabBarNavController = tabBarNavController
-            )
-            TapBarNavHost(
-                navController = tabBarNavController,
-                resetScrollFunction = resetScroll
-
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                CardCadastroAssociacao()
+                    Spacer(Modifier.height(20.dp))
+                    AppFooter()
+                }
             }
-            Spacer(Modifier.height(20.dp))
-            AppFooter()
-        }
+        )
     }
 }
 
