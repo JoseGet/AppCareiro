@@ -1,6 +1,7 @@
 package com.example.careiroapp.feiras.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.feiras.ui.components.FeirasGrid
 import com.example.careiroapp.mocks.Mocks
 
@@ -35,6 +37,8 @@ fun FeirasView() {
                 list = Mocks.feirasCardList
             )
         }
+        Spacer(Modifier.height(24.dp))
+        CardCadastroAssociacao()
     }
 }
 

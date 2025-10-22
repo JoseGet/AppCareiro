@@ -30,7 +30,8 @@ import com.example.careiroapp.common.montserratBoldFontFamily
 @Composable
 fun DrawerItemProfile(
     name: String,
-    image: Painter
+    image: Painter,
+    onClick: () -> Unit
 ) {
     NavigationDrawerItem(
         modifier = Modifier
@@ -68,7 +69,7 @@ fun DrawerItemProfile(
         colors = NavigationDrawerItemDefaults.colors(
             unselectedContainerColor = colorResource(R.color.dark_green)
         ),
-        onClick = {}
+        onClick = onClick
     )
 }
 
@@ -77,6 +78,7 @@ fun DrawerItemProfile(
 private fun DrawerItemProfilePreview() {
     DrawerItemProfile(
         name = "Doge",
-        image = painterResource(R.drawable.doge)
+        image = painterResource(R.drawable.doge),
+        onClick = {}
     )
 }

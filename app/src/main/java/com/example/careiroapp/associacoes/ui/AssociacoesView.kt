@@ -1,6 +1,7 @@
 package com.example.careiroapp.associacoes.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 import com.example.careiroapp.associacoes.ui.components.AssociacoesGrid
 import com.example.careiroapp.common.components.ModulesHeader
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.mocks.Mocks
 
 @Composable
@@ -35,6 +37,8 @@ fun AssociacoesView() {
                 list = Mocks.associacoesCardList
             )
         }
+        Spacer(Modifier.height(24.dp))
+        CardCadastroAssociacao()
     }
 }
 

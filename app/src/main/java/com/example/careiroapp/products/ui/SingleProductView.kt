@@ -1,6 +1,5 @@
 package com.example.careiroapp.products.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -13,18 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.example.careiroapp.R
 import com.example.careiroapp.common.components.buttons.BackButton
-import com.example.careiroapp.mocks.Mocks
-import com.example.careiroapp.products.data.models.ProductModel
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.products.ui.components.BuyProductRow
 import com.example.careiroapp.products.ui.components.FeaturedProducts
 import com.example.careiroapp.products.ui.components.ProductDescription
@@ -39,7 +34,7 @@ fun SingleProductView(
 ) {
 
     val productViewUiState by productViewModel.productUiState.collectAsState()
-    
+
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
@@ -78,9 +73,12 @@ fun SingleProductView(
         FeaturedProducts(
             navController
         )
+        Spacer(Modifier.height(24.dp))
+        CardCadastroAssociacao()
     }
 }
 
 @Composable
 @Preview(showBackground = true)
-private fun SingleProductViewPreview() {}
+private fun SingleProductViewPreview() {
+}

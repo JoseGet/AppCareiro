@@ -16,11 +16,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
+import com.example.careiroapp.navigation.NavigationItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDrawer(
+    tabBarNavController: NavController,
+    closeDrawerFunction: () -> Unit
 ) {
     ModalDrawerSheet(
         drawerShape = RectangleShape,
@@ -29,7 +34,11 @@ fun AppDrawer(
         Column {
             DrawerItemProfile(
                 name = "Samuca",
-                image = painterResource(R.drawable.doge)
+                image = painterResource(R.drawable.doge),
+                onClick = {
+                    closeDrawerFunction()
+                    tabBarNavController.navigate(NavigationItem.Profile.route)
+                }
             )
             Column(
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -72,5 +81,8 @@ fun AppDrawer(
 @Composable
 @Preview
 private fun AppDrawerPreview() {
-    AppDrawer()
+    AppDrawer(
+        tabBarNavController = rememberNavController(),
+        closeDrawerFunction = {}
+    )
 }

@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
-import com.example.careiroapp.common.enums.EnumCategorias
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.common.montserratBoldFontFamily
 import com.example.careiroapp.navigation.NavigationItem
 import com.example.careiroapp.products.ui.components.FeaturedProducts
@@ -57,7 +57,10 @@ fun ProductsView(
         if (productViewUiState.filterNameActivate == null) {
             productViewModel.getProducts(isNecessaryLoadMore = false)
         } else {
-            productViewModel.getProductsByCategoria(productViewUiState.filterNameActivate, isNecessaryLoadMore = false)
+            productViewModel.getProductsByCategoria(
+                productViewUiState.filterNameActivate,
+                isNecessaryLoadMore = false
+            )
         }
     }
 
@@ -123,9 +126,12 @@ fun ProductsView(
                 }
             )
         }
+        Spacer(Modifier.height(24.dp))
+        CardCadastroAssociacao()
     }
 }
 
 @Composable
 @Preview
-private fun ProductsViewPreview() {}
+private fun ProductsViewPreview() {
+}

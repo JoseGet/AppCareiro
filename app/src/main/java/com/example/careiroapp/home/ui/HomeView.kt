@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.cards.CardAssinatura
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.common.components.cards.CardCategorias
 import com.example.careiroapp.common.components.cards.CardFeira
 import com.example.careiroapp.common.components.cards.CardProduto
@@ -160,6 +161,7 @@ fun HomeView(
             Spacer(Modifier.height(24.dp))
             TutorialRow()
             Spacer(Modifier.height(24.dp))
+            CardCadastroAssociacao()
         }
     }
 }
