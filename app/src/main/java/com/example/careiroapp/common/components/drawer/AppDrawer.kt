@@ -86,6 +86,6 @@ fun AppDrawer(
 private fun AppDrawerPreview() {
     AppDrawer(
         tabBarNavController = rememberNavController(),
-        closeDrawerFunction = {},
+        closeDrawerFunction = {}
     )
 }
