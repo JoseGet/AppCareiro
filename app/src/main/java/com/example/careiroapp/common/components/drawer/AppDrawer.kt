@@ -33,8 +33,8 @@ fun AppDrawer(
     ) {
         Column {
             DrawerItemProfile(
-                name = "Samuca",
-                image = painterResource(R.drawable.doge),
+                name = "Maria Clara",
+                image = painterResource(R.drawable.garota),
                 onClick = {
                     closeDrawerFunction()
                     tabBarNavController.navigate(NavigationItem.Profile.route)
@@ -83,6 +83,6 @@ fun AppDrawer(
 private fun AppDrawerPreview() {
     AppDrawer(
         tabBarNavController = rememberNavController(),
-        closeDrawerFunction = {}
+        closeDrawerFunction = {},
     )
 }
