@@ -18,13 +18,12 @@ fun ProfileDataWidget() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ProfilePicture(
-            painterResource(R.drawable.doge
-            )
+            painterResource(R.drawable.garota)
         )
         Spacer(Modifier.height(24.dp))
         PersonalDataWidget(
-            nomePerfil = "Samuca Takeda",
-            emailPerfil = "samuca.takeda@gmail.com",
+            nomePerfil = "Maria Clara",
+            emailPerfil = "mariaClara123.@gmail.com",
             telefonePerfil = "(92) 99999-9999"
         )
     }
