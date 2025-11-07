@@ -3,7 +3,6 @@ package com.example.careiroapp.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,7 +12,7 @@ import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
 import com.example.careiroapp.products.ui.SingleProductView
 import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
-import kotlinx.coroutines.launch
+import com.example.careiroapp.profile.ui.ProfileView
 
 @Composable
 fun TapBarNavHost(
@@ -86,6 +85,12 @@ fun TapBarNavHost(
                 navController,
                 productViewModel = viewModel
             )
+        }
+
+        composable(
+            NavigationItem.Profile.route
+        ) {
+            ProfileView()
         }
     }
 

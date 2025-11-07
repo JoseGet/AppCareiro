@@ -51,4 +51,14 @@
     <string name="complete_order">Finalizar pedido</string>
     <string name="order_summary">Resumo da compra</string>
 
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="dados_pessoais">Dados pessoais</string>
+    <string name="nome_perfil">Nome</string>
+    <string name="email_perfil">Email</string>
+    <string name="telefone_perfil">Telefone</string>
+    <string name="alterar_dados">Alterar dados</string>
+
+    <string name="pedidos">Pedidos</string>
+    <string name="favoritos">Favoritos</string>
+
 </resources>
