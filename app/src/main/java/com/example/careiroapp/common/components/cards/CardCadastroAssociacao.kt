@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -31,7 +32,7 @@ import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun CardCadastroAssociacao() {
-    Row (
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
@@ -69,7 +70,8 @@ fun CardCadastroAssociacao() {
                     style = TextStyle(
                         fontSize = 14.sp,
                         textAlign = TextAlign.Center,
-                        fontFamily = montserratRegularFontFamily
+                        fontFamily = montserratRegularFontFamily,
+                        color = Color.Black
                     ),
                 )
                 Spacer(modifier = Modifier.height(24.dp))

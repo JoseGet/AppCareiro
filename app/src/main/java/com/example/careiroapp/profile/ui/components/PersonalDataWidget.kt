@@ -52,7 +52,8 @@ fun PersonalDataWidget(
                 stringResource(R.string.dados_pessoais),
                 style = TextStyle(
                     fontSize = 18.sp,
-                    fontFamily = montserratBoldFontFamily
+                    fontFamily = montserratBoldFontFamily,
+                    color = Color.Black
                 )
             )
             Spacer(Modifier.height(16.dp))

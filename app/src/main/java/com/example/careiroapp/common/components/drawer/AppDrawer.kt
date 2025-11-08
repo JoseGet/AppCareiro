@@ -66,7 +66,9 @@ fun AppDrawer(
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
                 DrawerItem(
                     text = stringResource(R.string.sobre_nos),
-                    onClick = {}
+                    onClick = {
+                        tabBarNavController.navigate(NavigationItem.SobreNos.route)
+                    }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
                 DrawerItem(

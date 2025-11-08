@@ -6,6 +6,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.careiroapp.AboutUsView
 import com.example.careiroapp.associacoes.ui.AssociacoesView
 import com.example.careiroapp.feiras.ui.FeirasView
 import com.example.careiroapp.home.ui.HomeView
@@ -91,6 +92,12 @@ fun TapBarNavHost(
             NavigationItem.Profile.route
         ) {
             ProfileView()
+        }
+
+        composable(
+            NavigationItem.SobreNos.route
+        ) {
+            AboutUsView()
         }
     }
 

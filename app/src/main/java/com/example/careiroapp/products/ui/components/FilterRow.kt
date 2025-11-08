@@ -17,12 +17,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.buttons.OutlineAppButton
 import com.example.careiroapp.common.enums.EnumCategorias
+import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun FilterRow(
@@ -81,7 +84,13 @@ fun FilterRow(
         }
         Spacer(Modifier.height(if (productsCounter != null) 8.dp else 0.dp))
         if (productsCounter != null) {
-            Text("$productsCounter produtos")
+            Text(
+                "$productsCounter produtos",
+                style = TextStyle(
+                    color = Color.Black,
+                    fontFamily = montserratRegularFontFamily
+                )
+            )
         }
     }
 }
