@@ -29,7 +29,8 @@ fun ProductTitle(
         Text(
             "R$$productPrice",
             fontFamily = montserratBoldFontFamily,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            color = colorResource(R.color.dark_gray)
         )
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ fun AppHeader(
             .wrapContentHeight()
             .fillMaxWidth()
             .background(color = colorResource(R.color.light_gray))
+            .padding(top = 16.dp)
     ) {
         TopBar(
             leftIconOnClick = leftIconAction,

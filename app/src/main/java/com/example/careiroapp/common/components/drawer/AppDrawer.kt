@@ -67,6 +67,7 @@ fun AppDrawer(
                 DrawerItem(
                     text = stringResource(R.string.sobre_nos),
                     onClick = {
+                        closeDrawerFunction()
                         tabBarNavController.navigate(NavigationItem.SobreNos.route)
                     }
                 )
