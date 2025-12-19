@@ -50,6 +50,11 @@
     <string name="your_bag">Sua sacola</string>
     <string name="complete_order">Finalizar pedido</string>
     <string name="order_summary">Resumo da compra</string>
+    <string name="identification">Identificação</string>
+    <string name="continue_button">Continuar</string>
+    <string name="pickup">Retirada</string>
+    <string name="pickup_explanation">Escolha um local e uma data para realizar a retirada de seu pedido</string>
+    <string name="pickup_places">Locais disponíveis</string>
 
     <string name="meu_perfil">Meu Perfil</string>
     <string name="dados_pessoais">Dados pessoais</string>

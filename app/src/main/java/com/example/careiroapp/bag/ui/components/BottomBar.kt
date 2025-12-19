@@ -2,12 +2,10 @@ package com.example.careiroapp.bag.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,9 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.careiroapp.R
+import java.util.Locale
 
 @Composable
-fun BottomBar(modifier: Modifier = Modifier) {
+fun BottomBar(modifier: Modifier = Modifier, total: Double = 0.0, onCheckout: () -> Unit = {}) {
     BottomAppBar(
         modifier = modifier.height(96.dp),
         containerColor = colorResource(R.color.light_gray),
@@ -38,16 +37,18 @@ fun BottomBar(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text("Total:")
-                Text("R$213,32",
+                Text(
+                    // formata para duas casas decimais com separador ponto e prefixo R$
+                    String.format(Locale("pt", "BR"), "R$ %.2f", total),
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp
                 )
             }
 
             Button(
-                onClick = {},
+                onClick = onCheckout,
                 modifier = Modifier.weight(5f),
-                colors = ButtonColors(
+                colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.dark_green),
                     contentColor = colorResource(R.color.light_background),
                     disabledContainerColor = colorResource(R.color.light_background),
