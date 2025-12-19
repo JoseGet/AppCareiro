@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.careiroapp.BaseView
 import com.example.careiroapp.bag.ui.BagView
+import com.example.careiroapp.checkout.ui.CheckoutView
+import com.example.careiroapp.checkout.ui.PickupView
 import com.example.careiroapp.navigation.NavigationItem.*
 
 @Composable
@@ -26,11 +28,24 @@ fun AppNavHost(
         }
 
         composable(
-            "teste"
+            Sacola.route
         ) {
             Column {
                 BagView(navController)
             }
+        }
+        composable(
+            Checkout.route
+        ) {
+            Column {
+                CheckoutView(navController)
+            }
+        }
+
+        composable (
+            Pickup.route
+        ){
+            PickupView(navController)
         }
     }
 }
