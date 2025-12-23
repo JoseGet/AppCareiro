@@ -30,7 +30,7 @@ fun AppHeader(
     ) {
         TopBar(
             leftIconOnClick = leftIconAction,
-            rightIconAction = { appNavController.navigate("teste") }
+            rightIconAction = { appNavController.navigate(NavigationItem.Sacola.route) }
         )
         AppSearchBar()
         Spacer(Modifier.height(16.dp))
