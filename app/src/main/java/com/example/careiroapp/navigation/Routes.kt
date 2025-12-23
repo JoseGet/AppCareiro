@@ -9,8 +9,7 @@ enum class Screen {
     PRODUTO_UNICO,
     SACOLA,
     CHECKOUT,
-    PICKUP
-    SACOLA,
+    PICKUP,
     PROFILE,
 
     SOBRE_NOS
