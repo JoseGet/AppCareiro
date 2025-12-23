@@ -55,6 +55,7 @@
     <string name="pickup">Retirada</string>
     <string name="pickup_explanation">Escolha um local e uma data para realizar a retirada de seu pedido</string>
     <string name="pickup_places">Locais disponíveis</string>
+    <string name="pickup_dates">Datas e horários</string>
 
     <string name="meu_perfil">Meu Perfil</string>
     <string name="dados_pessoais">Dados pessoais</string>

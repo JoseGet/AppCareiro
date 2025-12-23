@@ -13,6 +13,7 @@
     <color name="dark_gray">#363538</color>
     <color name="light_gray">#F0F3f0</color>
     <color name="search_bar_border_color">#D5D7D4</color>
+    <color name="inactive_color">#D5D7D4</color>
     <color name="gray">#B1B1B1</color>
     <color name="background_categorias_card">#1C5A16C4</color>
     <color name="checkout_button_enable">#92A916</color>
