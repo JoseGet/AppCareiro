@@ -23,7 +23,7 @@ import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun ProductorRow(
-
+    productorName: String
 ) {
     Row(
         modifier = Modifier
@@ -34,13 +34,13 @@ fun ProductorRow(
             modifier = Modifier
                 .size(48.dp)
                 .clip(CircleShape),
-            painter = painterResource(R.drawable.doge),
+            painter = painterResource(R.drawable.no_profile),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Spacer(Modifier.width(8.dp))
         Text(
-            "Samuca - Associacao Negreiros",
+            "$productorName - Associacao Negreiros",
             fontFamily = montserratRegularFontFamily,
             fontSize = 14.sp,
             color = colorResource(R.color.dark_gray)
@@ -51,5 +51,7 @@ fun ProductorRow(
 @Composable
 @Preview(showBackground = true)
 private fun ProductRowPreview() {
-    ProductorRow()
+    ProductorRow(
+        productorName = "Samuca"
+    )
 }

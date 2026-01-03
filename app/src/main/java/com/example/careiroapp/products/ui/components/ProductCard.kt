@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components.cards
+package com.example.careiroapp.products.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +38,7 @@ import com.example.careiroapp.common.components.buttons.OutlineAppButton
 import com.example.careiroapp.common.montserratMediumFontFamily
 
 @Composable
-fun CardProduto(
+fun ProductCard(
     modifier: Modifier,
     image: String,
     nomeProduto: String,
@@ -97,7 +97,7 @@ fun CardProduto(
                 Text(
                     "R$ $modifiedPrecoProduto",
                     style = TextStyle(
-                        fontWeight = if (!isPromocao) FontWeight.Bold else FontWeight.Normal,
+                        fontWeight = if (isPromocao) FontWeight.Normal else FontWeight.Bold,
                         color = colorResource(R.color.dark_green),
                         textDecoration = if (isPromocao) TextDecoration.LineThrough else TextDecoration.None,
                         fontStyle = if (isPromocao) FontStyle.Italic else FontStyle.Normal,
@@ -141,9 +141,9 @@ fun CardProduto(
 
 @Composable
 @Preview
-private fun CardProdutoPreview() {
+private fun ProductCardPreview() {
     Column {
-        CardProduto(
+        ProductCard(
             modifier = Modifier
                 .weight(1f),
             image = "",
@@ -155,7 +155,7 @@ private fun CardProdutoPreview() {
             onClick = {}
         )
         Spacer(modifier = Modifier.height(10.dp))
-        CardProduto(
+        ProductCard(
             modifier = Modifier
                 .weight(1f),
             image = "",

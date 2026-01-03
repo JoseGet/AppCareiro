@@ -128,7 +128,8 @@ object Mocks {
         disponivel = true,
         precoProduto = 29.90f,
         isPromocao = true,
-        precoPromocao = 19.90
+        precoPromocao = 19.90,
+        fkVendedor = UUID.randomUUID()
     )
 }
 

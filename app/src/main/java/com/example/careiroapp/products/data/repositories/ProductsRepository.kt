@@ -1,32 +1,40 @@
 package com.example.careiroapp.products.data.repositories
 
 import com.example.careiroapp.products.data.datasource.ProductsDataSource
-import com.example.careiroapp.products.data.models.ProductCountModel
 import com.example.careiroapp.products.data.models.ProductModel
+import com.example.careiroapp.products.data.models.ProductVendedorModel
 import java.util.UUID
 import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(
-    private val dataSource: ProductsDataSource
+    private val productDataSource: ProductsDataSource,
 ) {
     suspend fun getProducts(offset: Int, limit: Int): MutableList<ProductModel>? {
-        return dataSource.getProducts(offset, limit)
+        return productDataSource.getProducts(offset, limit)
     }
 
     suspend fun getProductsCount(): Int? {
-        return dataSource.getProductsCount()
+        return productDataSource.getProductsCount()
     }
 
     suspend fun getProductById(id: UUID): ProductModel? {
-        return dataSource.getProdutoById(id)
+        return productDataSource.getProdutoById(id)
     }
 
-    suspend fun getProductsByCategoria(nomeCategoria: String, offset: Int, limit: Int): List<ProductModel>? {
-        return dataSource.getProductsByCategoria(nomeCategoria, offset, limit)
+    suspend fun getProductsByCategoria(
+        nomeCategoria: String,
+        offset: Int,
+        limit: Int
+    ): List<ProductModel>? {
+        return productDataSource.getProductsByCategoria(nomeCategoria, offset, limit)
     }
 
     suspend fun getProductsByCategoriaCount(nomeCategoria: String): Int? {
-        return dataSource.getProductsByCategoriaCount(nomeCategoria)
+        return productDataSource.getProductsByCategoriaCount(nomeCategoria)
+    }
+
+    suspend fun getProductVendedorById(idVendedor: UUID?): ProductVendedorModel? {
+        return productDataSource.getProductVendedorById(idVendedor)
     }
 
 }
