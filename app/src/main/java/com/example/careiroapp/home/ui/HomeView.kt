@@ -23,7 +23,7 @@ import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.cards.CardAssinatura
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.common.components.cards.CardFeira
-import com.example.careiroapp.common.components.cards.CardProduto
+import com.example.careiroapp.products.ui.components.ProductCard
 import com.example.careiroapp.home.ui.components.CategoriasModule
 import com.example.careiroapp.home.ui.components.TutorialRow
 
@@ -63,7 +63,7 @@ fun HomeView(
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                CardProduto(
+                ProductCard(
                     modifier = Modifier
                         .weight(1f),
                     image = uriProduto1,
@@ -76,7 +76,7 @@ fun HomeView(
 
                     }
                 )
-                CardProduto(
+                ProductCard(
                     modifier = Modifier
                         .weight(1f),
                     image = uriProduto2,

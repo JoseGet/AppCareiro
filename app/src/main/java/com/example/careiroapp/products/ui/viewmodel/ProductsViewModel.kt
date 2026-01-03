@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.careiroapp.products.data.models.ProductCardModel
 import com.example.careiroapp.products.domain.usecases.GetProductsUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductByIdUseCase
+import com.example.careiroapp.products.domain.usecases.GetProductVendedorUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsByCategoriaCountUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsByCategoriaUseCase
 import com.example.careiroapp.products.domain.usecases.GetProductsCountUseCase
@@ -24,8 +25,11 @@ class ProductsViewModel @Inject constructor(
     private val getProductByIdUseCase: GetProductByIdUseCase,
     private val getProductsByCategoriaUseCase: GetProductsByCategoriaUseCase,
     private val getProductsCountUseCase: GetProductsCountUseCase,
-    private val getProductsByCategoriaCountUseCase: GetProductsByCategoriaCountUseCase
+    private val getProductsByCategoriaCountUseCase: GetProductsByCategoriaCountUseCase,
+    private val getProductVendedorUseCase: GetProductVendedorUseCase
 ) : ViewModel() {
+
+    private val TAG = "ProductsViewModel"
 
     private val _productUiState = MutableStateFlow(ProductsUiState())
     var productUiState: StateFlow<ProductsUiState> = _productUiState.asStateFlow()
@@ -85,7 +89,7 @@ class ProductsViewModel @Inject constructor(
                     )
                 }
             } catch (e: Exception) {
-                Log.e("ProductsViewModel", e.toString())
+                Log.e(TAG, e.toString())
             }
         }
     }
@@ -100,16 +104,18 @@ class ProductsViewModel @Inject constructor(
                 }
 
                 val selectedItem = getProductByIdUseCase.invoke(id)
+                val productorName = getVendedorName(selectedItem?.fkVendedor)
 
                 _productUiState.update {
                     it.copy(
                         isLoading = false,
-                        selectedProduct = selectedItem
+                        selectedProduct = selectedItem,
+                        productorName = productorName
                     )
                 }
 
             } catch (e: Exception) {
-                Log.e("ProductsViewModel", e.toString())
+                Log.e(TAG, e.toString())
             }
         }
     }
@@ -164,7 +170,7 @@ class ProductsViewModel @Inject constructor(
                 }
 
             } catch (e: Exception) {
-                Log.e("ProductsViewModel", e.toString())
+                Log.e(TAG, e.toString())
             }
         }
     }
@@ -210,6 +216,10 @@ class ProductsViewModel @Inject constructor(
 
         updateFilterActivate(categoryFromNav)
         isInitializedByNavArg = true
+    }
+
+    suspend fun getVendedorName(idVendedor: UUID?): String {
+       return getProductVendedorUseCase.invoke(idVendedor)?.nome ?: ""
     }
 
 }

@@ -9,5 +9,6 @@ data class ProductsUiState(
     val productsCount: Int? = 0,
     val selectedProduct: ProductModel? = null,
     val filterNameActivate: String? = null,
-    val endOfListReached: Boolean = false
+    val endOfListReached: Boolean = false,
+    val productorName: String = ""
 )

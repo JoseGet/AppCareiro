@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -15,8 +14,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
-import com.example.careiroapp.common.components.cards.CardProduto
-import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun FeaturedProducts(
@@ -41,7 +38,7 @@ fun FeaturedProducts(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            CardProduto(
+            ProductCard(
                 modifier = Modifier
                     .weight(1f),
                 image = uriProduto1,
@@ -54,7 +51,7 @@ fun FeaturedProducts(
 
                 }
             )
-            CardProduto(
+            ProductCard(
                 modifier = Modifier
                     .weight(1f),
                 image = uriProduto2,

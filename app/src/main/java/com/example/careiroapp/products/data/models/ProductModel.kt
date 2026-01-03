@@ -36,5 +36,9 @@ data class ProductModel(
 
     @SerializedName("preco_promocao")
     @Expose
-    val precoPromocao: Double?
+    val precoPromocao: Double?,
+
+    @SerializedName("fk_vendedor")
+    @Expose
+    val fkVendedor: UUID
 )
