@@ -12,13 +12,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careiroapp.common.components.cards.CardDefault
+import com.example.careiroapp.feiras.data.models.FeiraModel
 import com.example.careiroapp.mocks.Mocks
-import com.example.careiroapp.models.FeiraModel
 
 @Composable
 fun FeirasGrid(
     list: List<FeiraModel>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClickCard: (id: Int) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -30,8 +31,11 @@ fun FeirasGrid(
             CardDefault(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
-                image = painterResource(item.image),
-                titleText = item.nomeFeira
+                image = item.image,
+                titleText = item.nome,
+                onClick = {
+                    onClickCard(item.id)
+                }
             )
         }
     }
@@ -42,6 +46,7 @@ fun FeirasGrid(
 private fun FeirasGridPreview() {
     FeirasGrid(
         modifier = Modifier,
-        list = Mocks.feirasCardList
+        list = Mocks.feirasCardList,
+        onClickCard = {}
     )
 }

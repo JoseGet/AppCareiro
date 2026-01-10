@@ -2,8 +2,8 @@ package com.example.careiroapp.mocks
 
 import com.example.careiroapp.R
 import com.example.careiroapp.models.AssociacaoModel
-import com.example.careiroapp.models.FeiraModel
 import com.example.careiroapp.products.data.models.ProductModel
+import com.example.careiroapp.feiras.data.models.FeiraModel
 import java.util.UUID
 
 object Mocks {
@@ -101,22 +101,34 @@ object Mocks {
         )
     )
 
-    val feirasCardList = listOf<FeiraModel>(
+    val feirasCardList: List<FeiraModel> = listOf(
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação dos Agricultores"
+            id = 0,
+            nome = "Associação dos Agricultores",
+            dataHora = "",
+            descricao = "",
+            image = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Cooperativa de Pescadores"
+            id = 1,
+            nome = "Cooperativa de Pescadores",
+            dataHora = "",
+            descricao = "",
+            image = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação dos Artesãos"
+            id = 1,
+            image = "",
+            nome = "Associação dos Artesãos",
+            dataHora = "",
+            descricao = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação Comunitária"
+            id = 2,
+            image = "",
+            nome = "Associação Comunitária",
+            dataHora = "",
+            descricao = ""
         )
     )
 

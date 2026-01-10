@@ -22,7 +22,7 @@ import com.example.careiroapp.R
 import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.cards.CardAssinatura
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
-import com.example.careiroapp.common.components.cards.CardFeira
+import com.example.careiroapp.home.ui.components.CardFeira
 import com.example.careiroapp.products.ui.components.ProductCard
 import com.example.careiroapp.home.ui.components.CategoriasModule
 import com.example.careiroapp.home.ui.components.TutorialRow

@@ -1,6 +1,7 @@
 package com.example.careiroapp.network.retrofit
 
 import com.example.careiroapp.BuildConfig
+import com.example.careiroapp.network.api.FeiraApiService
 import com.example.careiroapp.network.api.ProdutoApiService
 import com.example.careiroapp.network.api.VendedorApiService
 import dagger.Module
@@ -43,5 +44,11 @@ object RetrofitModule {
     @Singleton
     fun vendedorApiSetupProvider(): VendedorApiService {
         return retrofit.create(VendedorApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun feiraApiSetupProvider(): FeiraApiService {
+        return retrofit.create(FeiraApiService::class.java)
     }
 }

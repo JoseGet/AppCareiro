@@ -1,4 +1,4 @@
-package com.example.careiroapp.common.components.cards
+package com.example.careiroapp.home.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

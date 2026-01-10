@@ -30,8 +30,9 @@ fun AssociacoesGrid(
             CardDefault(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
-                image = painterResource(item.image),
-                titleText = item.nomeAssociacao
+                image = "",
+                titleText = item.nomeAssociacao,
+                onClick = {}
             )
         }
     }
