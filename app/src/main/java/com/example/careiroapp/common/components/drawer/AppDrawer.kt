@@ -46,17 +46,26 @@ fun AppDrawer(
                 Spacer(Modifier.height(16.dp))
                 DrawerItem(
                     text = stringResource(R.string.produtos),
-                    onClick = {}
+                    onClick = {
+                        closeDrawerFunction()
+                        tabBarNavController.navigate(NavigationItem.Produtos.route)
+                    }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
                 DrawerItem(
                     text = stringResource(R.string.feiras),
-                    onClick = {}
+                    onClick = {
+                        closeDrawerFunction()
+                        tabBarNavController.navigate(NavigationItem.Feiras.route)
+                    }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
                 DrawerItem(
                     text = stringResource(R.string.associacoes),
-                    onClick = {}
+                    onClick = {
+                        closeDrawerFunction()
+                        tabBarNavController.navigate(NavigationItem.Associacoes.route)
+                    }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
                 DrawerItem(
