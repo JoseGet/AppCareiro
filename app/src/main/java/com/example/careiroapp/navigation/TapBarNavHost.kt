@@ -9,6 +9,8 @@ import androidx.navigation.compose.composable
 import com.example.careiroapp.AboutUsView
 import com.example.careiroapp.associacoes.ui.AssociacoesView
 import com.example.careiroapp.feiras.ui.FeirasView
+import com.example.careiroapp.feiras.ui.SingleFeiraView
+import com.example.careiroapp.feiras.ui.viewmodel.FeiraViewModel
 import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
 import com.example.careiroapp.products.ui.SingleProductView
@@ -64,9 +66,39 @@ fun TapBarNavHost(
         }
 
         composable(
+            NavigationItem.ProdutoUnico.route
+        ) { backStackEntry ->
+            val viewModel: ProductsViewModel =
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
+            SingleProductView(
+                navController,
+                productViewModel = viewModel
+            )
+        }
+
+        composable(
             NavigationItem.Feiras.route
-        ) {
-            FeirasView()
+        ) { backStackEntry ->
+            val viewModel: FeiraViewModel = hiltViewModel(backStackEntry)
+            FeirasView(
+                navController,
+                viewModel
+            )
+        }
+
+        composable(
+            NavigationItem.FeiraUnica.route
+        ) { backStackEntry ->
+            val viewModel: FeiraViewModel =
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
+            SingleFeiraView(
+                navController,
+                viewModel
+            )
         }
 
         composable(
@@ -75,18 +107,6 @@ fun TapBarNavHost(
             AssociacoesView()
         }
 
-        composable(
-            NavigationItem.ProdutoUnico.route
-        ) { backStackEntry ->
-            val viewModel: ProductsViewModel =
-            if (navController.previousBackStackEntry != null) hiltViewModel(
-                navController.previousBackStackEntry!!
-            ) else hiltViewModel()
-            SingleProductView(
-                navController,
-                productViewModel = viewModel
-            )
-        }
 
         composable(
             NavigationItem.Profile.route
