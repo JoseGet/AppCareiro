@@ -1,9 +1,10 @@
 package com.example.careiroapp.mocks
 
 import com.example.careiroapp.R
-import com.example.careiroapp.models.AssociacaoModel
-import com.example.careiroapp.models.FeiraModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductorModel
 import com.example.careiroapp.products.data.models.ProductModel
+import com.example.careiroapp.feiras.data.models.FeiraModel
 import java.util.UUID
 
 object Mocks {
@@ -84,39 +85,71 @@ object Mocks {
 
     val associacoesCardList = listOf<AssociacaoModel>(
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação dos Agricultores"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação dos Agricultores",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Cooperativa de Pescadores"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Cooperativa de Pescadores",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação dos Artesãos"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação dos Artesãos",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação Comunitária"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação Comunitária",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         )
     )
 
-    val feirasCardList = listOf<FeiraModel>(
+    val feirasCardList: List<FeiraModel> = listOf(
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação dos Agricultores"
+            id = 0,
+            nome = "Associação dos Agricultores",
+            dataHora = "",
+            descricao = "",
+            image = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Cooperativa de Pescadores"
+            id = 1,
+            nome = "Cooperativa de Pescadores",
+            dataHora = "",
+            descricao = "",
+            image = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação dos Artesãos"
+            id = 1,
+            image = "",
+            nome = "Associação dos Artesãos",
+            dataHora = "",
+            descricao = ""
         ),
         FeiraModel(
-            image = R.drawable.feira,
-            nomeFeira = "Associação Comunitária"
+            id = 2,
+            image = "",
+            nome = "Associação Comunitária",
+            dataHora = "",
+            descricao = ""
         )
     )
 
@@ -128,7 +161,8 @@ object Mocks {
         disponivel = true,
         precoProduto = 29.90f,
         isPromocao = true,
-        precoPromocao = 19.90
+        precoPromocao = 19.90,
+        fkVendedor = UUID.randomUUID()
     )
 }
 

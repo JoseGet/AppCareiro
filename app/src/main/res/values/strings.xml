@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CareiroApp</string>
+    <string name="app_name">AgriConnect</string>
 
     <string name="agriconnect">Agriconnet</string>
 
@@ -56,5 +56,30 @@
     <string name="pickup_explanation">Escolha um local e uma data para realizar a retirada de seu pedido</string>
     <string name="pickup_places">Locais disponíveis</string>
     <string name="pickup_dates">Datas e horários</string>
+
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="dados_pessoais">Dados pessoais</string>
+    <string name="nome_perfil">Nome</string>
+    <string name="email_perfil">Email</string>
+    <string name="telefone_perfil">Telefone</string>
+    <string name="alterar_dados">Alterar dados</string>
+
+    <string name="pedidos">Pedidos</string>
+    <string name="favoritos">Favoritos</string>
+
+    <string name="produtores">Produtores</string>
+    <string name="o_que_e_o_projeto">O que é o projeto?</string>
+    <string name="o_que_e_content">A Rede de Produtores Agroecológicos do Careiro (REPAC) no Amazonas tem suas origens em 2015. Desde então, trabalha em prol das comunidades adjacentes, incentivando o fortalecimento dos conhecimentos de agroecologia e da economia local. Dessa forma, a fim de melhorar a comunicação dos produtores com os consumidores e fortalecer os laços dessa comunidade, nasceu o Agriconnect, plataforma com o intuito de gerar uma comercialização direta entre os produtores e consumidores, ajudando os produtores a gerenciarem seus produtos e vendas.
+O Agriconnect ressalta a importância de criar vínculos entre as associações produtoras e a comunidade geral, enaltecendo os produtos regionais e criando uma maior divulgação dos produtos e trabalho dos produtores.
+Na plataforma, é possível fazer compras de produtos e retirá-los em locais determinados, além das assinaturas disponíveis para a compra semanal e mensal de itens de ótima qualidade.
+No Agriconnect, a tecnologia é aliada na criação de redes entre agricultores e clientes ao estabelecer um novo meio de compras e vendas dos produtos voltados para as feiras locais.
+</string>
+    <string name="quem_faz_parte_content">O Agriconnect é formado por uma rede colaborativa que une produtores locais, associações e consumidores comprometidos com o fortalecimento da agroecologia e da economia regional. Cada integrante desempenha um papel essencial na construção de uma cadeia justa e sustentável: os produtores garantem a qualidade e a origem dos alimentos, as associações promovem a organização e o apoio coletivo, e os consumidores fortalecem o vínculo com quem cultiva os produtos que chegam à sua mesa.</string>
+    <string name="como_participar_content">A associação que deseja fazer parte do Agriconnect deve enviar uma solicitação de cadastro para o e-mail do projeto. Após analisada e aceita, a associação começa a fazer parte do projeto e começa a utilizar os serviços da maior plataforma de divulgação de produtos e associações de agricultores da região norte.</string>
+    <string name="about_us_products_content">Os produtores, dentro do Agriconnect, têm à disposição um espaço dedicado para gerenciar suas atividades de forma prática e integrada, também podem incluir informações detalhadas sobre suas produções e disponibilizar os produtos colhidos para venda direta ao consumidor. Essa funcionalidade permite o registro da quantidade colhida, vendida e em estoque.</string>
+    <string name="about_us_associacoes_content">No Agriconnect, as associações podem visualizar dados sobre o desempenho da organização e resumos sobre o rendimento dos produtos, produtores e feiras. Na plataforma, é possível visualizar todos os âmbitos gerenciados por uma associação e adicionar os produtores afiliados, adicionando-os ao sistema de maneira vinculada à associação.</string>
+
+    <string name="produtores_associados">Produtores associados</string>
+    <string name="conheca_quem_faz_parte">Conheça quem faz parte</string>
 
 </resources>

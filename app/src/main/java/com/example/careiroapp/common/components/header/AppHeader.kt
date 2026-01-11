@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,13 +21,15 @@ import com.example.careiroapp.navigation.NavigationItem
 fun AppHeader(
     leftIconAction: () -> Unit,
     appNavController: NavController,
-    tabBarNavController: NavController
+    tabBarNavController: NavController,
+    resetScrollFunction: () -> Unit
 ) {
     Column (
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
             .background(color = colorResource(R.color.light_gray))
+            .padding(top = 16.dp)
     ) {
         TopBar(
             leftIconOnClick = leftIconAction,
@@ -36,6 +39,7 @@ fun AppHeader(
         Spacer(Modifier.height(16.dp))
         ModulesBar(
             navController = tabBarNavController,
+            resetScrollFunction
         )
     }
 }
@@ -46,6 +50,7 @@ fun AppHeaderPreview() {
     AppHeader(
         leftIconAction = {},
         appNavController = rememberNavController(),
-        tabBarNavController = rememberNavController()
+        tabBarNavController = rememberNavController(),
+        resetScrollFunction = {}
     );
 }

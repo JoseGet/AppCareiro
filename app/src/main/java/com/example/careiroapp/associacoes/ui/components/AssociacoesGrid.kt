@@ -8,17 +8,17 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.careiroapp.associacoes.data.models.AssociacaoModel
 import com.example.careiroapp.common.components.cards.CardDefault
 import com.example.careiroapp.mocks.Mocks
-import com.example.careiroapp.models.AssociacaoModel
+import java.util.UUID
 
 @Composable
 fun AssociacoesGrid(
     list: List<AssociacaoModel>,
-    modifier: Modifier = Modifier
+    onCardClick: (id: UUID) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -30,8 +30,11 @@ fun AssociacoesGrid(
             CardDefault(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
-                image = painterResource(item.image),
-                titleText = item.nomeAssociacao
+                image = item.image ?: "",
+                titleText = item.nome,
+                onClick = {
+                    onCardClick(item.idAssociacao)
+                }
             )
         }
     }
@@ -41,7 +44,7 @@ fun AssociacoesGrid(
 @Preview(showBackground = true)
 private fun AssociacoesGridModel() {
     AssociacoesGrid(
-        modifier = Modifier,
-        list = Mocks.associacoesCardList
+        list = Mocks.associacoesCardList,
+        onCardClick = {}
     )
 }

@@ -3,17 +3,21 @@ package com.example.careiroapp.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.careiroapp.AboutUsView
 import com.example.careiroapp.associacoes.ui.AssociacoesView
+import com.example.careiroapp.associacoes.ui.SingleAssociacaoView
+import com.example.careiroapp.associacoes.ui.viewmodel.AssociacaoViewModel
 import com.example.careiroapp.feiras.ui.FeirasView
+import com.example.careiroapp.feiras.ui.SingleFeiraView
+import com.example.careiroapp.feiras.ui.viewmodel.FeiraViewModel
 import com.example.careiroapp.home.ui.HomeView
 import com.example.careiroapp.products.ui.ProductsView
 import com.example.careiroapp.products.ui.SingleProductView
 import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
-import kotlinx.coroutines.launch
+import com.example.careiroapp.profile.ui.ProfileView
 
 @Composable
 fun TapBarNavHost(
@@ -64,28 +68,74 @@ fun TapBarNavHost(
         }
 
         composable(
-            NavigationItem.Feiras.route
-        ) {
-            FeirasView()
-        }
-
-        composable(
-            NavigationItem.Associacoes.route
-        ) {
-            AssociacoesView()
-        }
-
-        composable(
             NavigationItem.ProdutoUnico.route
         ) { backStackEntry ->
             val viewModel: ProductsViewModel =
-            if (navController.previousBackStackEntry != null) hiltViewModel(
-                navController.previousBackStackEntry!!
-            ) else hiltViewModel()
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
             SingleProductView(
                 navController,
                 productViewModel = viewModel
             )
+        }
+
+        composable(
+            NavigationItem.Feiras.route
+        ) { backStackEntry ->
+            val viewModel: FeiraViewModel = hiltViewModel(backStackEntry)
+            FeirasView(
+                navController,
+                viewModel
+            )
+        }
+
+        composable(
+            NavigationItem.FeiraUnica.route
+        ) { backStackEntry ->
+            val viewModel: FeiraViewModel =
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
+            SingleFeiraView(
+                navController,
+                viewModel
+            )
+        }
+
+        composable(
+            NavigationItem.Associacoes.route
+        ) { backStackEntry ->
+            val viewModel: AssociacaoViewModel = hiltViewModel(backStackEntry)
+            AssociacoesView(
+                navController,
+                viewModel
+            )
+        }
+
+        composable(
+            NavigationItem.AssociacaoUnica.route
+        ) { backStackEntry ->
+            val viewModel: AssociacaoViewModel =
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
+            SingleAssociacaoView(
+                navController,
+                viewModel
+            )
+        }
+
+        composable(
+            NavigationItem.Profile.route
+        ) {
+            ProfileView()
+        }
+
+        composable(
+            NavigationItem.SobreNos.route
+        ) {
+            AboutUsView()
         }
     }
 

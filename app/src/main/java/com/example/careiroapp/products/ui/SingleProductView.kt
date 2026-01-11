@@ -1,36 +1,45 @@
 package com.example.careiroapp.products.ui
 
+import android.os.Build.VERSION.SDK_INT
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import coil3.ImageLoader
 import coil3.compose.AsyncImage
+import coil3.compose.rememberAsyncImagePainter
+import coil3.gif.AnimatedImageDecoder
+import coil3.gif.GifDecoder
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.careiroapp.R
 import com.example.careiroapp.common.components.buttons.BackButton
-import com.example.careiroapp.mocks.Mocks
-import com.example.careiroapp.products.data.models.ProductModel
+import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
 import com.example.careiroapp.products.ui.components.BuyProductRow
 import com.example.careiroapp.products.ui.components.FeaturedProducts
 import com.example.careiroapp.products.ui.components.ProductDescription
 import com.example.careiroapp.products.ui.components.ProductTitle
 import com.example.careiroapp.products.ui.components.ProductorRow
 import com.example.careiroapp.products.ui.viewmodel.ProductsViewModel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun SingleProductView(
@@ -38,8 +47,20 @@ fun SingleProductView(
     productViewModel: ProductsViewModel
 ) {
 
+    val context = LocalContext.current
     val productViewUiState by productViewModel.productUiState.collectAsState()
-    
+    val coroutineScope = rememberCoroutineScope()
+
+    val imageLoader = ImageLoader.Builder(context)
+        .components {
+            if (SDK_INT >= 28) {
+                add(AnimatedImageDecoder.Factory())
+            } else {
+                add(GifDecoder.Factory())
+            }
+        }
+        .build()
+
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
@@ -50,26 +71,41 @@ fun SingleProductView(
             }
         )
         Spacer(Modifier.height(16.dp))
-        AsyncImage(
+        Box(
             modifier = Modifier
-                .height(360.dp)
-                .clip(RoundedCornerShape(16.dp)),
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(productViewUiState.selectedProduct?.image)
-                .crossfade(true)
-                .build(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            if (productViewUiState.isLoading) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = R.drawable.load, imageLoader = imageLoader),
+                    contentDescription = null
+                )
+            }
+            AsyncImage(
+                modifier = Modifier
+                    .height(360.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(productViewUiState.selectedProduct?.image)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+        }
         Spacer(Modifier.height(24.dp))
         ProductTitle(
             productName = productViewUiState.selectedProduct?.nomeProduto ?: "",
-            productPrice = productViewUiState.selectedProduct?.precoProduto ?: 0.0f
+            productPrice = productViewUiState.selectedProduct?.precoProduto ?: 0.0f,
+            promotionProductPrice = productViewUiState.selectedProduct?.precoPromocao
         )
         Spacer(Modifier.height(16.dp))
         BuyProductRow()
         Spacer(Modifier.height(16.dp))
-        ProductorRow()
+        ProductorRow(
+            productorName = productViewUiState.productorName
+        )
         Spacer(Modifier.height(16.dp))
         ProductDescription(
             productDescription = productViewUiState.selectedProduct?.descricao ?: ""
@@ -78,6 +114,8 @@ fun SingleProductView(
         FeaturedProducts(
             navController
         )
+        Spacer(Modifier.height(24.dp))
+        CardCadastroAssociacao()
     }
 }
 

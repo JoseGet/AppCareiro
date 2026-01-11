@@ -16,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.careiroapp.common.components.cards.CardProduto
 import com.example.careiroapp.products.data.models.ProductCardModel
 import java.util.UUID
 
@@ -50,7 +49,7 @@ fun ProductsGrid(
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(list) { item ->
-            CardProduto(
+            ProductCard(
                 modifier = Modifier
                     .padding(bottom = 16.dp),
                 image = item.image,

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +39,8 @@ fun ModulesColumnFooter(
             subtitulo_1,
             style = TextStyle(
                 fontFamily = montserratRegularFontFamily,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                color = Color.Black
             ),
         )
         Spacer(Modifier.height(4.dp))
@@ -46,7 +48,8 @@ fun ModulesColumnFooter(
             subtitulo_2,
             style = TextStyle(
                 fontFamily = montserratRegularFontFamily,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                color = Color.Black
             ),
         )
         Spacer(Modifier.height(4.dp))
@@ -54,7 +57,8 @@ fun ModulesColumnFooter(
             subtitulo_3,
             style = TextStyle(
                 fontFamily = montserratRegularFontFamily,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                color = Color.Black
             ),
         )
     }
