@@ -2,6 +2,7 @@ package com.example.careiroapp.mocks
 
 import com.example.careiroapp.R
 import com.example.careiroapp.associacoes.data.models.AssociacaoModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductorModel
 import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.feiras.data.models.FeiraModel
 import java.util.UUID
@@ -89,7 +90,8 @@ object Mocks {
             image = "",
             descricao = "",
             dataHora = null,
-            endereco = null
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
             idAssociacao = UUID.randomUUID(),
@@ -97,7 +99,8 @@ object Mocks {
             image = "",
             descricao = "",
             dataHora = null,
-            endereco = null
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
             idAssociacao = UUID.randomUUID(),
@@ -105,7 +108,8 @@ object Mocks {
             image = "",
             descricao = "",
             dataHora = null,
-            endereco = null
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
             idAssociacao = UUID.randomUUID(),
@@ -113,7 +117,8 @@ object Mocks {
             image = "",
             descricao = "",
             dataHora = null,
-            endereco = null
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         )
     )
 

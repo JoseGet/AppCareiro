@@ -44,7 +44,8 @@ class AssociacaoViewModel @Inject constructor(
                     image = associacao.image,
                     dataHora = associacao.dataHora,
                     descricao = associacao.descricao,
-                    endereco = associacao.endereco
+                    endereco = associacao.endereco,
+                    productorsList = associacao.productorsList
                 )
             }
 

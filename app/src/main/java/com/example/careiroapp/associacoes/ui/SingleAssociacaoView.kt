@@ -30,12 +30,11 @@ import coil3.gif.AnimatedImageDecoder
 import coil3.gif.GifDecoder
 import com.example.careiroapp.R
 import com.example.careiroapp.associacoes.ui.components.AssociacaoDescription
+import com.example.careiroapp.associacoes.ui.components.AssociacaoProductorsRow
 import com.example.careiroapp.associacoes.ui.viewmodel.AssociacaoViewModel
 import com.example.careiroapp.common.components.SingleImage
 import com.example.careiroapp.common.components.buttons.BackButton
 import com.example.careiroapp.common.montserratBoldFontFamily
-import com.example.careiroapp.feiras.ui.components.FeiraDescription
-import com.example.careiroapp.feiras.ui.components.FeiraTitle
 
 @Composable
 fun SingleAssociacaoView(
@@ -103,5 +102,8 @@ fun SingleAssociacaoView(
             description = uiState.selectedAssociacao?.descricao ?: ""
         )
         Spacer(Modifier.height(24.dp))
+        AssociacaoProductorsRow(
+            productorsList = uiState.selectedAssociacao?.productorsList ?: emptyList()
+        )
     }
 }

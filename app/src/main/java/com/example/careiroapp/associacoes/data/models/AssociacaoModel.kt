@@ -28,5 +28,9 @@ data class AssociacaoModel(
 
     @SerializedName("endereco")
     @Expose
-    val endereco: String?
+    val endereco: String?,
+
+    @SerializedName("vendedor")
+    @Expose
+    val productorsList: MutableList<AssociacaoProductorModel>
 )
