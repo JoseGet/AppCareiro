@@ -1,7 +1,8 @@
 package com.example.careiroapp.mocks
 
 import com.example.careiroapp.R
-import com.example.careiroapp.models.AssociacaoModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductorModel
 import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.feiras.data.models.FeiraModel
 import java.util.UUID
@@ -84,20 +85,40 @@ object Mocks {
 
     val associacoesCardList = listOf<AssociacaoModel>(
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação dos Agricultores"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação dos Agricultores",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Cooperativa de Pescadores"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Cooperativa de Pescadores",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação dos Artesãos"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação dos Artesãos",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         ),
         AssociacaoModel(
-            image = R.drawable.agricultores,
-            nomeAssociacao = "Associação Comunitária"
+            idAssociacao = UUID.randomUUID(),
+            nome = "Associação Comunitária",
+            image = "",
+            descricao = "",
+            dataHora = null,
+            endereco = null,
+            productorsList = emptyList<AssociacaoProductorModel>() as MutableList<AssociacaoProductorModel>
         )
     )
 

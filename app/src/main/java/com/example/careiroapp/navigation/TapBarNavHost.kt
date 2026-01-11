@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.careiroapp.AboutUsView
 import com.example.careiroapp.associacoes.ui.AssociacoesView
+import com.example.careiroapp.associacoes.ui.SingleAssociacaoView
+import com.example.careiroapp.associacoes.ui.viewmodel.AssociacaoViewModel
 import com.example.careiroapp.feiras.ui.FeirasView
 import com.example.careiroapp.feiras.ui.SingleFeiraView
 import com.example.careiroapp.feiras.ui.viewmodel.FeiraViewModel
@@ -103,10 +105,26 @@ fun TapBarNavHost(
 
         composable(
             NavigationItem.Associacoes.route
-        ) {
-            AssociacoesView()
+        ) { backStackEntry ->
+            val viewModel: AssociacaoViewModel = hiltViewModel(backStackEntry)
+            AssociacoesView(
+                navController,
+                viewModel
+            )
         }
 
+        composable(
+            NavigationItem.AssociacaoUnica.route
+        ) { backStackEntry ->
+            val viewModel: AssociacaoViewModel =
+                if (navController.previousBackStackEntry != null) hiltViewModel(
+                    navController.previousBackStackEntry!!
+                ) else hiltViewModel()
+            SingleAssociacaoView(
+                navController,
+                viewModel
+            )
+        }
 
         composable(
             NavigationItem.Profile.route

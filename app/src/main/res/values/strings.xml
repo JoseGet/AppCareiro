@@ -79,4 +79,7 @@ No Agriconnect, a tecnologia é aliada na criação de redes entre agricultores 
     <string name="about_us_products_content">Os produtores, dentro do Agriconnect, têm à disposição um espaço dedicado para gerenciar suas atividades de forma prática e integrada, também podem incluir informações detalhadas sobre suas produções e disponibilizar os produtos colhidos para venda direta ao consumidor. Essa funcionalidade permite o registro da quantidade colhida, vendida e em estoque.</string>
     <string name="about_us_associacoes_content">No Agriconnect, as associações podem visualizar dados sobre o desempenho da organização e resumos sobre o rendimento dos produtos, produtores e feiras. Na plataforma, é possível visualizar todos os âmbitos gerenciados por uma associação e adicionar os produtores afiliados, adicionando-os ao sistema de maneira vinculada à associação.</string>
 
+    <string name="produtores_associados">Produtores associados</string>
+    <string name="conheca_quem_faz_parte">Conheça quem faz parte</string>
+
 </resources>
