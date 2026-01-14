@@ -48,7 +48,7 @@ class FeiraViewModel @Inject constructor(
 
             _feiraUiState.update {
                 it.copy(
-                    isLoading = true,
+                    isLoading = false,
                     feirasCardList = feirasCardList ?: emptyList()
                 )
             }

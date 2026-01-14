@@ -4,8 +4,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.careiroapp.associacoes.data.models.AssociacaoModel
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
 import com.example.careiroapp.associacoes.domain.usecases.GetAssociacaoByIdUseCase
 import com.example.careiroapp.associacoes.domain.usecases.GetAssociacoesUseCase
+import com.example.careiroapp.products.domain.usecases.GetProductsByAssociacao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AssociacaoViewModel @Inject constructor(
     private val getAssociacoesUseCase: GetAssociacoesUseCase,
-    private val getAssociacaoByIdUseCase: GetAssociacaoByIdUseCase
+    private val getAssociacaoByIdUseCase: GetAssociacaoByIdUseCase,
+    private val getProductsByAssociacao: GetProductsByAssociacao
 ): ViewModel() {
 
     private val _associacaoUiState = MutableStateFlow(AssociacaoUiState())
@@ -68,15 +71,21 @@ class AssociacaoViewModel @Inject constructor(
             }
 
             val selectedAssociacao = getAssociacaoByIdUseCase.invoke(id)
+            val products = getProductsByAssociacao(id)
 
             _associacaoUiState.update {
                 it.copy(
                     isLoading = false,
-                    selectedAssociacao = selectedAssociacao
+                    selectedAssociacao = selectedAssociacao,
+                    productsList = products
                 )
             }
 
         }
+    }
+
+    private suspend fun getProductsByAssociacao(idAssociacao: UUID): List<AssociacaoProductModel> {
+        return getProductsByAssociacao.invoke(idAssociacao) ?: emptyList()
     }
 
 
