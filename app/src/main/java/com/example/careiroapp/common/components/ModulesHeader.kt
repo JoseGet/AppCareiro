@@ -16,7 +16,7 @@ import com.example.careiroapp.common.montserratRegularFontFamily
 @Composable
 fun ModulesHeader(
     titulo: String,
-    subtitulo: String?
+    subtitulo: String? = null
 ) {
     Text(
         titulo,
