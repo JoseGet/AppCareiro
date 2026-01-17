@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,9 +30,12 @@ import coil3.compose.rememberAsyncImagePainter
 import coil3.gif.AnimatedImageDecoder
 import coil3.gif.GifDecoder
 import com.example.careiroapp.R
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
 import com.example.careiroapp.associacoes.ui.components.AssociacaoDescription
 import com.example.careiroapp.associacoes.ui.components.AssociacaoProductorsRow
+import com.example.careiroapp.associacoes.ui.components.AssociacaoProductsRow
 import com.example.careiroapp.associacoes.ui.viewmodel.AssociacaoViewModel
+import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.SingleImage
 import com.example.careiroapp.common.components.buttons.BackButton
 import com.example.careiroapp.common.montserratBoldFontFamily
@@ -104,6 +108,13 @@ fun SingleAssociacaoView(
         Spacer(Modifier.height(24.dp))
         AssociacaoProductorsRow(
             productorsList = uiState.selectedAssociacao?.productorsList ?: emptyList()
+        )
+        Spacer(Modifier.height(24.dp))
+        ModulesHeader(
+            titulo = "${stringResource(R.string.confira_produtos_associacao)} ${uiState.selectedAssociacao?.nome}",
+        )
+        AssociacaoProductsRow(
+            productsList = uiState.productsList
         )
     }
 }

@@ -1,7 +1,9 @@
 package com.example.careiroapp.network.api
 
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
 import com.example.careiroapp.products.data.models.ProductCountModel
 import com.example.careiroapp.products.data.models.ProductModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -34,4 +36,9 @@ interface ProdutoApiService {
     suspend fun getProductsByCategoriaCount(
         @Path("nome_categoria") nomeCategoria: String
     ): Response<ProductCountModel>
+
+    @GET("produto/associacao/{id_associacao}")
+    suspend fun getProductsByAssociacao(
+        @Path("id_associacao")id: UUID
+    ): Response<List<AssociacaoProductModel>>
 }

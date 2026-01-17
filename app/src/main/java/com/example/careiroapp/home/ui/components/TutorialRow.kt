@@ -24,21 +24,21 @@ fun TutorialRow() {
                 .weight(1f),
             number = 1,
             image = painterResource(R.drawable.agricultor_desenho),
-            description = stringResource(R.string.default_text)
+            description = stringResource(R.string.como_funciona_o_agriconnect_1)
         )
         TutorialCard(
             modifier = Modifier
                 .weight(1f),
             number = 2,
             image = painterResource(R.drawable.celular_desenho),
-            description = stringResource(R.string.default_text)
+            description = stringResource(R.string.como_funciona_o_agriconnect_2)
         )
         TutorialCard(
             modifier = Modifier
                 .weight(1f),
             number = 3,
             image = painterResource(R.drawable.frutas_desenho),
-            description = stringResource(R.string.default_text)
+            description = stringResource(R.string.como_funciona_o_agriconnect_3)
         )
     }
 }

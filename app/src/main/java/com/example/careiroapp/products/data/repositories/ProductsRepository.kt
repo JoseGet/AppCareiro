@@ -1,5 +1,6 @@
 package com.example.careiroapp.products.data.repositories
 
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
 import com.example.careiroapp.products.data.datasource.ProductsDataSource
 import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.products.data.models.ProductVendedorModel
@@ -35,6 +36,10 @@ class ProductsRepository @Inject constructor(
 
     suspend fun getProductVendedorById(idVendedor: UUID?): ProductVendedorModel? {
         return productDataSource.getProductVendedorById(idVendedor)
+    }
+
+    suspend fun getProductsByAssociacao(idAssociacao: UUID): List<AssociacaoProductModel>? {
+        return productDataSource.getProductsByAssociacao(idAssociacao)
     }
 
 }

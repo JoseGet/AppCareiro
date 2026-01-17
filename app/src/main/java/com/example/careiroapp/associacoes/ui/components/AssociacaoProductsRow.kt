@@ -1,0 +1,38 @@
+package com.example.careiroapp.associacoes.ui.components
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
+
+@Composable
+fun AssociacaoProductsRow(
+    productsList: List<AssociacaoProductModel>,
+) {
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        modifier = Modifier.height(380.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        horizontalArrangement = Arrangement.spacedBy(24.dp)
+    ) {
+        items(productsList) { item ->
+            AssociacaoProductCard(
+                productImage = item.image,
+                productName = item.nome,
+                productPrice = item.preco
+            )
+            Spacer(Modifier.height(24.dp))
+            AssociacaoProductCard(
+                productImage = item.image,
+                productName = item.nome,
+                productPrice = item.preco
+            )
+        }
+    }
+}

@@ -15,7 +15,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.careiroapp"
+        applicationId = "com.joseGet.careiroapp"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
