@@ -40,7 +40,7 @@ fun ProductorRow(
         )
         Spacer(Modifier.width(8.dp))
         Text(
-            "$productorName - Associacao Negreiros",
+            "$productorName - Associação",
             fontFamily = montserratRegularFontFamily,
             fontSize = 14.sp,
             color = colorResource(R.color.dark_gray)
