@@ -98,7 +98,7 @@ fun ProductsView(
             subtitulo = null
         )
         FilterRow(
-            productsCounter = productViewUiState.productsCount,
+            productsCounter = if (productViewUiState.productsCardList.isEmpty()) 0 else productViewUiState.productsCount,
             onFilterCLick = { nomeCategoria ->
                 productViewModel.updateFilterActivate(nomeCategoria)
                 resetGridListState()

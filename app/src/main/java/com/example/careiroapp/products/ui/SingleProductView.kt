@@ -1,6 +1,7 @@
 package com.example.careiroapp.products.ui
 
 import android.os.Build.VERSION.SDK_INT
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,7 +45,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun SingleProductView(
     navController: NavController,
-    productViewModel: ProductsViewModel
+    productViewModel: ProductsViewModel,
+    resetScrollFunction: () -> Unit
 ) {
 
     val context = LocalContext.current
@@ -61,6 +63,12 @@ fun SingleProductView(
         }
         .build()
 
+    BackHandler() {
+        navController.popBackStack()
+        productViewModel.cleanSelectedProduct()
+        resetScrollFunction()
+    }
+
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
@@ -68,6 +76,7 @@ fun SingleProductView(
         BackButton(
             onClick = {
                 navController.popBackStack()
+                productViewModel.cleanSelectedProduct()
             }
         )
         Spacer(Modifier.height(16.dp))

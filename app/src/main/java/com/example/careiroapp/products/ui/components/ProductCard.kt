@@ -97,15 +97,15 @@ fun ProductCard(
                 Text(
                     "R$ $modifiedPrecoProduto",
                     style = TextStyle(
-                        fontWeight = if (isPromocao) FontWeight.Normal else FontWeight.Bold,
+                        fontWeight = if (isPromocao && precoPromocao != null) FontWeight.Normal else FontWeight.Bold,
                         color = colorResource(R.color.dark_green),
-                        textDecoration = if (isPromocao) TextDecoration.LineThrough else TextDecoration.None,
-                        fontStyle = if (isPromocao) FontStyle.Italic else FontStyle.Normal,
-                        fontSize = if (isPromocao) 14.sp else 16.sp
+                        textDecoration = if (isPromocao && precoPromocao != null) TextDecoration.LineThrough else TextDecoration.None,
+                        fontStyle = if (isPromocao && precoPromocao != null) FontStyle.Italic else FontStyle.Normal,
+                        fontSize = if (isPromocao && precoPromocao != null) 14.sp else 16.sp
                     )
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                if (isPromocao) {
+                if (isPromocao && precoPromocao != null) {
                     Text(
                         "R$ $modifiedPrecoPromocao",
                         style = TextStyle(

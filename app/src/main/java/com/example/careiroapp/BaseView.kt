@@ -50,7 +50,8 @@ fun BaseView(
                     scope.launch {
                         drawerState.close()
                     }
-                }
+                },
+                resetScrollFunction = resetScroll
             )
         },
         gesturesEnabled = true

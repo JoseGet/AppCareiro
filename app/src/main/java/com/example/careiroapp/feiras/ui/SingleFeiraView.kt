@@ -2,6 +2,7 @@ package com.example.careiroapp.feiras.ui
 
 import android.content.Context
 import android.os.Build.VERSION.SDK_INT
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,7 +33,8 @@ import com.example.careiroapp.feiras.ui.viewmodel.FeiraViewModel
 @Composable
 fun SingleFeiraView(
     navController: NavController,
-    feiraViewModel: FeiraViewModel
+    feiraViewModel: FeiraViewModel,
+    resetScrollFunction: () -> Unit
 ) {
 
     val context: Context = LocalContext.current
@@ -48,6 +50,12 @@ fun SingleFeiraView(
         }
         .build()
 
+    BackHandler() {
+        navController.popBackStack()
+        feiraViewModel.cleanSelectedFeira()
+        resetScrollFunction()
+    }
+
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
@@ -55,6 +63,7 @@ fun SingleFeiraView(
         BackButton(
             onClick = {
                 navController.popBackStack()
+                feiraViewModel.cleanSelectedFeira()
             }
         )
         Spacer(Modifier.height(16.dp))

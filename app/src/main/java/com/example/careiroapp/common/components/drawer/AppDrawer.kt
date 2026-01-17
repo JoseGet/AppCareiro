@@ -25,7 +25,8 @@ import com.example.careiroapp.navigation.NavigationItem
 @Composable
 fun AppDrawer(
     tabBarNavController: NavController,
-    closeDrawerFunction: () -> Unit
+    closeDrawerFunction: () -> Unit,
+    resetScrollFunction: () -> Unit
 ) {
     ModalDrawerSheet(
         drawerShape = RectangleShape,
@@ -38,6 +39,7 @@ fun AppDrawer(
                 onClick = {
                     closeDrawerFunction()
                     tabBarNavController.navigate(NavigationItem.Profile.route)
+                    resetScrollFunction()
                 }
             )
             Column(
@@ -49,6 +51,7 @@ fun AppDrawer(
                     onClick = {
                         closeDrawerFunction()
                         tabBarNavController.navigate(NavigationItem.Produtos.route)
+                        resetScrollFunction()
                     }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
@@ -57,6 +60,7 @@ fun AppDrawer(
                     onClick = {
                         closeDrawerFunction()
                         tabBarNavController.navigate(NavigationItem.Feiras.route)
+                        resetScrollFunction()
                     }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
@@ -65,6 +69,7 @@ fun AppDrawer(
                     onClick = {
                         closeDrawerFunction()
                         tabBarNavController.navigate(NavigationItem.Associacoes.route)
+                        resetScrollFunction()
                     }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
@@ -78,6 +83,7 @@ fun AppDrawer(
                     onClick = {
                         closeDrawerFunction()
                         tabBarNavController.navigate(NavigationItem.SobreNos.route)
+                        resetScrollFunction()
                     }
                 )
                 HorizontalDivider(Modifier.padding(horizontal = 15.dp))
@@ -95,6 +101,7 @@ fun AppDrawer(
 private fun AppDrawerPreview() {
     AppDrawer(
         tabBarNavController = rememberNavController(),
-        closeDrawerFunction = {}
+        closeDrawerFunction = {},
+        resetScrollFunction = {}
     )
 }
