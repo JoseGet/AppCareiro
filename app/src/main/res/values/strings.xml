@@ -84,4 +84,11 @@ No Agriconnect, a tecnologia é aliada na criação de redes entre agricultores 
 
     <string name="confira_produtos_associacao">Confira os produtos da </string>
 
+    <string name="como_funciona_o_agriconnect_1">Os agricultores plantam, cultivam e colhem os produtos orgânicos.</string>
+    <string name="como_funciona_o_agriconnect_2">Os produtos são disponibilizados no Agriconnect e você realiza a compra.</string>
+    <string name="como_funciona_o_agriconnect_3">Você faz a retirada do pedido na feira e tem acesso a produtos de qualidade.</string>
+
+    <string name="apoio">Apoio</string>
+    <string name="apoio_content">Este projeto tem o apoio do <b>Mover-se na Web</b>, iniciativa do <b>NIC.br</b> e do <b>Ceweb.br</b> que promove o desenvolvimento da Web aberta por meio de soluções de impacto social. Saiba mais em:  </string>
+
 </resources>
