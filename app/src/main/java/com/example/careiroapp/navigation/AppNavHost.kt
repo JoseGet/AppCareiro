@@ -10,12 +10,13 @@ import com.example.careiroapp.BaseView
 import com.example.careiroapp.bag.ui.BagView
 import com.example.careiroapp.checkout.ui.CheckoutView
 import com.example.careiroapp.checkout.ui.PickupView
+import com.example.careiroapp.loginCadastro.ui.LoginView
 import com.example.careiroapp.navigation.NavigationItem.*
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
-    startDestination: String = Main.route
+    startDestination: String = Login.route
 ) {
     NavHost(
         navController = navController,
@@ -46,6 +47,12 @@ fun AppNavHost(
             Pickup.route
         ){
             PickupView(navController)
+        }
+
+        composable(
+            Login.route
+        ) {
+            LoginView(navController)
         }
     }
 }

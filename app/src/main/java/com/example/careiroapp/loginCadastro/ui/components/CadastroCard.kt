@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,10 +17,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -37,8 +33,8 @@ import com.example.careiroapp.common.montserratBoldFontFamily
 import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
-fun LoginCard(
-    onClickCadastrar: () -> Unit
+fun CadastroCard(
+    onClickFazerLogin: () -> Unit
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
@@ -62,7 +58,7 @@ fun LoginCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                stringResource(R.string.login),
+                stringResource(R.string.cadastro),
                 style = TextStyle(
                     fontSize = 24.sp,
                     fontFamily = montserratBoldFontFamily,
@@ -71,12 +67,27 @@ fun LoginCard(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                stringResource(R.string.acesse_sua_conta),
+                stringResource(R.string.crie_conta_agriconnect),
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontFamily = montserratRegularFontFamily,
                     color = colorResource(R.color.dark_gray)
                 )
+            )
+            Spacer(Modifier.height(24.dp))
+            LoginTextField(
+                title = stringResource(R.string.cadastro_nome),
+                placeholder = stringResource(R.string.cadastro_digite_nome)
+            )
+            Spacer(Modifier.height(24.dp))
+            LoginTextField(
+                title = stringResource(R.string.cadastro_cpf),
+                placeholder = stringResource(R.string.cadastro_digite_cpf)
+            )
+            Spacer(Modifier.height(24.dp))
+            LoginTextField(
+                title = stringResource(R.string.cadastro_telefone),
+                placeholder = stringResource(R.string.cadastro_digite_telefone)
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
@@ -95,13 +106,13 @@ fun LoginCard(
                     .height(48.dp),
                 icon = null,
                 onClick = {},
-                text = stringResource(R.string.entrar),
+                text = stringResource(R.string.fazer_cadastro),
                 isActivate = false
             )
             Spacer(Modifier.height(24.dp))
             Row() {
                 Text(
-                    text = "${stringResource(R.string.nao_tenho_conta)}",
+                    text = stringResource(R.string.ja_tem_conta),
                     style = TextStyle(
                         fontFamily = montserratRegularFontFamily,
                         fontSize = 16.sp,
@@ -114,9 +125,9 @@ fun LoginCard(
                             interactionSource = interactionSource,
                             indication = null
                         ) {
-                            onClickCadastrar()
+                            onClickFazerLogin()
                         },
-                    text = stringResource(R.string.cadastrese),
+                    text = stringResource(R.string.faca_login),
                     style = TextStyle(
                         fontFamily = montserratRegularFontFamily,
                         fontSize = 16.sp,
@@ -131,8 +142,8 @@ fun LoginCard(
 
 @Composable
 @Preview(showBackground = true)
-private fun LoginCardPreview() {
-    LoginCard(
-        onClickCadastrar = {}
+private fun CadastroCardPreview() {
+    CadastroCard(
+        onClickFazerLogin = {}
     )
 }
