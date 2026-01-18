@@ -75,6 +75,8 @@ fun CadastroCard(
                 )
             )
             Spacer(Modifier.height(24.dp))
+            CadastroImageProfile()
+            Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.cadastro_nome),
                 placeholder = stringResource(R.string.cadastro_digite_nome)
