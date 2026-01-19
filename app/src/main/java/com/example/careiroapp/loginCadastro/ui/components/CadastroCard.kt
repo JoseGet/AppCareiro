@@ -1,5 +1,8 @@
 package com.example.careiroapp.loginCadastro.ui.components
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,12 +20,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,10 +42,29 @@ import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun CadastroCard(
-    onClickFazerLogin: () -> Unit
+    onClickFazerLogin: () -> Unit,
+    onClickFazerCadastro: (String, String, String, String, String, String) -> Unit
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
+
+    var imageUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+    var nome by remember { mutableStateOf("") }
+    var cpf by remember { mutableStateOf("") }
+    var telefone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
+
+    val galleryLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri ->
+            uri?.let {
+                imageUri = it
+            }
+        }
+    )
 
     Card(
         modifier = Modifier
@@ -75,31 +102,62 @@ fun CadastroCard(
                 )
             )
             Spacer(Modifier.height(24.dp))
-            CadastroImageProfile()
+            CadastroImageProfile(
+                image = imageUri,
+                onClick = {
+                    galleryLauncher.launch("image/*")
+                }
+            )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.cadastro_nome),
-                placeholder = stringResource(R.string.cadastro_digite_nome)
+                placeholder = stringResource(R.string.cadastro_digite_nome),
+                value = nome,
+                onChange = {
+                    nome = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.cadastro_cpf),
-                placeholder = stringResource(R.string.cadastro_digite_cpf)
+                placeholder = stringResource(R.string.cadastro_digite_cpf),
+                keyboardType = KeyboardType.Number,
+                maxChar = 11,
+                value = cpf,
+                onChange = {
+                    cpf = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.cadastro_telefone),
-                placeholder = stringResource(R.string.cadastro_digite_telefone)
+                placeholder = stringResource(R.string.cadastro_digite_telefone),
+                keyboardType = KeyboardType.Number,
+                maxChar = 11,
+                value = telefone,
+                onChange = {
+                    telefone = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.email),
-                placeholder = stringResource(R.string.digete_email)
+                placeholder = stringResource(R.string.digete_email),
+                keyboardType = KeyboardType.Email,
+                value = email,
+                onChange = {
+                    email = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.senha),
-                placeholder = stringResource(R.string.digite_senha)
+                placeholder = stringResource(R.string.digite_senha),
+                visualTransformation = PasswordVisualTransformation(),
+                value = senha,
+                onChange = {
+                    senha = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             OutlineAppButton(
@@ -107,7 +165,16 @@ fun CadastroCard(
                     .fillMaxWidth()
                     .height(48.dp),
                 icon = null,
-                onClick = {},
+                onClick = {
+                    onClickFazerCadastro(
+                        nome,
+                        cpf,
+                        telefone,
+                        email,
+                        senha,
+                        imageUri.toString()
+                    )
+                },
                 text = stringResource(R.string.fazer_cadastro),
                 isActivate = false
             )
@@ -146,6 +213,7 @@ fun CadastroCard(
 @Preview(showBackground = true)
 private fun CadastroCardPreview() {
     CadastroCard(
-        onClickFazerLogin = {}
+        onClickFazerLogin = {},
+        onClickFazerCadastro = {} as (String, String, String, String, String, String) -> Unit
     )
 }

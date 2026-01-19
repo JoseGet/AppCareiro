@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -42,6 +43,9 @@ fun LoginCard(
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
+
+    var email by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
 
     Card(
         modifier = Modifier
@@ -81,12 +85,20 @@ fun LoginCard(
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.email),
-                placeholder = stringResource(R.string.digete_email)
+                placeholder = stringResource(R.string.digete_email),
+                value = email,
+                onChange = {
+                    email = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             LoginTextField(
                 title = stringResource(R.string.senha),
-                placeholder = stringResource(R.string.digite_senha)
+                placeholder = stringResource(R.string.digite_senha),
+                value = senha,
+                onChange = {
+                    senha = it
+                }
             )
             Spacer(Modifier.height(24.dp))
             OutlineAppButton(
