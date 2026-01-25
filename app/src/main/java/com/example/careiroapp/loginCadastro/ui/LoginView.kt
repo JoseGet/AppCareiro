@@ -44,12 +44,12 @@ import com.example.careiroapp.loginCadastro.ui.components.CadastroCard
 import com.example.careiroapp.loginCadastro.ui.components.LoginCard
 import com.example.careiroapp.loginCadastro.ui.viewmodel.CardState
 import com.example.careiroapp.loginCadastro.ui.viewmodel.LoginCadastroViewModel
+import com.example.careiroapp.navigation.NavigationItem
 
 @Composable
 fun LoginView(
     navController: NavController
 ) {
-
     val viewModel: LoginCadastroViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -112,9 +112,20 @@ fun LoginView(
             )
             Spacer(Modifier.height(24.dp))
             when (uiState.cardState) {
-                CardState.LOGIN -> LoginCard {
-                    viewModel.changeCardState(CardState.CADASTRO)
-                }
+                CardState.LOGIN -> LoginCard(
+                    onClickCadastrar = {
+                        viewModel.changeCardState(CardState.CADASTRO)
+                    },
+                    onClickEntrar = { email, senha ->
+                        viewModel.login(
+                            email,
+                            senha,
+                            goToMainView = {
+                                navController.navigate(NavigationItem.Home.route)
+                            }
+                        )
+                    }
+                )
 
                 CardState.CADASTRO -> CadastroCard(
                     onClickFazerLogin = {

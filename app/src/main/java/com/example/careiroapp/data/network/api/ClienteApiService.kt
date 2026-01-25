@@ -1,4 +1,4 @@
-package com.example.careiroapp.network.api
+package com.example.careiroapp.data.network.api
 
 import com.example.careiroapp.loginCadastro.data.dto.ClienteDTO
 import okhttp3.MultipartBody

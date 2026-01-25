@@ -27,5 +27,5 @@ data class ClienteDTO(
 
     @SerializedName("foto_perfil")
     @Expose
-    val fotoPerfil: String
+    val fotoPerfil: String?
 )

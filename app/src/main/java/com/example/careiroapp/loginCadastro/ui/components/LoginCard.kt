@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,7 +40,8 @@ import com.example.careiroapp.common.montserratRegularFontFamily
 
 @Composable
 fun LoginCard(
-    onClickCadastrar: () -> Unit
+    onClickCadastrar: () -> Unit,
+    onClickEntrar: (String, String) -> Unit
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
@@ -95,6 +97,7 @@ fun LoginCard(
             LoginTextField(
                 title = stringResource(R.string.senha),
                 placeholder = stringResource(R.string.digite_senha),
+                visualTransformation = PasswordVisualTransformation(),
                 value = senha,
                 onChange = {
                     senha = it
@@ -106,14 +109,16 @@ fun LoginCard(
                     .fillMaxWidth()
                     .height(48.dp),
                 icon = null,
-                onClick = {},
+                onClick = {
+                    onClickEntrar(email, senha)
+                },
                 text = stringResource(R.string.entrar),
                 isActivate = false
             )
             Spacer(Modifier.height(24.dp))
             Row() {
                 Text(
-                    text = "${stringResource(R.string.nao_tenho_conta)}",
+                    text = stringResource(R.string.nao_tenho_conta),
                     style = TextStyle(
                         fontFamily = montserratRegularFontFamily,
                         fontSize = 16.sp,
@@ -145,6 +150,7 @@ fun LoginCard(
 @Preview(showBackground = true)
 private fun LoginCardPreview() {
     LoginCard(
-        onClickCadastrar = {}
+        onClickCadastrar = {},
+        onClickEntrar = { email, senha -> }
     )
 }

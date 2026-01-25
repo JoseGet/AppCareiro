@@ -1,7 +1,7 @@
 package com.example.careiroapp.feiras.data.datasource
 
 import com.example.careiroapp.feiras.data.models.FeiraModel
-import com.example.careiroapp.network.api.FeiraApiService
+import com.example.careiroapp.data.network.api.FeiraApiService
 import javax.inject.Inject
 
 class FeirasDataSource @Inject constructor(

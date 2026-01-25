@@ -214,6 +214,6 @@ fun CadastroCard(
 private fun CadastroCardPreview() {
     CadastroCard(
         onClickFazerLogin = {},
-        onClickFazerCadastro = {} as (String, String, String, String, String, String) -> Unit
+        onClickFazerCadastro = { a, b, c, d, e, f -> }
     )
 }

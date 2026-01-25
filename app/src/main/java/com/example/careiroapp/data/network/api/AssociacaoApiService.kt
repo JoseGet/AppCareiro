@@ -1,4 +1,4 @@
-package com.example.careiroapp.network.api
+package com.example.careiroapp.data.network.api
 
 import com.example.careiroapp.associacoes.data.models.AssociacaoModel
 import retrofit2.Response

@@ -1,16 +1,18 @@
 package com.example.careiroapp.loginCadastro.ui.viewmodel
 
-import android.app.Activity
 import android.content.Context
-import android.net.Uri
 import android.util.Log
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.mutableStateOf
+import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.careiroapp.Application
+import com.example.careiroapp.data.dataStore.UserDataStore
+import com.example.careiroapp.data.dataStore.model.UserDataStoreModel
 import com.example.careiroapp.loginCadastro.data.dto.ClienteDTO
+import com.example.careiroapp.loginCadastro.data.model.LoginRequestModel
+import com.example.careiroapp.loginCadastro.domain.usecases.LoginUseCase
 import com.example.careiroapp.loginCadastro.domain.usecases.RegisterUseCase
-import dagger.hilt.android.internal.Contexts.getApplication
+import com.example.careiroapp.navigation.NavigationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,10 +26,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginCadastroViewModel @Inject constructor(
-    private val registerUseCase: RegisterUseCase
+    private val registerUseCase: RegisterUseCase,
+    private val loginUseCase: LoginUseCase,
+    private val userDataStore: UserDataStore
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(LoginCadastroUiState())
     var uiState: StateFlow<LoginCadastroUiState> = _uiState.asStateFlow()
+
+    private val _startDestination = mutableStateOf<String?>(null)
+    val startDestination = _startDestination
+
+    init {
+        checkAuthStatus()
+    }
+
+    private fun checkAuthStatus() {
+        viewModelScope.launch {
+            userDataStore.getUserData().collect { user ->
+                _startDestination.value = if (user.token.isNotEmpty()) {
+                    NavigationItem.Main.route
+                } else {
+                    NavigationItem.Login.route
+                }
+            }
+        }
+    }
 
     fun changeCardState(newCardState: CardState) {
 
@@ -52,7 +75,7 @@ class LoginCadastroViewModel @Inject constructor(
         uriImage: String?
     ) {
         viewModelScope.launch {
-            _uiState.update {it.copy(isLoading = true)}
+            _uiState.update { it.copy(isLoading = true) }
 
             val clienteDTO = ClienteDTO(
                 nome,
@@ -64,12 +87,14 @@ class LoginCadastroViewModel @Inject constructor(
             )
 
             val imagePart = if (uriImage != null) prepararImagemPart(context, uriImage) else null
-            registerUseCase.invoke(clienteDTO, imagePart)
-
+            val response = registerUseCase.invoke(clienteDTO, imagePart)
 
             _uiState.update { it.copy(isLoading = false) }
-        }
 
+            if (response.isSuccessful) {
+                changeCardState(CardState.LOGIN)
+            }
+        }
     }
 
     private fun prepararImagemPart(context: Context, uriString: String?): MultipartBody.Part? {
@@ -78,7 +103,7 @@ class LoginCadastroViewModel @Inject constructor(
             return null
         }
 
-        val uri = Uri.parse(uriString)
+        val uri = uriString.toUri()
         val contentResolver = context.contentResolver
 
         val inputStream = contentResolver.openInputStream(uri)
@@ -89,5 +114,45 @@ class LoginCadastroViewModel @Inject constructor(
         return MultipartBody.Part.createFormData("foto_perfil", "perfil.jpg", requestFile)
     }
 
+    fun login(
+        email: String,
+        senha: String,
+        goToMainView: () -> Unit = {}
+    ) {
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true) }
+
+            val loginRequest = LoginRequestModel(
+                email = email,
+                senha = senha
+            )
+
+            try {
+                val loginResponse = loginUseCase.invoke(loginRequest)
+                if (loginResponse.isSuccessful) {
+
+                    val data = loginResponse.body()?.let {
+                        UserDataStoreModel(
+                            token = it.token,
+                            name = it.cliente.nome,
+                            email = it.cliente.email,
+                            telefone = it.cliente.telefone,
+                            fotoPerfil = it.cliente.fotoPerfil ?: ""
+                        )
+                    }
+                    userDataStore.saveUserData(data)
+                    goToMainView()
+                }
+            } catch (e: Exception) {
+                e.message?.let { Log.e(TAG, it) }
+            } finally {
+                _uiState.update { it.copy(isLoading = false) }
+            }
+        }
+    }
+
+    companion object {
+        val TAG = LoginCadastroViewModel.Companion::class.java.name
+    }
 
 }
