@@ -88,5 +88,15 @@ class AssociacaoViewModel @Inject constructor(
         return getProductsByAssociacao.invoke(idAssociacao) ?: emptyList()
     }
 
+    fun clearSelectedAssociacao() {
+        viewModelScope.launch {
+            _associacaoUiState.update {
+                it.copy(
+                    selectedAssociacao = null,
+                    productsList = emptyList()
+                )
+            }
+        }
+    }
 
 }

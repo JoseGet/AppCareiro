@@ -1,6 +1,7 @@
 package com.example.careiroapp.associacoes.ui
 
 import android.os.Build.VERSION.SDK_INT
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,11 +44,18 @@ import com.example.careiroapp.common.montserratBoldFontFamily
 @Composable
 fun SingleAssociacaoView(
     navController: NavController,
-    associacaoViewModel: AssociacaoViewModel
+    associacaoViewModel: AssociacaoViewModel,
+    resetScrollFunction: () -> Unit
 ) {
 
     val uiState by associacaoViewModel.associacaoUiState.collectAsState()
     val context = LocalContext.current
+
+    BackHandler() {
+        navController.popBackStack()
+        associacaoViewModel.clearSelectedAssociacao()
+        resetScrollFunction()
+    }
 
     val imageLoader = ImageLoader.Builder(context)
         .components {
@@ -66,6 +74,8 @@ fun SingleAssociacaoView(
         BackButton(
             onClick = {
                 navController.popBackStack()
+                associacaoViewModel.clearSelectedAssociacao()
+                resetScrollFunction()
             }
         )
         Spacer(Modifier.height(16.dp))
@@ -106,15 +116,17 @@ fun SingleAssociacaoView(
             description = uiState.selectedAssociacao?.descricao ?: ""
         )
         Spacer(Modifier.height(24.dp))
-        AssociacaoProductorsRow(
-            productorsList = uiState.selectedAssociacao?.productorsList ?: emptyList()
-        )
+        uiState.selectedAssociacao?.productorsList?.takeIf { it.isNotEmpty() }?.let { list ->
+            AssociacaoProductorsRow(
+                productorsList = list
+            )
+        }
         Spacer(Modifier.height(24.dp))
-        ModulesHeader(
-            titulo = "${stringResource(R.string.confira_produtos_associacao)} ${uiState.selectedAssociacao?.nome}",
-        )
-        AssociacaoProductsRow(
-            productsList = uiState.productsList
-        )
+        uiState.productsList.takeIf { it.isNotEmpty() }?.let { list ->
+            AssociacaoProductsRow(
+                productsList = list,
+                uiState.selectedAssociacao?.nome
+            )
+        }
     }
 }

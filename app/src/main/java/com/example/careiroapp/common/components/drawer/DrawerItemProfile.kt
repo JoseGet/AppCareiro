@@ -16,31 +16,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.careiroapp.R
 import com.example.careiroapp.common.montserratBoldFontFamily
 
 @Composable
 fun DrawerItemProfile(
     name: String,
-    image: Painter,
+    image: String,
     onClick: () -> Unit
 ) {
     NavigationDrawerItem(
         modifier = Modifier
             .wrapContentHeight(),
         icon = {
-            Image(
-                painter = image,
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(image)
+                    .crossfade(true)
+                    .build(),
                 modifier = Modifier
-                    .padding(vertical = 16.dp)
                     .size(48.dp)
                     .clip(shape = CircleShape),
                 contentDescription = null,
@@ -53,8 +62,9 @@ fun DrawerItemProfile(
                 style = TextStyle(
                     fontFamily = montserratBoldFontFamily,
                     fontSize = 16.sp,
-                    color = Color.White
-                )
+                    color = Color.White,
+                ),
+                overflow = TextOverflow.Ellipsis
             )
         },
         selected = false,
@@ -78,7 +88,7 @@ fun DrawerItemProfile(
 private fun DrawerItemProfilePreview() {
     DrawerItemProfile(
         name = "Doge",
-        image = painterResource(R.drawable.doge),
+        image = "",
         onClick = {}
     )
 }

@@ -76,4 +76,14 @@ class FeiraViewModel @Inject constructor(
 
         }
     }
+
+    fun cleanSelectedFeira() {
+        viewModelScope.launch {
+            _feiraUiState.update {
+                it.copy(
+                    selectedFeira = null
+                )
+            }
+        }
+    }
 }

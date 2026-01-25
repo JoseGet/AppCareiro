@@ -1,4 +1,4 @@
-package com.example.careiroapp.network.api
+package com.example.careiroapp.data.network.api
 
 import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
 import com.example.careiroapp.products.data.models.ProductCountModel

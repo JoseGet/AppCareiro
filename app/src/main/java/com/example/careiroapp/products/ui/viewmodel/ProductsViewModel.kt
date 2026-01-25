@@ -211,6 +211,16 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
+    fun cleanSelectedProduct() {
+        viewModelScope.launch {
+            _productUiState.update {
+                it.copy(
+                    selectedProduct = null
+                )
+            }
+        }
+    }
+
     fun initializeFilter(categoryFromNav: String?) {
         if (isInitializedByNavArg) return
 

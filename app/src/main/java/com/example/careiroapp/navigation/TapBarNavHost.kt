@@ -76,7 +76,8 @@ fun TapBarNavHost(
                 ) else hiltViewModel()
             SingleProductView(
                 navController,
-                productViewModel = viewModel
+                productViewModel = viewModel,
+                resetScrollFunction
             )
         }
 
@@ -99,7 +100,8 @@ fun TapBarNavHost(
                 ) else hiltViewModel()
             SingleFeiraView(
                 navController,
-                viewModel
+                viewModel,
+                resetScrollFunction
             )
         }
 
@@ -122,7 +124,8 @@ fun TapBarNavHost(
                 ) else hiltViewModel()
             SingleAssociacaoView(
                 navController,
-                viewModel
+                viewModel,
+                resetScrollFunction
             )
         }
 
