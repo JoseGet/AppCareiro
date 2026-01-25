@@ -91,4 +91,27 @@ No Agriconnect, a tecnologia é aliada na criação de redes entre agricultores 
     <string name="apoio">Apoio</string>
     <string name="apoio_content">Este projeto tem o apoio do <b>Mover-se na Web</b>, iniciativa do <b>NIC.br</b> e do <b>Ceweb.br</b> que promove o desenvolvimento da Web aberta por meio de soluções de impacto social. Saiba mais em:  </string>
 
+    <string name="login">Login</string>
+    <string name="acesse_sua_conta">Acesse a sua conta</string>
+    <string name="email">Email</string>
+    <string name="digete_email">Digite seu email.</string>
+    <string name="senha">Senha</string>
+    <string name="digite_senha">Digite sua senha.</string>
+    <string name="entrar">Entrar</string>
+    <string name="nao_tenho_conta">Não tem uma conta?</string>
+    <string name="cadastrese">Cadastre-se</string>
+
+    <string name="cadastro">Cadastro</string>
+    <string name="crie_conta_agriconnect">Crie uma conta no Agriconnect</string>
+    <string name="cadastro_nome">Nome*</string>
+    <string name="cadastro_digite_nome">Digite seu nome</string>
+    <string name="cadastro_telefone">Telefone*</string>
+    <string name="cadastro_digite_telefone">(XX) 9XXXX-XXXX</string>
+    <string name="cadastro_cpf">CPF*</string>
+    <string name="cadastro_digite_cpf">Digite seu CPF</string>
+    <string name="fazer_cadastro">Fazer Cadastro</string>
+    <string name="ja_tem_conta">Já tem uma conta?</string>
+    <string name="faca_login">Faça login</string>
+
+
 </resources>

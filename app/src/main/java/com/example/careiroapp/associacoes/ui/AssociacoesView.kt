@@ -28,10 +28,7 @@ import com.example.careiroapp.associacoes.ui.components.AssociacoesGrid
 import com.example.careiroapp.associacoes.ui.viewmodel.AssociacaoViewModel
 import com.example.careiroapp.common.components.ModulesHeader
 import com.example.careiroapp.common.components.cards.CardCadastroAssociacao
-import com.example.careiroapp.mocks.Mocks
 import com.example.careiroapp.navigation.NavigationItem
-import com.google.api.Context
-import javax.inject.Inject
 
 @Composable
 fun AssociacoesView(
@@ -61,7 +58,7 @@ fun AssociacoesView(
             titulo = stringResource(R.string.associacoes),
             subtitulo = null
         )
-        Box (
+        Box(
             modifier = Modifier
                 .wrapContentWidth()
                 .height(500.dp),
@@ -69,7 +66,10 @@ fun AssociacoesView(
         ) {
             if (uiState.isLoading) {
                 Image(
-                    painter = rememberAsyncImagePainter(model = R.drawable.load, imageLoader = imageLoader),
+                    painter = rememberAsyncImagePainter(
+                        model = R.drawable.load,
+                        imageLoader = imageLoader
+                    ),
                     contentDescription = null
                 )
             }
@@ -81,7 +81,7 @@ fun AssociacoesView(
             ) {
                 AssociacoesGrid(
                     list = uiState.associacoesList,
-                    onCardClick = {id ->
+                    onCardClick = { id ->
                         associacaoViewModel.getAssociacaoById(id)
                         navController.navigate(NavigationItem.AssociacaoUnica.route)
                     }

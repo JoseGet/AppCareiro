@@ -1,10 +1,12 @@
-package com.example.careiroapp.network.retrofit
+package com.example.careiroapp.data.network.retrofit
 
 import com.example.careiroapp.BuildConfig
-import com.example.careiroapp.network.api.AssociacaoApiService
-import com.example.careiroapp.network.api.FeiraApiService
-import com.example.careiroapp.network.api.ProdutoApiService
-import com.example.careiroapp.network.api.VendedorApiService
+import com.example.careiroapp.data.network.api.AssociacaoApiService
+import com.example.careiroapp.data.network.api.AuthApiService
+import com.example.careiroapp.data.network.api.ClienteApiService
+import com.example.careiroapp.data.network.api.FeiraApiService
+import com.example.careiroapp.data.network.api.ProdutoApiService
+import com.example.careiroapp.data.network.api.VendedorApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,4 +60,17 @@ object RetrofitModule {
     fun associacaoApiSetupProvider(): AssociacaoApiService {
         return retrofit.create(AssociacaoApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun clienteApiSetupProvider(): ClienteApiService {
+        return retrofit.create(ClienteApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun authApiSetupProvider(): AuthApiService {
+        return retrofit.create(AuthApiService::class.java)
+    }
+
 }

@@ -1,8 +1,8 @@
 package com.example.careiroapp.products.data.datasource
 
 import com.example.careiroapp.associacoes.data.models.AssociacaoProductModel
-import com.example.careiroapp.network.api.ProdutoApiService
-import com.example.careiroapp.network.api.VendedorApiService
+import com.example.careiroapp.data.network.api.ProdutoApiService
+import com.example.careiroapp.data.network.api.VendedorApiService
 import com.example.careiroapp.products.data.models.ProductModel
 import com.example.careiroapp.products.data.models.ProductVendedorModel
 import java.util.UUID

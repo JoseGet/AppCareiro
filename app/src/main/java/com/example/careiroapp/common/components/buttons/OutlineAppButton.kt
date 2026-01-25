@@ -40,14 +40,14 @@ fun OutlineAppButton(
         ),
         contentPadding = PaddingValues(horizontal = 12.dp),
         colors = ButtonColors(
-            contentColor = if(isActivate) Color.White else colorResource(R.color.light_green),
-            containerColor = if(isActivate) colorResource(R.color.light_green) else Color.White,
+            contentColor = if(isActivate) Color.White else colorResource(R.color.dark_green),
+            containerColor = if(isActivate) colorResource(R.color.dark_green) else Color.White,
             disabledContentColor = Color.Red,
             disabledContainerColor = Color.Red
         ),
         border = BorderStroke(
             width = 1.dp,
-            color = colorResource(R.color.light_green)
+            color = colorResource(R.color.dark_green)
         ),
         modifier = modifier
     ) {
